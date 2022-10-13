@@ -100,6 +100,20 @@
     </mat-form-field>
 
     <mat-form-field
+      *ngIf="canEditColumn('meta')"
+      class="entity-edit-field"
+      appearance="outline">
+      <mat-label>{{'meta' | translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        name="meta"
+        (change)="changed('meta')"
+        [(ngModel)]="data.entity.meta"
+        autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field
       *ngIf="canEditColumn('contact_id')"
       class="entity-edit-field"
       appearance="outline">

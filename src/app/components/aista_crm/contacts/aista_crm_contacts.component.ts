@@ -54,6 +54,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     'country',
     'city',
     'linkedIn',
+    'meta',
     'created',
     'delete-instance'
   ];
@@ -75,6 +76,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
   public country: FormControl;
   public city: FormControl;
   public linkedIn: FormControl;
+  public meta: FormControl;
   public created: FormControl;
   public contact_id: FormControl;
   public account_id: FormControl;
@@ -159,6 +161,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     this.country = this.createFormControl('contacts.country.like');
     this.city = this.createFormControl('contacts.city.like');
     this.linkedIn = this.createFormControl('contacts.linkedIn.like');
+    this.meta = this.createFormControl('contacts.meta.like');
     this.created = this.createFormControl('contacts.created.eq');
     this.contact_id = this.createFormControl('contacts.contact_id.eq');
     this.account_id = this.createFormControl('contacts.account_id.eq');
