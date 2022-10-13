@@ -32,7 +32,6 @@ import { environment } from '@env/environment';
 import { JwtModule } from '@auth0/angular-jwt';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
 import { FormatDatePipe } from './pipes/format-date-pipe';
-import { DateSincePipe } from './pipes/date-since.pipe';
 import { ConfirmDialogComponent } from './confirm-deletion-dialog/confirm-dialog.component';
 import { UserManagementComponent } from './common/user-management/user-management.component';
 import { EditUserDialogComponent } from './common/user-management/edit-user-dialog/edit-user-dialog.component';
@@ -83,7 +82,7 @@ import { EditAista_crm_statusComponent } from './components/aista_crm/status/mod
       },
     }),
     AppRoutingModule, // must be imported as the last module as it contains the fallback route
-    A11yModule
+    A11yModule,
   ],
   declarations: [
     AppComponent,
@@ -98,7 +97,6 @@ import { EditAista_crm_statusComponent } from './components/aista_crm/status/mod
     MagicFileComponent,
     MagicFileFieldComponent,
     FormatDatePipe,
-    DateSincePipe,
     ConfirmDialogComponent,
     UserManagementComponent,
     EditUserDialogComponent,
@@ -121,6 +119,6 @@ import { EditAista_crm_statusComponent } from './components/aista_crm/status/mod
   ],
 
   providers: [NgxImageCompressService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

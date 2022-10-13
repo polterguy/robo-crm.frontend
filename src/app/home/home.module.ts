@@ -24,6 +24,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
       echarts: () => import('echarts')
     }),
   ],
-  declarations: [HomeComponent],
+  declarations: [
+    HomeComponent,
+  ],
 })
 export class HomeModule {}

@@ -2,12 +2,26 @@
   <div class="kpi-entities">
     <mat-card *ngFor="let idx of kpiValues" class="kpi">
       <mat-card-content>
+
         <div
+          *ngIf="idx.isChart"
           class="chart"
           echarts
           [options]="idx"
           [theme]="theme">
         </div>
+
+        <table *ngIf="!idx.isChart" class="kpi_table">
+          <tr>
+            <th *ngFor="let header of idx.columns">{{header}}</th>
+          </tr>
+          <tr *ngFor="let row of idx.rows">
+            <td *ngFor="let idxInner of idx.columns">
+              {{idxInner === 'created' ? (row[idxInner] | since) : row[idxInner]}}
+            </td>
+          </tr>
+        </table>
+
       </mat-card-content>
     </mat-card>
   </div>

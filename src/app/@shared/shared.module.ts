@@ -7,6 +7,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialModule } from '@app/material.module';
 import { LoaderComponent } from './loader/loader.component';
+import { DateSincePipe } from '@app/pipes/date-since.pipe';
 
 @NgModule({
   imports: [
@@ -14,7 +15,10 @@ import { LoaderComponent } from './loader/loader.component';
     MaterialModule,
     CommonModule,
   ],
-  declarations: [LoaderComponent],
-  exports: [LoaderComponent],
+  declarations: [
+    LoaderComponent,
+    DateSincePipe,
+  ],
+  exports: [LoaderComponent, DateSincePipe],
 })
 export class SharedModule {}

@@ -40,89 +40,121 @@ export class HomeComponent implements OnInit {
           return 0;
         })
         for (const idx of data) {
-          if (!idx.values) {
-            idx.values = [];
-          }
-          if (idx.type === 'pie') {
-            this.kpiValues.push({
-              title: {
-                text: idx.name,
-                x: 'center'
-              },
-              tooltip: {
-                trigger: 'item',
-                appendToBody: true
-              },
-              series: [
-                {
-                  type: 'pie',
-                  radius: ['50%', '70%'],
-                  data: idx.values.map((x:any) => {
-                    return {
-                      value: x.value,
-                      name: x.name,
-                    }
-                  }),
-                  color: ['#555', '#888', '#bbb'],
-                  label: {
-                    color: 'black'
-                  },
-                  emphasis: {
-                    itemStyle: {
-                      shadowBlur: 10,
-                      shadowOffsetX: 0,
-                      shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                  }
-                }
-              ]
-            });
-          } else {
-            this.kpiValues.push({
-              title: {
-                text: idx.name,
-                x: 'center'
-              },
-              tooltip: {
-                trigger: 'axis',
-                position: (pt: any) => {
-                  return [pt[0], '10%'];
-                },
-                appendToBody: true
-              },
-              xAxis: {
-                type: 'category',
-                boundaryGap: true,
-                data: idx.values.map((x: any) => x.name),
-              },
-              yAxis: {
-                type: 'value',
-                splitLine: {
-                  lineStyle: {
-                    type: 'dotted',
-                    width: 1,
-                    color: 'rgba(0, 0, 0, 0.12)'
-                  }
-                }
-              },
-              series: [
-                {
-                  name: idx.values.map((x: any) => x.name),
-                  data: idx.values.map((x: any) => x.value),
-                  type: idx.type,
-                  smooth: true,
-                  symbol: 'none',
-                  areaStyle: {},
-                  color: '#999',
-                }
-              ]
-            });
+          if (idx.values && idx.values.length > 0) {
+            switch (idx.type) {
+
+              case 'pie':
+                this.createPieChart(idx);
+                break;
+
+              case 'line':
+                this.createLineChart(idx);
+                break;
+
+              case 'table':
+                this.createTable(idx);
+                break;
+            }
           }
         }
       },
       error: (error: any) => {
         console.log(error);
       }
+    });
+  }
+
+  // Creates a pie chart
+  private createPieChart(chartData: any) {
+    this.kpiValues.push({
+      isChart: true,
+      title: {
+        text: chartData.name,
+        x: 'center'
+      },
+      tooltip: {
+        trigger: 'item',
+        appendToBody: true
+      },
+      series: [
+        {
+          type: 'pie',
+          radius: ['50%', '70%'],
+          data: chartData.values.map((x:any) => {
+            return {
+              value: x.value,
+              name: x.name,
+            }
+          }),
+          color: ['#555', '#888', '#bbb'],
+          label: {
+            color: 'black'
+          },
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+          }
+        }
+      ]
+    });
+  }
+
+  // Creates a line chart
+  private createLineChart(chartData: any) {
+    this.kpiValues.push({
+      isChart: true,
+      title: {
+        text: chartData.name,
+        x: 'center'
+      },
+      tooltip: {
+        trigger: 'axis',
+        position: (pt: any) => {
+          return [pt[0], '10%'];
+        },
+        appendToBody: true
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: true,
+        data: chartData.values.map((x: any) => x.name),
+      },
+      yAxis: {
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dotted',
+            width: 1,
+            color: 'rgba(0, 0, 0, 0.12)'
+          }
+        }
+      },
+      series: [
+        {
+          name: chartData.values.map((x: any) => x.name),
+          data: chartData.values.map((x: any) => x.value),
+          type: chartData.type,
+          smooth: true,
+          symbol: 'none',
+          areaStyle: {},
+          color: '#999',
+        }
+      ]
+    });
+  }
+
+  private createTable(data: any) {
+    const cols: string[] = [];
+    for (var idx in data.values[0]) {
+      cols.push(idx);
+    }
+    this.kpiValues.push({
+      isChart: false,
+      columns: cols,
+      rows: data.values,
     });
   }
 }
