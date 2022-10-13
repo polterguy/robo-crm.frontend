@@ -7,7 +7,7 @@
       mat-raised-button
       *ngIf="authService.me.canInvoke(entityBaseUrl(), 'post') && httpService['aista_crm_status']['create']"
       class="create-button"
-      [matTooltip]="('Create' | translate) + (' Status' | translate)"
+      [matTooltip]="('New' | translate) + (' status' | translate)"
       (click)="createEntity()">
       <mat-icon>add_circle</mat-icon>
     </button>
@@ -20,7 +20,7 @@
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'status' | translate}}</mat-label>
+            <mat-label>{{'Status' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -41,7 +41,7 @@
       <ng-container matColumnDef="description">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'description' | translate}}</mat-label>
+            <mat-label>{{'Description' | translate}}</mat-label>
             <input
               matInput
               type="text"

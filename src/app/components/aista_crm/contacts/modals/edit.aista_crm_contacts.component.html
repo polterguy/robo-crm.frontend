@@ -1,12 +1,12 @@
 <form>
-  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Contacts' | translate}}</h1>
+  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Contact' | translate}}</h1>
   <div mat-dialog-content>
 
     <mat-form-field
       *ngIf="canEditColumn('name')"
       class="entity-edit-field"
       appearance="outline">
-      <mat-label>{{'name' | translate}}</mat-label>
+      <mat-label>{{'Name' | translate}}</mat-label>
       <input
         matInput
         type="text"
@@ -23,7 +23,7 @@
       key="account_id"
       table="accounts"
       value="name"
-      [placeholder]="('Choose a ' | translate) + ('account_id' | translate)"
+      [placeholder]="'Account' | translate"
       class="entity-edit-field"
       (change)="changed('account_id')"
       [getItems]="service.aista_crm_accounts">
@@ -33,7 +33,7 @@
       *ngIf="canEditColumn('phone')"
       class="entity-edit-field"
       appearance="outline">
-      <mat-label>{{'phone' | translate}}</mat-label>
+      <mat-label>{{'Phone' | translate}}</mat-label>
       <input
         matInput
         type="text"
@@ -47,7 +47,7 @@
       *ngIf="canEditColumn('email')"
       class="entity-edit-field"
       appearance="outline">
-      <mat-label>{{'email' | translate}}</mat-label>
+      <mat-label>{{'Email' | translate}}</mat-label>
       <input
         matInput
         type="text"
@@ -61,7 +61,7 @@
       *ngIf="canEditColumn('country')"
       class="entity-edit-field"
       appearance="outline">
-      <mat-label>{{'country' | translate}}</mat-label>
+      <mat-label>{{'Country' | translate}}</mat-label>
       <input
         matInput
         type="text"
@@ -75,7 +75,7 @@
       *ngIf="canEditColumn('city')"
       class="entity-edit-field"
       appearance="outline">
-      <mat-label>{{'city' | translate}}</mat-label>
+      <mat-label>{{'City' | translate}}</mat-label>
       <input
         matInput
         type="text"
@@ -89,7 +89,7 @@
       *ngIf="canEditColumn('linkedIn')"
       class="entity-edit-field"
       appearance="outline">
-      <mat-label>{{'linkedIn' | translate}}</mat-label>
+      <mat-label>{{'LinkedIn' | translate}}</mat-label>
       <input
         matInput
         type="text"
@@ -103,28 +103,13 @@
       *ngIf="canEditColumn('meta')"
       class="entity-edit-field"
       appearance="outline">
-      <mat-label>{{'meta' | translate}}</mat-label>
+      <mat-label>{{'Meta' | translate}}</mat-label>
       <input
         matInput
         type="text"
         name="meta"
         (change)="changed('meta')"
         [(ngModel)]="data.entity.meta"
-        autocomplete="off">
-    </mat-form-field>
-
-    <mat-form-field
-      *ngIf="canEditColumn('contact_id')"
-      class="entity-edit-field"
-      appearance="outline">
-      <mat-label>{{'contact_id' | translate}}</mat-label>
-      <input
-        matInput
-        type="number"
-        step="1"
-        name="contact_id"
-        (change)="changed('contact_id')"
-        [(ngModel)]="data.entity.contact_id"
         autocomplete="off">
     </mat-form-field>
 

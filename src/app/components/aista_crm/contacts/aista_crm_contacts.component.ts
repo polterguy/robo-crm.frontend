@@ -48,7 +48,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
    */
   public displayedColumns: string[] = [
     'name',
-    'account_id.status',
+    'account_id.name',
     'phone',
     'email',
     'country',
@@ -70,7 +70,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
 
   // Form control declarations to bind up with reactive form elements.
   public name: FormControl;
-  public account_id_status: FormControl;
+  public account_id_name: FormControl;
   public phone: FormControl;
   public email: FormControl;
   public country: FormControl;
@@ -155,7 +155,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
      * on our columns.
      */
     this.name = this.createFormControl('contacts.name.like');
-    this.account_id_status = this.createFormControl('account_id.status.like');
+    this.account_id_name = this.createFormControl('account_id.name.like');
     this.phone = this.createFormControl('contacts.phone.like');
     this.email = this.createFormControl('contacts.email.like');
     this.country = this.createFormControl('contacts.country.like');

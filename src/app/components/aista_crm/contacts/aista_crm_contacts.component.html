@@ -7,7 +7,7 @@
       mat-raised-button
       *ngIf="authService.me.canInvoke(entityBaseUrl(), 'post') && httpService['aista_crm_contacts']['create']"
       class="create-button"
-      [matTooltip]="('Create' | translate) + (' Contacts' | translate)"
+      [matTooltip]="('Create' | translate) + (' Contact' | translate)"
       (click)="createEntity()">
       <mat-icon>add_circle</mat-icon>
     </button>
@@ -20,7 +20,7 @@
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'name' | translate}}</mat-label>
+            <mat-label>{{'Name' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -38,31 +38,31 @@
         <td mat-cell *matCellDef="let el">{{el['name']}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="account_id.status">
+      <ng-container matColumnDef="account_id.name">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'account_id.status' | translate}}</mat-label>
+            <mat-label>{{'Account' | translate}}</mat-label>
             <input
               matInput
               type="text"
               autocomplete="off"
-              [formControl]="account_id_status">
+              [formControl]="account_id_name">
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
           <button
             class="sort-button"
-            (click)="sort('account_id.status')"
+            (click)="sort('account_id.name')"
             mat-button>
-            <mat-icon matSuffix>{{getSortIcon('account_id.status')}}</mat-icon>
+            <mat-icon matSuffix>{{getSortIcon('account_id.name')}}</mat-icon>
           </button>
         </th>
-        <td mat-cell *matCellDef="let el">{{el['account_id.status']}}</td>
+        <td mat-cell *matCellDef="let el">{{el['account_id.name']}}</td>
       </ng-container>
 
       <ng-container matColumnDef="phone">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'phone' | translate}}</mat-label>
+            <mat-label>{{'Phone' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -83,7 +83,7 @@
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'email' | translate}}</mat-label>
+            <mat-label>{{'Email' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -104,7 +104,7 @@
       <ng-container matColumnDef="country">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'country' | translate}}</mat-label>
+            <mat-label>{{'Country' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -125,7 +125,7 @@
       <ng-container matColumnDef="city">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'city' | translate}}</mat-label>
+            <mat-label>{{'City' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -146,7 +146,7 @@
       <ng-container matColumnDef="linkedIn">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'linkedIn' | translate}}</mat-label>
+            <mat-label>{{'LinkedIn' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -167,7 +167,7 @@
       <ng-container matColumnDef="meta">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'meta' | translate}}</mat-label>
+            <mat-label>{{'Meta' | translate}}</mat-label>
             <input
               matInput
               type="text"
@@ -285,39 +285,39 @@
               <mat-icon matSuffix>edit</mat-icon>
             </button>
             <p class="details">
-              <label>{{'name' | translate}}</label>
+              <label>{{'Name' | translate}}</label>
               <span>{{el['name']}}</span>
             </p>
             <p class="details">
-              <label>{{'account_id.status' | translate}}</label>
-              <span>{{el['account_id.status']}}</span>
+              <label>{{'Account' | translate}}</label>
+              <span>{{el['account_id.name']}}</span>
             </p>
             <p class="details">
-              <label>{{'phone' | translate}}</label>
+              <label>{{'Phone' | translate}}</label>
               <a [href]="'tel:' + el['phone']">{{el['phone']}}</a>
             </p>
             <p class="details">
-              <label>{{'email' | translate}}</label>
+              <label>{{'Email' | translate}}</label>
               <a [href]="'mailto:' + el['email']">{{el['email']}}</a>
             </p>
             <p class="details">
-              <label>{{'country' | translate}}</label>
+              <label>{{'Country' | translate}}</label>
               <span>{{el['country']}}</span>
             </p>
             <p class="details">
-              <label>{{'city' | translate}}</label>
+              <label>{{'City' | translate}}</label>
               <span>{{el['city']}}</span>
             </p>
             <p class="details">
-              <label>{{'linkedIn' | translate}}</label>
+              <label>{{'LinkedIn' | translate}}</label>
               <a [href]="ensureUrl(el['linkedIn'])" target="_blank">{{el['linkedIn']}}</a>
             </p>
             <p class="details">
-              <label>{{'meta' | translate}}</label>
+              <label>{{'Meta' | translate}}</label>
               <a [href]="ensureUrl(el['meta'])" target="_blank">{{el['meta']}}</a>
             </p>
             <p class="details">
-              <label>{{'created' | translate}}</label>
+              <label>{{'Created' | translate}}</label>
               <span>{{el['created'] | formatDate}}</span>
             </p>
           </div>

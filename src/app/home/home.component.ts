@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   getKpi() {
     this.httpService.kpi.subscribe({
       next: (data: any[]) => {
-        data = data || [];
+        data = (data || []).filter(x => x.values && x.values.length > 0);
         for (const idx of data) {
           if (!idx.values) {
             idx.values = [];
@@ -69,6 +69,7 @@ export class HomeComponent implements OnInit {
             this.kpiValues.push({
               title: {
                 text: idx.name,
+                x: 'center'
               },
               xAxis: {
                 data: idx.values.map((x: any) => x.name),

@@ -25,13 +25,13 @@ const routes: Routes = [
     { path: 'users', component: UserManagementComponent, data: { title: marker('User management') } },
 
     // Then routes for all CRUD components.
-    { path: 'crud/aista_crm/accounts', component: Aista_crm_accountsComponent, data: { title: marker('aista_crm/accounts') } },
-    { path: 'crud/aista_crm/activities', component: Aista_crm_activitiesComponent, data: { title: marker('aista_crm/activities') } },
-    { path: 'crud/aista_crm/activity_types', component: Aista_crm_activity_typesComponent, data: { title: marker('aista_crm/activity_types') } },
-    { path: 'crud/aista_crm/contacts', component: Aista_crm_contactsComponent, data: { title: marker('aista_crm/contacts') } },
-    { path: 'crud/aista_crm/notifications', component: Aista_crm_notificationsComponent, data: { title: marker('aista_crm/notifications') } },
-    { path: 'crud/aista_crm/status', component: Aista_crm_statusComponent, data: { title: marker('aista_crm/status') } },
-    { path: 'crud/aista_crm/tasks', component: Aista_crm_tasksComponent, data: { title: marker('aista_crm/tasks') } },
+    { path: 'crud/aista_crm/accounts', component: Aista_crm_accountsComponent, data: { title: marker('Aaccounts') } },
+    { path: 'crud/aista_crm/activities', component: Aista_crm_activitiesComponent, data: { title: marker('Activities') } },
+    { path: 'crud/aista_crm/activity_types', component: Aista_crm_activity_typesComponent, data: { title: marker('Activity types') } },
+    { path: 'crud/aista_crm/contacts', component: Aista_crm_contactsComponent, data: { title: marker('Contacts') } },
+    { path: 'crud/aista_crm/notifications', component: Aista_crm_notificationsComponent, data: { title: marker('Notifications') } },
+    { path: 'crud/aista_crm/status', component: Aista_crm_statusComponent, data: { title: marker('Status') } },
+    { path: 'crud/aista_crm/tasks', component: Aista_crm_tasksComponent, data: { title: marker('Tasks') } },
 
   ]),
 ];
