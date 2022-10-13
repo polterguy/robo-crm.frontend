@@ -12,6 +12,18 @@
       <mat-icon>add_circle</mat-icon>
     </button>
 
+    <div class="filter-checkboxes">
+
+      <mat-slide-toggle
+        (change)="filterChanged()"
+        [(ngModel)]="mine">Mine</mat-slide-toggle>
+
+      <mat-slide-toggle
+        (change)="filterChanged()"
+        [(ngModel)]="open">Open</mat-slide-toggle>
+
+    </div>
+
     <table
       mat-table
       multiTemplateDataRows

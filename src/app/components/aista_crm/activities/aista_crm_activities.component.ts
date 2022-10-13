@@ -53,6 +53,9 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
     'delete-instance'
   ];
 
+  public mine: boolean = true;
+  public open: boolean = true;
+
   /**
    * What element is currently expanded.
    */
@@ -137,7 +140,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
   public ngOnInit() {
 
     // Retrieves data from our backend, unfiltered, and binds our mat-table accordingly.
-    this.getData();
+    this.filterChanged();
 
     /*
      * Creating our filtering FormControl instances, which gives us "live filtering"
@@ -185,6 +188,22 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
       if (res) {
         this.itemCreated(res);
       }
+    });
+  }
+
+  filterChanged() {
+    if (this.mine) {
+      this.filter['activities.username.eq'] = this.authService.me.username();
+    } else {
+      delete this.filter['activities.username.eq'];
+    }
+    if (this.open) {
+      this.filter['activities.done.eq'] = 0;
+    } else {
+      delete this.filter['activities.done.eq'];
+    }
+    this.getData(true, () => {
+      this.getData();
     });
   }
 }
