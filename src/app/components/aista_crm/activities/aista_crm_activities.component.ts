@@ -3,7 +3,6 @@
  */
 
 // Angular specific components
-import { throwError } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GridComponent } from '@app/base/grid.component';
@@ -47,6 +46,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
    * Notice! 'delete-instance' should always come last.
    */
   public displayedColumns: string[] = [
+    'username',
     'contact_id.name',
     'type',
     'created',
@@ -63,6 +63,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   // Form control declarations to bind up with reactive form elements.
+  public username: FormControl;
   public contact_id_name: FormControl;
   public type: FormControl;
   public description: FormControl;
@@ -142,6 +143,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
      * Creating our filtering FormControl instances, which gives us "live filtering"
      * on our columns.
      */
+    this.username = this.createFormControl('contact_id.username.like');
     this.contact_id_name = this.createFormControl('contact_id.name.like');
     this.type = this.createFormControl('activities.type.like');
     this.description = this.createFormControl('activities.description.like');

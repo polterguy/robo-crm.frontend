@@ -30,13 +30,17 @@ export class EditAista_crm_activitiesComponent extends DialogComponent {
     this.createColumns = [
       'contact_id',
       'type',
-      'description'
+      'description',
+      'username',
+      'done'
     ];
     this.updateColumns = [
       'contact_id',
       'type',
       'description',
-      'activity_id'
+      'username',
+      'activity_id',
+      'done'
     ];
     const datesToFormat: string[] = [];
     for (let idx of datesToFormat) {
@@ -83,5 +87,9 @@ export class EditAista_crm_activitiesComponent extends DialogComponent {
     } else {
       this.dialogRef.close();
     }
+  }
+
+  canSave() {
+    return !!this.data.entity.type && !!this.data.entity.description && this.data.entity.description.length > 0 && !!this.data.entity.username;
   }
 }

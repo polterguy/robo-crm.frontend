@@ -52,8 +52,6 @@ import { Aista_crm_notificationsComponent } from './components/aista_crm/notific
 import { EditAista_crm_notificationsComponent } from './components/aista_crm/notifications/modals/edit.aista_crm_notifications.component';
 import { Aista_crm_statusComponent } from './components/aista_crm/status/aista_crm_status.component';
 import { EditAista_crm_statusComponent } from './components/aista_crm/status/modals/edit.aista_crm_status.component';
-import { Aista_crm_tasksComponent } from './components/aista_crm/tasks/aista_crm_tasks.component';
-import { EditAista_crm_tasksComponent } from './components/aista_crm/tasks/modals/edit.aista_crm_tasks.component';
 
 
 @NgModule({
@@ -120,8 +118,6 @@ import { EditAista_crm_tasksComponent } from './components/aista_crm/tasks/modal
     EditAista_crm_notificationsComponent,
     Aista_crm_statusComponent,
     EditAista_crm_statusComponent,
-    Aista_crm_tasksComponent,
-    EditAista_crm_tasksComponent,
   ],
 
   providers: [NgxImageCompressService],

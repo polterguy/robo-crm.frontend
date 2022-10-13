@@ -352,6 +352,17 @@ mat-slide-toggle.entity-edit-field {
   }
 }
 
+.entity-edit-field-narrow {
+  vertical-align: top;
+  width: calc(100% - 1.2rem);
+  margin-right: 1rem;
+  display: inline-block;
+  mat-icon {
+    color: rgb(128, 128, 128);
+    font-size: 1.1rem !important;
+  }
+}
+
 .entity-edit-field-wide {
   width: calc(100% - 1.2rem);
   display: inline-block;
@@ -368,7 +379,14 @@ mat-slide-toggle.entity-edit-field {
     text-transform: capitalize;
     display: inline-block;
   }
-  .entity-edit-field:only-child {
+  .entity-edit-field-narrow {
+    width: calc(33% - 1.2rem);
+    margin-right: 1rem;
+    text-transform: capitalize;
+    display: inline-block;
+  }
+  .entity-edit-field:only-child,
+  .entity-edit-field-narrow:only-child {
     width: calc(100% - 1.2rem);
   }
   .mat-dialog-content {

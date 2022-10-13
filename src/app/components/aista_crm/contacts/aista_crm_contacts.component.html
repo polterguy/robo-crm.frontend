@@ -7,7 +7,7 @@
       mat-raised-button
       *ngIf="authService.me.canInvoke(entityBaseUrl(), 'post') && httpService['aista_crm_contacts']['create']"
       class="create-button"
-      [matTooltip]="('Create' | translate) + (' Contact' | translate)"
+      [matTooltip]="('New' | translate) + (' contact' | translate)"
       (click)="createEntity()">
       <mat-icon>add_circle</mat-icon>
     </button>
@@ -293,12 +293,12 @@
               <span>{{el['account_id.name']}}</span>
             </p>
             <p class="details">
-              <label>{{'Phone' | translate}}</label>
-              <a [href]="'tel:' + el['phone']">{{el['phone']}}</a>
-            </p>
-            <p class="details">
               <label>{{'Email' | translate}}</label>
               <a [href]="'mailto:' + el['email']">{{el['email']}}</a>
+            </p>
+            <p class="details">
+              <label>{{'Phone' | translate}}</label>
+              <a [href]="'tel:' + el['phone']">{{el['phone']}}</a>
             </p>
             <p class="details">
               <label>{{'Country' | translate}}</label>

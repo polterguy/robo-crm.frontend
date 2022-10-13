@@ -60,15 +60,6 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Accounts</span>
           </a>
-          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'get')"></mat-divider>
-          <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'get')"
-            mat-list-item
-            routerLink="crud/aista_crm/activities"
-            routerLinkActive="active"
-            (click)="isMobile && sidenav.close()">
-            <span translate>Activities</span>
-          </a>
           <mat-divider *ngIf="authService.me.inRole(['root', 'admin'])"></mat-divider>
           <a
             *ngIf="authService.me.inRole(['root', 'admin'])"
@@ -87,6 +78,15 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Contacts</span>
           </a>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'get')"></mat-divider>
+          <a
+            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'get')"
+            mat-list-item
+            routerLink="crud/aista_crm/activities"
+            routerLinkActive="active"
+            (click)="isMobile && sidenav.close()">
+            <span translate>Activities</span>
+          </a>
           <mat-divider *ngIf="authService.me.inRole(['root', 'admin'])"></mat-divider>
           <a
             *ngIf="authService.me.inRole(['root', 'admin'])"
@@ -95,15 +95,6 @@
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Status</span>
-          </a>
-          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/tasks', 'get')"></mat-divider>
-          <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/tasks', 'get')"
-            mat-list-item
-            routerLink="crud/aista_crm/tasks"
-            routerLinkActive="active"
-            (click)="isMobile && sidenav.close()">
-            <span translate>Tasks</span>
           </a>
 
           <mat-divider></mat-divider>

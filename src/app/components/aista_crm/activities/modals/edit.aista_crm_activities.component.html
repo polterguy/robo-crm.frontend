@@ -2,18 +2,13 @@
   <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'New') | translate}} {{'activity' | translate}}</h1>
   <div mat-dialog-content>
 
-      <app-magic-autocomplete
-      *ngIf="canEditColumn('contact_id')"
+    <app-magic-username-lookup
+      *ngIf="canEditColumn('username')"
       [model]="data.entity"
-      field="contact_id"
-      key="contact_id"
-      table="contacts"
-      value="name"
-      [placeholder]="'Contact' | translate"
-      class="entity-edit-field"
-      (change)="changed('contact_id')"
-      [getItems]="service.aista_crm_contacts">
-    </app-magic-autocomplete>
+      field="username"
+      class="entity-edit-field-narrow"
+      (change)="changed('username')">
+    </app-magic-username-lookup>
 
     <app-magic-selector
       *ngIf="canEditColumn('type')"
@@ -22,10 +17,23 @@
       key="type"
       value="type"
       [placeholder]="'Type' | translate"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       (change)="changed('type')"
       [getItems]="service.aista_crm_activity_types.read({limit:-1})">
     </app-magic-selector>
+
+    <app-magic-autocomplete
+      *ngIf="canEditColumn('contact_id')"
+      [model]="data.entity"
+      field="contact_id"
+      key="contact_id"
+      table="contacts"
+      value="name"
+      [placeholder]="'Contact' | translate"
+      class="entity-edit-field-narrow"
+      (change)="changed('contact_id')"
+      [getItems]="service.aista_crm_contacts">
+    </app-magic-autocomplete>
 
     <mat-form-field
       *ngIf="canEditColumn('description')"
@@ -41,29 +49,21 @@
       </textarea>
     </mat-form-field>
 
-    <mat-form-field
-      *ngIf="canEditColumn('activity_id')"
-      class="entity-edit-field"
-      appearance="outline">
-      <mat-label>{{'activity_id' | translate}}</mat-label>
-      <input
-        matInput
-        type="number"
-        step="1"
-        name="activity_id"
-        (change)="changed('activity_id')"
-        [(ngModel)]="data.entity.activity_id"
-        autocomplete="off">
-    </mat-form-field>
-
 </div>
 
   <div mat-dialog-actions>
 
     <div class="right-aligned">
 
+      <mat-slide-toggle
+        *ngIf="canEditColumn('done')"
+        name="done"
+        (change)="changed('done')"
+        [(ngModel)]="data.entity.done">Done</mat-slide-toggle>
+
       <button 
         mat-raised-button
+        [disabled]="!canSave()"
         color="primary"
         type="submit"
         (click)="upsert()">{{'Save' | translate}}</button>
