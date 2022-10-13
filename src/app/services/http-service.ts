@@ -91,6 +91,16 @@ export class HttpService {
     }
   }
 
+  get kpi() {
+    return {
+      funnel: () => {
+        return this.httpClient.get<any[]>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/kpi/funnel');
+      }
+    }
+  }
+
   /*
    * HTTP REST methods your backend exposes.
    * 
