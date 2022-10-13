@@ -143,7 +143,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
      * Creating our filtering FormControl instances, which gives us "live filtering"
      * on our columns.
      */
-    this.username = this.createFormControl('contact_id.username.like');
+    this.username = this.createFormControl('activities.username.like');
     this.contact_id_name = this.createFormControl('contact_id.name.like');
     this.type = this.createFormControl('activities.type.like');
     this.description = this.createFormControl('activities.description.like');
