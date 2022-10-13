@@ -92,13 +92,9 @@ export class HttpService {
   }
 
   get kpi() {
-    return {
-      funnel: () => {
-        return this.httpClient.get<any[]>(
-          environment.apiUrl +
-          'magic/modules/aista-crm/kpi/funnel');
-      }
-    }
+    return this.httpClient.get<any[]>(
+      environment.apiUrl +
+      'magic/modules/aista-crm/execute-kpi');
   }
 
   /*
@@ -405,6 +401,49 @@ export class HttpService {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
           'magic/modules/aista-crm/tasks',
+          args);
+      }
+    }
+  }
+
+  /**
+   * HTTP CRUD service methods for your 'aista_crm_activities' entities.
+   */
+   get aista_crm_kpi() : ICrudEntity {
+    return {
+
+      delete: (filter: any) => {
+        return this.httpClient.delete<DeleteResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/kpi' +
+          this.getQueryArgs(filter));
+      },
+
+      read: (filter: any) => {
+        return this.httpClient.get<any[]>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/kpi' +
+          this.getQueryArgs(filter));
+      },
+
+      count: (filter: any) => {
+        return this.httpClient.get<CountResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/kpi-count' +
+          this.getQueryArgs(filter));
+      },
+
+      create: (args: any) => {
+        return this.httpClient.post<CreateResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/kpi',
+          args);
+      },
+
+      update: (args: any) => {
+        return this.httpClient.put<UpdateResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/kpi',
           args);
       }
     }

@@ -105,6 +105,15 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Tasks</span>
           </a>
+          <mat-divider></mat-divider>
+          <a
+            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/kpi', 'get')"
+            mat-list-item
+            routerLink="crud/aista_crm/kpi"
+            routerLinkActive="active"
+            (click)="isMobile && sidenav.close()">
+            <span translate>KPIs</span>
+          </a>
 
           <mat-divider></mat-divider>
         </mat-list>

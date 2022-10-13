@@ -4,6 +4,14 @@
       <h1>
         <mat-card-title translate>APP_NAME</mat-card-title>
       </h1>
+
+      <div
+        *ngIf="kpi"
+        echarts
+        [options]="kpi"
+        [theme]="theme"
+        class="kpi"></div>
+
       <div class="version">
         <mat-icon>code</mat-icon>
         <span translate>Version</span> {{ version }}
