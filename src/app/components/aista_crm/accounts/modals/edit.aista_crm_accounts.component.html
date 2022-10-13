@@ -2,7 +2,7 @@
   <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Account' | translate}}</h1>
   <div mat-dialog-content>
 
-      <mat-form-field
+    <mat-form-field
       *ngIf="canEditColumn('name')"
       class="entity-edit-field"
       appearance="outline">
@@ -13,6 +13,20 @@
         name="name"
         (change)="changed('name')"
         [(ngModel)]="data.entity.name"
+        autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="canEditColumn('website')"
+      class="entity-edit-field"
+      appearance="outline">
+      <mat-label>{{'website' | translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        name="website"
+        (change)="changed('website')"
+        [(ngModel)]="data.entity.website"
         autocomplete="off">
     </mat-form-field>
 

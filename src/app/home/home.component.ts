@@ -31,36 +31,83 @@ export class HomeComponent implements OnInit {
       next: (data: any[]) => {
         data = data || [];
         for (const idx of data) {
-          this.kpiValues.push({
-            title: {
-              text: idx.name,
-              x: 'center'
-            },
-            tooltip: {
-              trigger: 'item',
-              formatter: '{a} <br/>{b} : {c} ({d}%)'
-            },
-            legend: {
-              x: 'center',
-              y: 'bottom',
-              data: idx.values.map((x: any) => x.name)
-            },
-            calculable: true,
-            series: [
-              {
-                name: 'area',
-                type: 'pie',
-                radius: [30, 110],
-                roseType: 'area',
-                data: idx.values.map((x:any) => {
-                  return {
-                    value: x.value,
-                    name: x.name,
-                  }
-                })
-              }
-            ]
-          });
+          if (!idx.values) {
+            idx.values = [];
+          }
+          if (idx.type === 'pie') {
+            this.kpiValues.push({
+              title: {
+                text: idx.name,
+                x: 'center'
+              },
+              tooltip: {
+                trigger: 'item',
+                formatter: '{a} <br/>{b} : {c} ({d}%)'
+              },
+              legend: {
+                x: 'center',
+                y: 'bottom',
+                data: idx.values.map((x: any) => x.name)
+              },
+              calculable: true,
+              series: [
+                {
+                  name: 'area',
+                  type: 'pie',
+                  radius: [30, 110],
+                  roseType: 'area',
+                  data: idx.values.map((x:any) => {
+                    return {
+                      value: x.value,
+                      name: x.name,
+                    }
+                  })
+                }
+              ]
+            });
+          } else {
+            this.kpiValues.push({
+              title: {
+                text: idx.name,
+              },
+              xAxis: {
+                data: idx.values.map((x: any) => x.name),
+                axisLabel: {
+                  inside: true,
+                  color: '#fff',
+                },
+                axisTick: {
+                  show: false,
+                },
+                axisLine: {
+                  show: false,
+                },
+                z: 10,
+              },
+              yAxis: {
+                axisLine: {
+                  show: false,
+                },
+                axisTick: {
+                  show: false,
+                },
+                axisLabel: {
+                  color: '#999',
+                },
+              },
+              dataZoom: [
+                {
+                  type: 'inside',
+                },
+              ],
+              series: [
+                {
+                  type: 'bar',
+                  data: idx.values.map((x: any) => x.value),
+                },
+              ],
+            });
+          }
         }
       },
       error: (error: any) => {

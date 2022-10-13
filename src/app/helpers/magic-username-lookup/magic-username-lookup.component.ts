@@ -4,7 +4,8 @@
 
 // Angular imports.
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { UsersService, User } from '@app/services/users-service';
+import { HttpService } from '@app/services/http-service';
+import { User } from '@app/services/users-service';
 
 /**
  * Selector component allowing you to have a selector dropdown list
@@ -57,9 +58,9 @@ export class MagicUsernameLookupComponent implements OnInit {
   /**
    * Creates an instance of your component.
    * 
-   * @param usersService Needed to fetch users from backend
+   * @param httpService Needed to fetch users from backend
    */
-  constructor(private usersService: UsersService) {}
+  constructor(private httpService: HttpService) {}
 
   /**
    * OnInit implementation.
@@ -67,13 +68,12 @@ export class MagicUsernameLookupComponent implements OnInit {
   public ngOnInit() {
 
     // Retrieving users from backend.
-    this.usersService.users('').subscribe(
-      (res: User[]) => {
-        // Assigning model.
-        this.items = res;
+    this.httpService.aista_crm_users.read('').subscribe({
+      next: (res: User[]) => {
+        this.items = res || [];
       },
-      (error: any) => console.error('Could not get items in MagicSelector')
-    );
+      error: (error: any) => console.error('Could not get items in MagicSelector')
+    });
   }
 
   /**

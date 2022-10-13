@@ -80,6 +80,10 @@ export class AuthService {
           return true;
         }
       },
+
+      username: () => {
+        return this.credentialsService.credentials.username;
+      }
     };
   }
 

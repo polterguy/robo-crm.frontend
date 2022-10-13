@@ -6,14 +6,14 @@
       </h1>
 
       <div *ngIf="kpiValues && kpiValues.length > 0" class="kpi-entities">
-        <div
-          *ngFor="let idx of kpiValues"
-          echarts
-          [options]="idx"
-          [theme]="theme"
-          class="kpi"></div>
+        <div *ngFor="let idx of kpiValues" class="kpi">
+          <div
+            echarts
+            [options]="idx"
+            [theme]="theme">
+          </div>
+        </div>
       </div>
-
       <div class="version">
         <mat-icon>code</mat-icon>
         <span translate>Version</span> {{ version }}

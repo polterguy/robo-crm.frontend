@@ -17,7 +17,6 @@ import { Aista_crm_contactsComponent } from '../components/aista_crm/contacts/ai
 import { Aista_crm_notificationsComponent } from '../components/aista_crm/notifications/aista_crm_notifications.component';
 import { Aista_crm_statusComponent } from '../components/aista_crm/status/aista_crm_status.component';
 import { Aista_crm_tasksComponent } from '../components/aista_crm/tasks/aista_crm_tasks.component';
-import { Aista_crm_kpiComponent } from '@app/components/aista_crm/kpi/aista_crm_kpi.component';
 
 
 const routes: Routes = [
@@ -33,7 +32,6 @@ const routes: Routes = [
     { path: 'crud/aista_crm/notifications', component: Aista_crm_notificationsComponent, data: { title: marker('aista_crm/notifications') } },
     { path: 'crud/aista_crm/status', component: Aista_crm_statusComponent, data: { title: marker('aista_crm/status') } },
     { path: 'crud/aista_crm/tasks', component: Aista_crm_tasksComponent, data: { title: marker('aista_crm/tasks') } },
-    { path: 'crud/aista_crm/kpi', component: Aista_crm_kpiComponent, data: { title: marker('aista_crm/kpi') } },
 
   ]),
 ];

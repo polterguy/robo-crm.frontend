@@ -69,6 +69,7 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
   public account_manager: FormControl;
   public created: FormControl;
   public account_id: FormControl;
+  public website: FormControl;
 
 
   /**
@@ -147,6 +148,7 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
     this.status = this.createFormControl('accounts.status.like');
     this.account_manager = this.createFormControl('accounts.account_manager.like');
     this.created = this.createFormControl('accounts.created.eq');
+    this.website = this.createFormControl('accounts.website.like');
     this.account_id = this.createFormControl('accounts.account_id.eq');
   }
 

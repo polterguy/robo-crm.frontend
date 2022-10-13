@@ -2,7 +2,7 @@
   <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Contacts' | translate}}</h1>
   <div mat-dialog-content>
 
-      <mat-form-field
+    <mat-form-field
       *ngIf="canEditColumn('name')"
       class="entity-edit-field"
       appearance="outline">
@@ -22,7 +22,7 @@
       field="account_id"
       key="account_id"
       table="accounts"
-      value="status"
+      value="name"
       [placeholder]="('Choose a ' | translate) + ('account_id' | translate)"
       class="entity-edit-field"
       (change)="changed('account_id')"

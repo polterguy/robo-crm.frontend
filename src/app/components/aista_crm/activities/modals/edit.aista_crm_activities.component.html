@@ -29,7 +29,7 @@
 
     <mat-form-field
       *ngIf="canEditColumn('description')"
-      class="entity-edit-field"
+      class="entity-edit-field-wide"
       appearance="outline">
       <mat-label>{{'description' | translate}}</mat-label>
       <textarea
@@ -37,7 +37,7 @@
         name="description"
         (change)="changed('description')"
         [(ngModel)]="data.entity.description"
-        rows="5">
+        rows="10">
       </textarea>
     </mat-form-field>
 

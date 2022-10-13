@@ -31,4 +31,9 @@ import { AuthenticateToken } from '../models/authenticate-token';
    * Returns true if current user is authenticate, otherwise false.
    */
   isLoggedIn() : boolean;
+
+  /**
+   * Returns the username of the currently authenticated user.
+   */
+  username() : string;
 }

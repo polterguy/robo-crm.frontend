@@ -41,7 +41,7 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Home</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/magic/users', 'get')"></mat-divider>
           <a
             *ngIf="authService.me.canInvoke('magic/modules/magic/users', 'get')"
             mat-list-item
@@ -51,7 +51,7 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Users</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/accounts', 'get')"></mat-divider>
           <a
             *ngIf="authService.me.canInvoke('magic/modules/aista-crm/accounts', 'get')"
             mat-list-item
@@ -60,7 +60,7 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Accounts</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'get')"></mat-divider>
           <a
             *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'get')"
             mat-list-item
@@ -69,16 +69,16 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Activities</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="authService.me.inRole(['root', 'admin'])"></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activity_types', 'get')"
+            *ngIf="authService.me.inRole(['root', 'admin'])"
             mat-list-item
             routerLink="crud/aista_crm/activity_types"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Activity_types</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/contacts', 'get')"></mat-divider>
           <a
             *ngIf="authService.me.canInvoke('magic/modules/aista-crm/contacts', 'get')"
             mat-list-item
@@ -87,16 +87,16 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Contacts</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="authService.me.inRole(['root', 'admin'])"></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/status', 'get')"
+            *ngIf="authService.me.inRole(['root', 'admin'])"
             mat-list-item
             routerLink="crud/aista_crm/status"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Status</span>
           </a>
-          <mat-divider></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/tasks', 'get')"></mat-divider>
           <a
             *ngIf="authService.me.canInvoke('magic/modules/aista-crm/tasks', 'get')"
             mat-list-item
@@ -104,15 +104,6 @@
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Tasks</span>
-          </a>
-          <mat-divider></mat-divider>
-          <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/kpi', 'get')"
-            mat-list-item
-            routerLink="crud/aista_crm/kpi"
-            routerLinkActive="active"
-            (click)="isMobile && sidenav.close()">
-            <span translate>KPIs</span>
           </a>
 
           <mat-divider></mat-divider>
