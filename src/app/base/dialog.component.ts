@@ -131,13 +131,16 @@ export abstract class DialogComponent {
         }
       }
 
-      this.getUpdateMethod().subscribe((res: UpdateResponse) => {
-        this.close(this.getData().entity);
-      }, (error: any) => {
-        console.error(error);
-        this.snackBar.open('I could not update your entity, are you sure you supplied correct data?', 'Close', {
-          duration: 10000,
-        });
+      this.getUpdateMethod().subscribe({
+        next: (res: UpdateResponse) => {
+          this.close(this.getData().entity);
+        },
+        error: (error: any) => {
+          console.error(error);
+          this.snackBar.open('I could not update your entity, are you sure you supplied correct data?', 'Close', {
+            duration: 10000,
+          });
+        }
       });
     } else {
 

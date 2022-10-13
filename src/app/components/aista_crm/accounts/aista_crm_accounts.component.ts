@@ -54,6 +54,8 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
     'delete-instance'
   ];
 
+  public mine: boolean = true;
+
   /**
    * What element is currently expanded.
    */
@@ -138,7 +140,7 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
   public ngOnInit() {
 
     // Retrieves data from our backend, unfiltered, and binds our mat-table accordingly.
-    this.getData();
+    this.filterChanged();
 
     /*
      * Creating our filtering FormControl instances, which gives us "live filtering"
@@ -187,5 +189,14 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
         this.itemCreated(res);
       }
     });
+  }
+
+  filterChanged() {
+    if (this.mine) {
+      this.filter['accounts.account_manager.eq'] = this.authService.me.username();
+    } else {
+      delete this.filter['accounts.account_manager.eq'];
+    }
+    this.getData(true);
   }
 }
