@@ -38,7 +38,7 @@
         <td mat-cell *matCellDef="let el">{{el['username']}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="contacts_name">
+      <ng-container matColumnDef="contact_id_name">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
             <mat-label>{{'Contact' | translate}}</mat-label>
@@ -46,17 +46,17 @@
               matInput
               type="text"
               autocomplete="off"
-              [formControl]="contacts_name">
+              [formControl]="contact_id_name">
             <mat-icon matSuffix>search</mat-icon>
           </mat-form-field>
           <button
             class="sort-button"
-            (click)="sort('contacts.name')"
+            (click)="sort('contact_id.name')"
             mat-button>
-            <mat-icon matSuffix>{{getSortIcon('contacts.name')}}</mat-icon>
+            <mat-icon matSuffix>{{getSortIcon('contact_id.name')}}</mat-icon>
           </button>
         </th>
-        <td mat-cell *matCellDef="let el">{{el['contacts.name']}}</td>
+        <td mat-cell *matCellDef="let el">{{el['contact_id.name']}}</td>
       </ng-container>
 
       <ng-container matColumnDef="description">
@@ -164,7 +164,7 @@
             </p>
             <p class="details">
               <label>{{'Contact' | translate}}</label>
-              <span>{{el['contacts.name']}}</span>
+              <span>{{el['contact_id.name']}}</span>
             </p>
             <p class="details">
               <label>{{'Username' | translate}}</label>
@@ -173,6 +173,10 @@
             <p class="details">
               <label>{{'Created' | translate}}</label>
               <span>{{el['created'] | formatDate}}</span>
+            </p>
+            <p class="details">
+              <label>{{'Description' | translate}}</label>
+              <span>{{el['description']}}</span>
             </p>
           </div>
         </td>

@@ -3,7 +3,6 @@
  */
 
 // Angular specific components
-import { throwError } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GridComponent } from '@app/base/grid.component';
@@ -48,7 +47,7 @@ export class Aista_crm_tasksComponent extends GridComponent implements OnInit {
    */
   public displayedColumns: string[] = [
     'username',
-    'contacts_name',
+    'contact_id_name',
     'created',
     'delete-instance'
   ];
@@ -67,7 +66,7 @@ export class Aista_crm_tasksComponent extends GridComponent implements OnInit {
   public description: FormControl;
   public created: FormControl;
   public task_id: FormControl;
-  public contacts_name: FormControl;
+  public contact_id_name: FormControl;
 
 
   /**
@@ -146,7 +145,7 @@ export class Aista_crm_tasksComponent extends GridComponent implements OnInit {
     this.description = this.createFormControl('tasks.description.like');
     this.created = this.createFormControl('tasks.created.eq');
     this.task_id = this.createFormControl('tasks.task_id.eq');
-    this.contacts_name = this.createFormControl('contacts.name.like');
+    this.contact_id_name = this.createFormControl('contacts.name.like');
   }
 
   /**

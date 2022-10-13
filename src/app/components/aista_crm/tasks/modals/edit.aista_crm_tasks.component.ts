@@ -29,12 +29,12 @@ export class EditAista_crm_tasksComponent extends DialogComponent {
     this.primaryKeys = ['task_id'];
     this.createColumns = [
       'username',
-      'contact',
+      'contact_id',
       'description'
     ];
     this.updateColumns = [
       'username',
-      'contact',
+      'contact_id',
       'description',
       'task_id'
     ];

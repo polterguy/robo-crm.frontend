@@ -1,5 +1,5 @@
 <form>
-  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Tasks' | translate}}</h1>
+  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'task' | translate}}</h1>
   <div mat-dialog-content>
 
     <app-magic-username-lookup
@@ -11,15 +11,15 @@
     </app-magic-username-lookup>
 
     <app-magic-autocomplete
-      *ngIf="canEditColumn('contact')"
+      *ngIf="canEditColumn('contact_id')"
       [model]="data.entity"
-      field="contact"
+      field="contact_id"
       key="contact_id"
-      table="contact"
+      table="contacts"
       value="name"
       [placeholder]="'Contact' | translate"
       class="entity-edit-field"
-      (change)="changed('contact')"
+      (change)="changed('contact_id')"
       [getItems]="service.aista_crm_contacts">
     </app-magic-autocomplete>
 
