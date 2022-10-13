@@ -70,7 +70,8 @@ export class HomeComponent implements OnInit {
       isChart: true,
       title: {
         text: chartData.name,
-        x: 'center'
+        subtext: chartData.description,
+        x: 'left'
       },
       tooltip: {
         trigger: 'item',
@@ -108,7 +109,8 @@ export class HomeComponent implements OnInit {
       isChart: true,
       title: {
         text: chartData.name,
-        x: 'center'
+        subtext: chartData.description,
+        x: 'left',
       },
       tooltip: {
         trigger: 'axis',
@@ -156,6 +158,7 @@ export class HomeComponent implements OnInit {
       isChart: false,
       columns: cols,
       title: data.name,
+      subtext: data.description,
       rows: data.values,
     });
   }

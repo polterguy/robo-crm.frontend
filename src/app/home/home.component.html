@@ -13,6 +13,7 @@
 
         <div *ngIf="!idx.isChart" class="kpi_table">
           <h2>{{idx.title}}</h2>
+          <small>{{idx.subtext}}</small>
           <table>
             <tr>
               <th *ngFor="let header of idx.columns">{{header}}</th>
