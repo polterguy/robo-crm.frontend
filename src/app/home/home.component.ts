@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   // Chart stuff.
   theme: string | ThemeOption;
   coolTheme = CoolTheme;
-  kpi: any;
+  kpiValues: any[] = [];
 
   constructor(private httpService: HttpService) {}
 
@@ -30,36 +30,38 @@ export class HomeComponent implements OnInit {
     this.httpService.kpi.subscribe({
       next: (data: any[]) => {
         data = data || [];
-        this.kpi = {
-          title: {
-            text: 'Funnel',
-            x: 'center'
-          },
-          tooltip: {
-            trigger: 'item',
-            formatter: '{a} <br/>{b} : {c} ({d}%)'
-          },
-          legend: {
-            x: 'center',
-            y: 'bottom',
-            data: data.map(x => x.status)
-          },
-          calculable: true,
-          series: [
-            {
-              name: 'area',
-              type: 'pie',
-              radius: [30, 110],
-              roseType: 'area',
-              data: data.map(x => {
-                return {
-                  value: x.count,
-                  name: x.status,
-                }
-              })
-            }
-          ]
-        };
+        for (const idx of data) {
+          this.kpiValues.push({
+            title: {
+              text: idx.name,
+              x: 'center'
+            },
+            tooltip: {
+              trigger: 'item',
+              formatter: '{a} <br/>{b} : {c} ({d}%)'
+            },
+            legend: {
+              x: 'center',
+              y: 'bottom',
+              data: idx.values.map((x: any) => x.name)
+            },
+            calculable: true,
+            series: [
+              {
+                name: 'area',
+                type: 'pie',
+                radius: [30, 110],
+                roseType: 'area',
+                data: idx.values.map((x:any) => {
+                  return {
+                    value: x.value,
+                    name: x.name,
+                  }
+                })
+              }
+            ]
+          });
+        }
       },
       error: (error: any) => {
         console.log(error);

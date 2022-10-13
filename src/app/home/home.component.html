@@ -5,12 +5,14 @@
         <mat-card-title translate>APP_NAME</mat-card-title>
       </h1>
 
-      <div
-        *ngIf="kpi"
-        echarts
-        [options]="kpi"
-        [theme]="theme"
-        class="kpi"></div>
+      <div *ngIf="kpiValues && kpiValues.length > 0" class="kpi-entities">
+        <div
+          *ngFor="let idx of kpiValues"
+          echarts
+          [options]="idx"
+          [theme]="theme"
+          class="kpi"></div>
+      </div>
 
       <div class="version">
         <mat-icon>code</mat-icon>
