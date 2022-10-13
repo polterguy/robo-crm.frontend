@@ -1,5 +1,5 @@
 <form>
-  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Activities' | translate}}</h1>
+  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'New') | translate}} {{'activity' | translate}}</h1>
   <div mat-dialog-content>
 
       <app-magic-autocomplete
@@ -9,7 +9,7 @@
       key="contact_id"
       table="contacts"
       value="name"
-      [placeholder]="('Choose a ' | translate) + ('contact_id' | translate)"
+      [placeholder]="'Contact' | translate"
       class="entity-edit-field"
       (change)="changed('contact_id')"
       [getItems]="service.aista_crm_contacts">
@@ -21,7 +21,7 @@
       field="type"
       key="type"
       value="type"
-      [placeholder]="('Choose a ' | translate) + ('type' | translate)"
+      [placeholder]="'Type' | translate"
       class="entity-edit-field"
       (change)="changed('type')"
       [getItems]="service.aista_crm_activity_types.read({limit:-1})">
@@ -31,7 +31,7 @@
       *ngIf="canEditColumn('description')"
       class="entity-edit-field-wide"
       appearance="outline">
-      <mat-label>{{'description' | translate}}</mat-label>
+      <mat-label>{{'Description' | translate}}</mat-label>
       <textarea
         matInput
         name="description"
