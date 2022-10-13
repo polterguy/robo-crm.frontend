@@ -49,7 +49,6 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
   public displayedColumns: string[] = [
     'contact_id.name',
     'type',
-    'description',
     'created',
     'delete-instance'
   ];
@@ -68,7 +67,6 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
   public type: FormControl;
   public description: FormControl;
   public created: FormControl;
-  public activity_id: FormControl;
   public contact_id: FormControl;
 
 
@@ -148,7 +146,6 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
     this.type = this.createFormControl('activities.type.like');
     this.description = this.createFormControl('activities.description.like');
     this.created = this.createFormControl('activities.created.eq');
-    this.activity_id = this.createFormControl('activities.activity_id.eq');
     this.contact_id = this.createFormControl('activities.contact_id.eq');
   }
 

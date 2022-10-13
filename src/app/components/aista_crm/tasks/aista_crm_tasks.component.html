@@ -38,6 +38,48 @@
         <td mat-cell *matCellDef="let el">{{el['username']}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="contacts_name">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="outline" class="fill-width filter-textbox">
+            <mat-label>{{'Contact' | translate}}</mat-label>
+            <input
+              matInput
+              type="text"
+              autocomplete="off"
+              [formControl]="contacts_name">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          <button
+            class="sort-button"
+            (click)="sort('contacts.name')"
+            mat-button>
+            <mat-icon matSuffix>{{getSortIcon('contacts.name')}}</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let el">{{el['contacts.name']}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="outline" class="fill-width filter-textbox">
+            <mat-label>{{'Description' | translate}}</mat-label>
+            <input
+              matInput
+              type="text"
+              autocomplete="off"
+              [formControl]="description">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          <button
+            class="sort-button"
+            (click)="sort('tasks.description')"
+            mat-button>
+            <mat-icon matSuffix>{{getSortIcon('tasks.description')}}</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let el">{{el['description']}}</td>
+      </ng-container>
+
       <ng-container matColumnDef="created">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
@@ -56,7 +98,7 @@
             <mat-icon matSuffix>{{getSortIcon('tasks.created')}}</mat-icon>
           </button>
         </th>
-        <td mat-cell *matCellDef="let el">{{el['created'] | formatDate}}</td>
+        <td mat-cell *matCellDef="let el">{{el['created'] | since}}</td>
       </ng-container>
 
       <ng-container matColumnDef="task_id">
@@ -103,7 +145,7 @@
         <td
           mat-cell
           *matCellDef="let el"
-          colspan="3">
+          colspan="4">
           <div
             class="details-sheet"
             [@detailExpand]="el == expandedElement ? 'expanded' : 'collapsed'">
@@ -117,11 +159,19 @@
               <mat-icon matSuffix>edit</mat-icon>
             </button>
             <p class="details">
-              <label>{{'username' | translate}}</label>
+              <label>{{'Username' | translate}}</label>
               <span>{{el['username']}}</span>
             </p>
             <p class="details">
-              <label>{{'created' | translate}}</label>
+              <label>{{'Contact' | translate}}</label>
+              <span>{{el['contacts.name']}}</span>
+            </p>
+            <p class="details">
+              <label>{{'Username' | translate}}</label>
+              <span>{{el['username']}}</span>
+            </p>
+            <p class="details">
+              <label>{{'Created' | translate}}</label>
               <span>{{el['created'] | formatDate}}</span>
             </p>
           </div>

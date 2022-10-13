@@ -48,8 +48,8 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
   public displayedColumns: string[] = [
     'name',
     'account_id.name',
-    'phone',
     'email',
+    'phone',
     'country',
     'city',
     'linkedIn',

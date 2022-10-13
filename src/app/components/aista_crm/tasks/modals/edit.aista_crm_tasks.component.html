@@ -2,13 +2,40 @@
   <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Tasks' | translate}}</h1>
   <div mat-dialog-content>
 
-      <app-magic-username-lookup
+    <app-magic-username-lookup
       *ngIf="canEditColumn('username')"
       [model]="data.entity"
       field="username"
       class="entity-edit-field"
       (change)="changed('username')">
     </app-magic-username-lookup>
+
+    <app-magic-autocomplete
+      *ngIf="canEditColumn('contact')"
+      [model]="data.entity"
+      field="contact"
+      key="contact_id"
+      table="contact"
+      value="name"
+      [placeholder]="'Contact' | translate"
+      class="entity-edit-field"
+      (change)="changed('contact')"
+      [getItems]="service.aista_crm_contacts">
+    </app-magic-autocomplete>
+
+    <mat-form-field
+      *ngIf="canEditColumn('description')"
+      class="entity-edit-field-wide"
+      appearance="outline">
+      <mat-label>{{'description' | translate}}</mat-label>
+      <textarea
+        matInput
+        name="description"
+        (change)="changed('description')"
+        [(ngModel)]="data.entity.description"
+        rows="10">
+      </textarea>
+    </mat-form-field>
 
     <mat-form-field
       *ngIf="canEditColumn('task_id')"

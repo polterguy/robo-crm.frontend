@@ -28,10 +28,14 @@ export class EditAista_crm_tasksComponent extends DialogComponent {
     super(snackBar);
     this.primaryKeys = ['task_id'];
     this.createColumns = [
-      'username'
+      'username',
+      'contact',
+      'description'
     ];
     this.updateColumns = [
       'username',
+      'contact',
+      'description',
       'task_id'
     ];
     const datesToFormat: string[] = [];

@@ -48,6 +48,7 @@ export class Aista_crm_tasksComponent extends GridComponent implements OnInit {
    */
   public displayedColumns: string[] = [
     'username',
+    'contacts_name',
     'created',
     'delete-instance'
   ];
@@ -63,8 +64,10 @@ export class Aista_crm_tasksComponent extends GridComponent implements OnInit {
 
   // Form control declarations to bind up with reactive form elements.
   public username: FormControl;
+  public description: FormControl;
   public created: FormControl;
   public task_id: FormControl;
+  public contacts_name: FormControl;
 
 
   /**
@@ -140,8 +143,10 @@ export class Aista_crm_tasksComponent extends GridComponent implements OnInit {
      * on our columns.
      */
     this.username = this.createFormControl('tasks.username.like');
+    this.description = this.createFormControl('tasks.description.like');
     this.created = this.createFormControl('tasks.created.eq');
     this.task_id = this.createFormControl('tasks.task_id.eq');
+    this.contacts_name = this.createFormControl('contacts.name.like');
   }
 
   /**
