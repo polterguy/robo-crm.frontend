@@ -1,0 +1,6 @@
+{
+  "apiUrl": "http://localhost:5000/",
+  "apiDomain": "localhost:5000",
+  "version": "1.0.0",
+  "default_language": "en-US"
+}

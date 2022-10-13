@@ -1,0 +1,52 @@
+<form>
+  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Activity_types' | translate}}</h1>
+  <div mat-dialog-content>
+
+      <mat-form-field
+      *ngIf="canEditColumn('type')"
+      class="entity-edit-field"
+      appearance="outline">
+      <mat-label>{{'type' | translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        name="type"
+        (change)="changed('type')"
+        [(ngModel)]="data.entity.type"
+        autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="canEditColumn('description')"
+      class="entity-edit-field"
+      appearance="outline">
+      <mat-label>{{'description' | translate}}</mat-label>
+      <textarea
+        matInput
+        name="description"
+        (change)="changed('description')"
+        [(ngModel)]="data.entity.description"
+        rows="5">
+      </textarea>
+    </mat-form-field>
+
+</div>
+
+  <div mat-dialog-actions>
+
+    <div class="right-aligned">
+
+      <button 
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="upsert()">{{'Save' | translate}}</button>
+
+      <button
+        mat-button
+        (click)="close(null)">{{'Cancel' | translate}}</button>
+
+    </div>
+
+  </div>
+</form>

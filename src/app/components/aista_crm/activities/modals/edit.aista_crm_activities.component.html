@@ -1,0 +1,78 @@
+<form>
+  <h1 mat-dialog-title>{{(data.isEdit ? 'Edit' : 'Create') | translate}} {{'Activities' | translate}}</h1>
+  <div mat-dialog-content>
+
+      <app-magic-autocomplete
+      *ngIf="canEditColumn('contact_id')"
+      [model]="data.entity"
+      field="contact_id"
+      key="contact_id"
+      table="contacts"
+      value="name"
+      [placeholder]="('Choose a ' | translate) + ('contact_id' | translate)"
+      class="entity-edit-field"
+      (change)="changed('contact_id')"
+      [getItems]="service.aista_crm_contacts">
+    </app-magic-autocomplete>
+
+    <app-magic-selector
+      *ngIf="canEditColumn('type')"
+      [model]="data.entity"
+      field="type"
+      key="type"
+      value="type"
+      [placeholder]="('Choose a ' | translate) + ('type' | translate)"
+      class="entity-edit-field"
+      (change)="changed('type')"
+      [getItems]="service.aista_crm_activity_types.read({limit:-1})">
+    </app-magic-selector>
+
+    <mat-form-field
+      *ngIf="canEditColumn('description')"
+      class="entity-edit-field"
+      appearance="outline">
+      <mat-label>{{'description' | translate}}</mat-label>
+      <textarea
+        matInput
+        name="description"
+        (change)="changed('description')"
+        [(ngModel)]="data.entity.description"
+        rows="5">
+      </textarea>
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="canEditColumn('activity_id')"
+      class="entity-edit-field"
+      appearance="outline">
+      <mat-label>{{'activity_id' | translate}}</mat-label>
+      <input
+        matInput
+        type="number"
+        step="1"
+        name="activity_id"
+        (change)="changed('activity_id')"
+        [(ngModel)]="data.entity.activity_id"
+        autocomplete="off">
+    </mat-form-field>
+
+</div>
+
+  <div mat-dialog-actions>
+
+    <div class="right-aligned">
+
+      <button 
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="upsert()">{{'Save' | translate}}</button>
+
+      <button
+        mat-button
+        (click)="close(null)">{{'Cancel' | translate}}</button>
+
+    </div>
+
+  </div>
+</form>
