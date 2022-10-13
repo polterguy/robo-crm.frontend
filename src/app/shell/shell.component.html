@@ -11,6 +11,7 @@
       [opened]="!isMobile"
       [disableClose]="!isMobile"
       ngClass.gt-sm="has-border">
+
       <mat-toolbar color="primary">
         <span translate>APP_NAME</span>
         <div fxFlex></div>
@@ -30,6 +31,7 @@
         </div>
         <app-language-selector icon="true"></app-language-selector>
       </mat-toolbar>
+
       <nav>
         <mat-list>
           <mat-divider></mat-divider>
@@ -101,6 +103,7 @@
         </mat-list>
       </nav>
     </mat-sidenav>
+
     <mat-sidenav-content>
       <mat-toolbar color="primary" class="mat-elevation-z6">
         <button class="menu-button" mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
@@ -111,4 +114,5 @@
       <router-outlet *ngIf="authService.hasEndpoints()"></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
 </div>

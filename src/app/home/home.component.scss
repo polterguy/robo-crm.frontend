@@ -14,13 +14,26 @@
 }
 
 .kpi-entities {
-  display: flex;
-  padding-left: 1rem;
-  padding-top: 2rem;
+  box-sizing: border-box;
   .kpi {
-    flex-direction: column;
-    flex: 1;
-    margin-right: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 982px) {
+  .kpi-entities {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 1rem;
+    padding-top: 2rem;
+    .kpi {
+      flex-direction: column;
+      flex: 0 0 calc(33.333% - 1rem);
+      max-width: calc(33.333% - 1rem);
+      width: calc(33.333% - 1rem);
+      margin-right: 1rem;
+    }
   }
 }
 

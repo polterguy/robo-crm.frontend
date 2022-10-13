@@ -34,8 +34,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     private authenticationService: AuthenticationService,
     private messageService: MessageService,
     private credentialsService: CredentialsService,
-    private media: MediaObserver
-  ) { }
+    private media: MediaObserver) { }
 
   ngOnInit() {
 

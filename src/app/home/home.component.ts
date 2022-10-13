@@ -42,26 +42,43 @@ export class HomeComponent implements OnInit {
               },
               tooltip: {
                 trigger: 'item',
-                formatter: '{a} <br/>{b} : {c} ({d}%)'
+                appendToBody: true
               },
               legend: {
-                x: 'center',
-                y: 'bottom',
-                data: idx.values.map((x: any) => x.name)
+                orient: 'horizontal',
+                left: 'top',
+                top: 'bottom',
+                type: 'scroll',
+                padding: [0, 5],
+                textStyle: {
+                  color: 'black'
+                },
+                pageIconColor: 'black',
+                pageTextStyle: {
+                  color: 'black'
+                }
               },
-              calculable: true,
               series: [
                 {
-                  name: 'area',
                   type: 'pie',
-                  radius: [30, 110],
-                  roseType: 'area',
+                  radius: ['60%', '70%'],
                   data: idx.values.map((x:any) => {
                     return {
                       value: x.value,
                       name: x.name,
                     }
-                  })
+                  }),
+                  color: ['#555', '#888', '#bbb'],
+                  label: {
+                    color: 'black'
+                  },
+                  emphasis: {
+                    itemStyle: {
+                      shadowBlur: 10,
+                      shadowOffsetX: 0,
+                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                  }
                 }
               ]
             });
@@ -71,42 +88,39 @@ export class HomeComponent implements OnInit {
                 text: idx.name,
                 x: 'center'
               },
+              tooltip: {
+                trigger: 'axis',
+                position: (pt: any) => {
+                  return [pt[0], '10%'];
+                },
+                appendToBody: true
+              },
               xAxis: {
+                type: 'category',
+                boundaryGap: true,
                 data: idx.values.map((x: any) => x.name),
-                axisLabel: {
-                  inside: true,
-                  color: '#fff',
-                },
-                axisTick: {
-                  show: false,
-                },
-                axisLine: {
-                  show: false,
-                },
-                z: 10,
               },
               yAxis: {
-                axisLine: {
-                  show: false,
-                },
-                axisTick: {
-                  show: false,
-                },
-                axisLabel: {
-                  color: '#999',
-                },
+                type: 'value',
+                splitLine: {
+                  lineStyle: {
+                    type: 'dotted',
+                    width: 1,
+                    color: 'rgba(0, 0, 0, 0.12)'
+                  }
+                }
               },
-              dataZoom: [
-                {
-                  type: 'inside',
-                },
-              ],
               series: [
                 {
-                  type: 'bar',
+                  name: idx.values.map((x: any) => x.name),
                   data: idx.values.map((x: any) => x.value),
-                },
-              ],
+                  type: idx.type,
+                  smooth: true,
+                  symbol: 'none',
+                  areaStyle: {},
+                  color: '#999',
+                }
+              ]
             });
           }
         }

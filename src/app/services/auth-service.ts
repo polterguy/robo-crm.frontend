@@ -28,13 +28,13 @@ export class AuthService {
    * Creates an instance of our object.
    *
    * @param httpClient HTTP client to use for HTTP invocations
+   * @param credentialsService Needed to retrieve credentials
    * @param jwtHelper OAuth0 helper class to parse JWT tokens
    */
   constructor(
     private httpClient: HttpClient,
     private credentialsService: CredentialsService,
-    private jwtHelper: JwtHelperService
-  ) {
+    private jwtHelper: JwtHelperService) {
     this.initialize();
   }
 
@@ -53,10 +53,9 @@ export class AuthService {
    */
   get me(): IMe {
     return {
+
       canInvoke: (url: string, verb: string) => {
-        const endpoints = this.endpoints.filter(
-          (x: Endpoint) => x.path === url && x.verb === verb
-        );
+        const endpoints = this.endpoints.filter((x: Endpoint) => x.path === url && x.verb === verb);
 
         if (endpoints.length === 0) {
           return false; // No such endpoint
@@ -108,17 +107,15 @@ export class AuthService {
      * Retrieving endpoints from backend, which is a URL/verb association,
      * coupled with all roles allowed to invoke URL/verb combination.
      */
-    this.httpClient
-      .get<Endpoint[]>(
+    this.httpClient.get<Endpoint[]>(
         environment.apiUrl + 'magic/system/auth/endpoints'
       )
-      .subscribe(
-        (res: Endpoint[]) => {
+      .subscribe({
+        next: (res: Endpoint[]) => {
           this.endpoints = res;
         },
-        (error: any) => {
+        error: (error: any) => {
           console.log(error);
-        }
-      );
+        }});
   }
 }
