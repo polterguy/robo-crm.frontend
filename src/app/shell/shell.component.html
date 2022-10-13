@@ -89,15 +89,6 @@
           </a>
           <mat-divider></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/notifications', 'get')"
-            mat-list-item
-            routerLink="crud/aista_crm/notifications"
-            routerLinkActive="active"
-            (click)="isMobile && sidenav.close()">
-            <span translate>Notifications</span>
-          </a>
-          <mat-divider></mat-divider>
-          <a
             *ngIf="authService.me.canInvoke('magic/modules/aista-crm/status', 'get')"
             mat-list-item
             routerLink="crud/aista_crm/status"
