@@ -30,6 +30,15 @@ export class HomeComponent implements OnInit {
     this.httpService.kpi.subscribe({
       next: (data: any[]) => {
         data = (data || []).filter(x => x.values && x.values.length > 0);
+        data.sort((lhs, rhs) => {
+          if (lhs.type === 'pie' && rhs.type !== 'pie') {
+            return -1;
+          }
+          if (rhs.type === 'pie' && lhs.type !== 'pie') {
+            return 1;
+          }
+          return 0;
+        })
         for (const idx of data) {
           if (!idx.values) {
             idx.values = [];
@@ -44,24 +53,10 @@ export class HomeComponent implements OnInit {
                 trigger: 'item',
                 appendToBody: true
               },
-              legend: {
-                orient: 'horizontal',
-                left: 'top',
-                top: 'bottom',
-                type: 'scroll',
-                padding: [0, 5],
-                textStyle: {
-                  color: 'black'
-                },
-                pageIconColor: 'black',
-                pageTextStyle: {
-                  color: 'black'
-                }
-              },
               series: [
                 {
                   type: 'pie',
-                  radius: ['60%', '70%'],
+                  radius: ['50%', '70%'],
                   data: idx.values.map((x:any) => {
                     return {
                       value: x.value,

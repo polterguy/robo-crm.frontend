@@ -15,9 +15,13 @@
 
 .kpi-entities {
   box-sizing: border-box;
-  .kpi {
+  mat-card.kpi {
     width: 100%;
     margin-bottom: 1rem;
+    .chart {
+      height: 250px;
+    }
+    padding-bottom: 0;
   }
 }
 

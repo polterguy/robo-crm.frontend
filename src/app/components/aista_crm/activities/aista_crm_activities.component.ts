@@ -90,6 +90,14 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer) {
       super(authService, snackBar, dialog, sanitizer);
+      const valueMine = localStorage.getItem('my_activities');
+      if (valueMine) {
+        this.mine = valueMine === 'yes';
+      }
+      const valueOpen = localStorage.getItem('open_activities');
+      if (valueOpen) {
+        this.open = valueOpen === 'yes';
+      }
   }
 
   /**
@@ -192,6 +200,8 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
   }
 
   filterChanged() {
+    localStorage.setItem('my_activities', this.mine ? 'yes' : 'no');
+    localStorage.setItem('open_activities', this.open ? 'yes' : 'no');
     if (this.mine) {
       this.filter['activities.username.eq'] = this.authService.me.username();
     } else {

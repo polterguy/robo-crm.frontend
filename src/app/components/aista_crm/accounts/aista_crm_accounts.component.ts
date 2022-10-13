@@ -90,6 +90,10 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer) {
       super(authService, snackBar, dialog, sanitizer);
+      const value = localStorage.getItem('my_accounts');
+      if (value) {
+        this.mine = value === 'yes';
+      }
   }
 
   /**
@@ -192,6 +196,7 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
   }
 
   filterChanged() {
+    localStorage.setItem('my_accounts', this.mine ? 'yes' : 'no');
     if (this.mine) {
       this.filter['accounts.account_manager.eq'] = this.authService.me.username();
     } else {
