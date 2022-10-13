@@ -85,4 +85,8 @@ export class EditAista_crm_accountsComponent extends DialogComponent {
       this.dialogRef.close();
     }
   }
+
+  canSave() {
+    return this.data.entity.status && this.data.entity.account_manager;
+  }
 }

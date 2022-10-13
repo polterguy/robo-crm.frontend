@@ -160,7 +160,9 @@ export class Aista_crm_tasksComponent extends GridComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
-        this.setEditData(res, entity);
+        this.getData(true, () => {
+          this.expandedElement = this.data.filter(x => x.task_id === this.expandedElement.task_id)[0];
+        });
       }
     });
   }
