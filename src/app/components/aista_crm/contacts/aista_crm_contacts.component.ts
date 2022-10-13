@@ -3,7 +3,6 @@
  */
 
 // Angular specific components
-import { throwError } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GridComponent } from '@app/base/grid.component';
@@ -58,11 +57,6 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     'created',
     'delete-instance'
   ];
-
-  /**
-   * What element is currently expanded.
-   */
-  public expandedElement: any | null;
 
 
   // Need to view paginator as a child to update page index of it.
@@ -179,7 +173,9 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
-        this.setEditData(res, entity);
+        this.getData(true, () => {
+          this.expandedElement = this.data.filter(x => x.contact_id === this.expandedElement.contact_id)[0];
+        });
       }
     });
   }
