@@ -98,6 +98,11 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
       if (valueOpen) {
         this.open = valueOpen === 'yes';
       }
+      this.filter = {
+        limit: 10,
+        order: 'activities.created',
+        direction: 'desc'
+      };
   }
 
   /**

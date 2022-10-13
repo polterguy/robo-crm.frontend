@@ -146,6 +146,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // Creates a table KPI
   private createTable(data: any) {
     const cols: string[] = [];
     for (var idx in data.values[0]) {
@@ -154,6 +155,7 @@ export class HomeComponent implements OnInit {
     this.kpiValues.push({
       isChart: false,
       columns: cols,
+      title: data.name,
       rows: data.values,
     });
   }

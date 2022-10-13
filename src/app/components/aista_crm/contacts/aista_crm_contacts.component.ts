@@ -49,12 +49,12 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     'name',
     'account_id.name',
     'email',
+    'created',
     'phone',
     'country',
     'city',
     'linkedIn',
     'meta',
-    'created',
     'delete-instance'
   ];
 
@@ -92,6 +92,11 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer) {
       super(authService, snackBar, dialog, sanitizer);
+      this.filter = {
+        limit: 10,
+        order: 'contacts.created',
+        direction: 'desc'
+      };
   }
 
   /**

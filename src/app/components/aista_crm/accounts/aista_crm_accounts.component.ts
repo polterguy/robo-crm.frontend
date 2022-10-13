@@ -94,6 +94,11 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
       if (value) {
         this.mine = value === 'yes';
       }
+      this.filter = {
+        limit: 10,
+        order: 'accounts.created',
+        direction: 'desc'
+      };
   }
 
   /**

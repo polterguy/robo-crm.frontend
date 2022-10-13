@@ -11,16 +11,19 @@
           [theme]="theme">
         </div>
 
-        <table *ngIf="!idx.isChart" class="kpi_table">
-          <tr>
-            <th *ngFor="let header of idx.columns">{{header}}</th>
-          </tr>
-          <tr *ngFor="let row of idx.rows">
-            <td *ngFor="let idxInner of idx.columns">
-              {{idxInner === 'created' ? (row[idxInner] | since) : row[idxInner]}}
-            </td>
-          </tr>
-        </table>
+        <div *ngIf="!idx.isChart" class="kpi_table">
+          <h2>{{idx.title}}</h2>
+          <table>
+            <tr>
+              <th *ngFor="let header of idx.columns">{{header}}</th>
+            </tr>
+            <tr *ngFor="let row of idx.rows">
+              <td *ngFor="let idxInner of idx.columns">
+                {{idxInner === 'created' ? (row[idxInner] | since) : row[idxInner]}}
+              </td>
+            </tr>
+          </table>
+        </div>
 
       </mat-card-content>
     </mat-card>

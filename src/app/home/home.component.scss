@@ -22,17 +22,19 @@
       height: 250px;
     }
     .kpi_table {
-      width: 100%;
-      margin: 1rem;
-      font-size: .8rem;
-      box-sizing: border-box;
-      tr {
-        th, td {
-          text-align: left;
-          padding: .125rem;
-        }
-        th {
-          text-transform: capitalize;
+      table {
+        width: 100%;
+        margin: 1rem;
+        font-size: .8rem;
+        box-sizing: border-box;
+        tr {
+          th, td {
+            text-align: left;
+            padding: .125rem;
+          }
+          th {
+            text-transform: capitalize;
+          }
         }
       }
     }
