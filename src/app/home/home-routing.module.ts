@@ -21,7 +21,7 @@ import { Aista_crm_statusComponent } from '../components/aista_crm/status/aista_
 const routes: Routes = [
   Shell.childRoutes([
     { path: '', component: HomeComponent, data: { title: marker('Home') } },
-    { path: 'users', component: UserManagementComponent, data: { title: marker('User management') } },
+    { path: 'users', component: UserManagementComponent, data: { title: marker('Users') } },
 
     // Then routes for all CRUD components.
     { path: 'crud/aista_crm/accounts', component: Aista_crm_accountsComponent, data: { title: marker('Accounts') } },
