@@ -24,7 +24,7 @@ const routes: Routes = [
     { path: 'users', component: UserManagementComponent, data: { title: marker('User management') } },
 
     // Then routes for all CRUD components.
-    { path: 'crud/aista_crm/accounts', component: Aista_crm_accountsComponent, data: { title: marker('Aaccounts') } },
+    { path: 'crud/aista_crm/accounts', component: Aista_crm_accountsComponent, data: { title: marker('Accounts') } },
     { path: 'crud/aista_crm/activities', component: Aista_crm_activitiesComponent, data: { title: marker('Activities') } },
     { path: 'crud/aista_crm/activity_types', component: Aista_crm_activity_typesComponent, data: { title: marker('Activity types') } },
     { path: 'crud/aista_crm/contacts', component: Aista_crm_contactsComponent, data: { title: marker('Contacts') } },

@@ -166,7 +166,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
     });
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
-        this.setEditData(res, entity);
+        this.getData(true);
       }
     });
   }
@@ -202,8 +202,6 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
     } else {
       delete this.filter['activities.done.eq'];
     }
-    this.getData(true, () => {
-      this.getData();
-    });
+    this.getData(true);
   }
 }
