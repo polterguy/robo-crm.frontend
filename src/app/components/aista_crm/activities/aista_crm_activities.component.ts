@@ -46,9 +46,9 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
    * Notice! 'delete-instance' should always come last.
    */
   public displayedColumns: string[] = [
-    'username',
-    'contact_id.name',
     'type',
+    'contact_id.name',
+    'username',
     'created',
     'delete-instance'
   ];
@@ -213,7 +213,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
       delete this.filter['activities.username.eq'];
     }
     if (this.open) {
-      this.filter['activities.done.eq'] = 0;
+      this.filter['activities.done.eq'] = false;
     } else {
       delete this.filter['activities.done.eq'];
     }
