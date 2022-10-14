@@ -48,9 +48,9 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
   public displayedColumns: string[] = [
     'type',
     'contact_id.name',
+    'due',
     'username',
     'created',
-    'due',
     'delete-instance'
   ];
 
@@ -102,8 +102,8 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
       }
       this.filter = {
         limit: 10,
-        order: 'activities.created',
-        direction: 'desc'
+        order: 'activities.due',
+        direction: 'asc'
       };
   }
 
@@ -221,5 +221,27 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
       delete this.filter['activities.done.eq'];
     }
     this.getData(true);
+  }
+
+  importance(el: any) {
+    if (el.due) {
+      if (el.closed) {
+        return 'closed';
+      }
+      let dueStr = el.due;
+      if (dueStr.indexOf && dueStr.indexOf('+') === -1 && !dueStr.endsWith('Z')) {
+        dueStr += '+00:00';
+      }
+      const now = new Date().getTime();
+      const due = new Date(dueStr + '+00:00').getTime();
+      let deltaSeconds = Math.round((due - now) / 1000);
+      if (deltaSeconds < 0) {
+        return 'warning';
+      }
+      if (deltaSeconds < 60 * 60) {
+        return 'important';
+      }
+    }
+    return '';
   }
 }

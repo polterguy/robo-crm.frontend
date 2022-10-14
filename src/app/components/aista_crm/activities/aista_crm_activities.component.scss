@@ -23,3 +23,16 @@ app-magic-image-view {
     margin-right: 1rem;
   }
 }
+
+tr.warning td {
+  font-style: italic;
+  color: #900;
+}
+
+.important {
+  font-weight: bold;
+}
+
+tr.closed td {
+  color: #aaa;
+}
