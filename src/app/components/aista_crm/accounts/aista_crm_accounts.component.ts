@@ -22,6 +22,7 @@ import {
 import { EditAista_crm_accountsComponent } from './modals/edit.aista_crm_accounts.component';
 import { HttpService } from 'src/app/services/http-service';
 import { AuthService } from 'src/app/services/auth-service';
+import { EditAista_crm_contactsComponent } from '../contacts/modals/edit.aista_crm_contacts.component';
 
 /**
  * "Datagrid" component for displaying instance of Accounts
@@ -208,6 +209,9 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
     });
   }
 
+  /**
+   * Invoked when filtering is changed.
+   */
   filterChanged() {
     localStorage.setItem('my_accounts', this.mine ? 'yes' : 'no');
     if (this.mine) {
@@ -218,16 +222,51 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
     this.getData(true);
   }
 
+  /**
+   * Invoked when a row is selected or expanded.
+   * 
+   * @param row Row that was selected
+   */
   selectRow(row: any) {
     if(this.expandedElement && !row.contacts) {
-      this.httpService.aista_crm_contacts.read({
-        ['contacts.account_id.eq']: row.account_id
-      }).subscribe({
-        next: (result: any[]) => {
-          row.contacts = result || [];
-        },
-        error: (error: any) => console.log(error)
-      });
+      this.getContacts(row);
     }
+  }
+
+  /**
+   * Invoked when a contact is added to an account.
+   * 
+   * @param row Row to add contact to
+   */
+  addContact(row: any) {
+
+    const dialogRef = this.dialog.open(EditAista_crm_contactsComponent, {
+      data: {
+        isEdit: false,
+        entity: {
+          account_id: row.account_id,
+        },
+      }});
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res) {
+        this.getContacts(row);
+      }
+    });
+  }
+
+  /**
+   * Invoked when we need to fetch contacts for an account.
+   * 
+   * @param row Row to retrieve contacts for
+   */
+  private getContacts(row: any) {
+    this.httpService.aista_crm_contacts.read({
+      ['contacts.account_id.eq']: row.account_id
+    }).subscribe({
+      next: (result: any[]) => {
+        row.contacts = result || [];
+      },
+      error: (error: any) => console.log(error)
+    });
   }
 }

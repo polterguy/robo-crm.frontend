@@ -189,6 +189,15 @@
 
             <mat-card class="contacts-card" *ngIf="el.contacts && el.contacts.length > 0">
 
+              <button
+                mat-raised-button
+                *ngIf="authService.me.canInvoke('magic/modules/aista-crm/contacts', 'post') && httpService['aista_crm_contacts']['create']"
+                class="create-button"
+                [matTooltip]="('Add contact' | translate)"
+                (click)="addContact(el)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+        
               <table
                 *ngIf="el.contacts"
                 mat-table
