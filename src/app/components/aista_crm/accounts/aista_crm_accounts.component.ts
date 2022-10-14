@@ -255,6 +255,25 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
   }
 
   /**
+   * Edits the specified contact.
+   * 
+   * @param account Account contact belongs to
+   * @param contact Contact to edit
+   * @returns 
+   */
+  editContact(account: any, contact: any) {
+    const dialogRef = this.dialog.open(EditAista_crm_contactsComponent, {
+      data: this.getEditData(contact)
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.getContacts(account);
+      }
+    });
+    return false;
+  }
+
+  /**
    * Invoked when we need to fetch contacts for an account.
    * 
    * @param row Row to retrieve contacts for

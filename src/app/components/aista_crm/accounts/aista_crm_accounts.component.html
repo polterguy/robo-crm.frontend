@@ -205,7 +205,12 @@
                 [dataSource]="el.contacts">
 
                 <ng-container matColumnDef="name">
-                  <td mat-cell *matCellDef="let idx">{{idx.name}}</td>
+                  <td mat-cell *matCellDef="let idx">
+                    <a
+                      href="#"
+                      role="button"
+                      (click)="editContact(el, idx)">{{idx.name}}</a>
+                  </td>
                 </ng-container>
 
                 <ng-container matColumnDef="email">
