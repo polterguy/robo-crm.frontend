@@ -134,6 +134,27 @@
         <td mat-cell *matCellDef="let el">{{el['created'] | since}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="due">
+        <th mat-header-cell *matHeaderCellDef>
+          <mat-form-field appearance="outline" class="fill-width filter-textbox">
+            <mat-label>{{'Due' | translate}}</mat-label>
+            <input
+              matInput
+              type="text"
+              autocomplete="off"
+              [formControl]="due">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          <button
+            class="sort-button"
+            (click)="sort('activities.due')"
+            mat-button>
+            <mat-icon matSuffix>{{getSortIcon('activities.due')}}</mat-icon>
+          </button>
+        </th>
+        <td mat-cell *matCellDef="let el">{{el['due'] | since}}</td>
+      </ng-container>
+
       <ng-container matColumnDef="contact_id">
         <th mat-header-cell *matHeaderCellDef>
           <mat-form-field appearance="outline" class="fill-width filter-textbox">
@@ -212,9 +233,13 @@
               <span>{{el['created'] | formatDate}}</span>
             </p>
             <p class="details">
+              <label>{{'Due' | translate}}</label>
+              <span>{{el['due'] | formatDate}}</span>
+            </p>
+            <p class="details">
               <label>{{'done' | translate}}</label>
-              <mat-icon *ngIf="el['done'] === true || el['done'] === 1" matSuffix>check_box</mat-icon>
-              <mat-icon *ngIf="el['done'] !== true && el['done'] !== 1" matSuffix>check_box_outline_blank</mat-icon>
+              <mat-icon *ngIf="el['done'] === true" matSuffix>check_box</mat-icon>
+              <mat-icon *ngIf="el['done'] !== true" matSuffix>check_box_outline_blank</mat-icon>
             </p>
           </div>
         </td>

@@ -32,6 +32,7 @@ export class EditAista_crm_activitiesComponent extends DialogComponent {
       'type',
       'description',
       'username',
+      'due',
       'done'
     ];
     this.updateColumns = [
@@ -40,9 +41,10 @@ export class EditAista_crm_activitiesComponent extends DialogComponent {
       'description',
       'username',
       'activity_id',
+      'due',
       'done'
     ];
-    const datesToFormat: string[] = [];
+    const datesToFormat: string[] = ['due'];
     for (let idx of datesToFormat) {
       if (this.data.entity[idx]) {
         if (typeof this.data.entity[idx] === 'string') {

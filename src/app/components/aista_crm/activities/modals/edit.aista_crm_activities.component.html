@@ -6,7 +6,7 @@
       *ngIf="canEditColumn('username')"
       [model]="data.entity"
       field="username"
-      class="entity-edit-field-narrow"
+      class="entity-edit-field-very-narrow"
       (change)="changed('username')">
     </app-magic-username-lookup>
 
@@ -17,7 +17,7 @@
       key="type"
       value="type"
       [placeholder]="'Type' | translate"
-      class="entity-edit-field-narrow"
+      class="entity-edit-field-very-narrow"
       (change)="changed('type')"
       [getItems]="service.aista_crm_activity_types.read({limit:-1})">
     </app-magic-selector>
@@ -30,10 +30,33 @@
       table="contacts"
       value="name"
       [placeholder]="'Contact' | translate"
-      class="entity-edit-field-narrow"
+      class="entity-edit-field-very-narrow"
       (change)="changed('contact_id')"
       [getItems]="service.aista_crm_contacts">
     </app-magic-autocomplete>
+
+    <mat-form-field
+      *ngIf="canEditColumn('due')"
+      class="entity-edit-field-very-narrow"
+      appearance="outline">
+      <mat-label>{{'Due' | translate}}</mat-label>
+      <input
+        matInput
+        name="due"
+        (change)="changed('due')"
+        [owlDateTime]="pickerdue"
+        [(ngModel)]="data.entity.due"
+        autocomplete="off">
+      <owl-date-time
+        #pickerdue
+        (afterPickerClosed)="changed('due')"></owl-date-time>
+      <mat-icon
+        [owlDateTimeTrigger]="pickerdue"
+        matSuffix
+        role="button"
+        class="button-icon"
+        matDatepickerToggleIcon>calendar_today</mat-icon>
+    </mat-form-field>
 
     <mat-form-field
       *ngIf="canEditColumn('description')"
