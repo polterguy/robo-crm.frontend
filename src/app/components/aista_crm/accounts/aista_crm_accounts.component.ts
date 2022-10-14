@@ -3,7 +3,6 @@
  */
 
 // Angular specific components
-import { throwError } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GridComponent } from '@app/base/grid.component';
@@ -52,6 +51,15 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
     'account_manager',
     'created',
     'delete-instance'
+  ];
+
+  /**
+   * Columns to show for contacts inside of account card.
+   */
+  public contactColumns: string[] = [
+    'name',
+    'email',
+    'phone',
   ];
 
   public mine: boolean = true;
@@ -208,5 +216,18 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
       delete this.filter['accounts.account_manager.eq'];
     }
     this.getData(true);
+  }
+
+  selectRow(row: any) {
+    if(this.expandedElement && !row.contacts) {
+      this.httpService.aista_crm_contacts.read({
+        ['contacts.account_id.eq']: row.account_id
+      }).subscribe({
+        next: (result: any[]) => {
+          row.contacts = result || [];
+        },
+        error: (error: any) => console.log(error)
+      });
+    }
   }
 }

@@ -23,3 +23,19 @@ app-magic-image-view {
     margin-right: 1rem;
   }
 }
+
+.component-wrapper .grid-wrapper {
+  mat-card.contacts-card {
+    width: 100%;
+    margin: 2rem 2rem;
+    table.contacts-table {
+      margin: 0;
+      padding: 0;
+      tr {
+        th, td {
+          padding: 0;
+        }
+      }
+    }
+  }
+}

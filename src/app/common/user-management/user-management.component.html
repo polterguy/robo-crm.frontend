@@ -3,13 +3,11 @@
   <div class="mat-elevation-z4 relativized grid-wrapper">
 
     <button
-      mat-flat-button
+      mat-raised-button
       *ngIf="authService.me.canInvoke('magic/modules/magic/users', 'post')"
-      color="primary"
-      class="create-btn" 
-      role="button"
+      class="create-button"
       (click)="createUser()" >
-        Create a new user
+      <mat-icon>add_circle</mat-icon>
     </button>
 
     <table

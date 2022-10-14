@@ -343,7 +343,6 @@ export class UserManagementComponent implements OnInit {
   public createUser() {
     this.dialog.open(CreateUserDialogComponent, {
       width: '500px',
-      disableClose: true
     }).afterClosed().subscribe((res: string) => {
       if (res === 'saved') {
         this.getData();
