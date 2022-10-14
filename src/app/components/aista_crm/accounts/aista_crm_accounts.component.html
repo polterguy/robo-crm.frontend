@@ -197,9 +197,11 @@
                 (click)="addContact(el)">
                 <mat-icon>add_circle</mat-icon>
               </button>
+
+              <h2>Contacts</h2>
         
               <table
-                *ngIf="el.contacts"
+                *ngIf="el.contacts && el.contacts.length > 0"
                 mat-table
                 class="contacts-table"
                 [dataSource]="el.contacts">
