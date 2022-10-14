@@ -14,3 +14,13 @@ app-magic-image-view {
 .database-image {
   max-width: 100%;
 }
+
+.toolbar-buttons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  button {
+    margin-right: 0;
+    color: #9e9e9e;
+  }
+}

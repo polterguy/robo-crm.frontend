@@ -18,7 +18,7 @@
 // hue.
 $app-primary: mat-palette($mat-grey);
 // stylelint-disable-next-line value-keyword-case
-$app-accent: mat-palette($mat-grey, A400, A100, A400);
+$app-accent: mat-palette($mat-brown, A400, A100, A400);
 
 // The warn palette is optional (defaults to red).
 $app-warn: mat-palette($mat-red);

@@ -48,9 +48,8 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
   public displayedColumns: string[] = [
     'type',
     'contact_id.name',
-    'due',
     'username',
-    'created',
+    'due',
     'delete-instance'
   ];
 

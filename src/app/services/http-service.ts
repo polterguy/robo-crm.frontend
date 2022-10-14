@@ -411,7 +411,7 @@ export class HttpService {
    * @param file File you want to upload
    * @param old_file Optional name of old file, which if existing and specified will be deleted
    */
-   public uploadFile(url: string, file: any, old_file: string) {
+   public uploadFile(url: string, file: any, old_file: string = null) {
 
     // Invoking backend with a form data object containing file.
     // NOTICE! If you want to handle file uploading, you'll need a backend endpoint.

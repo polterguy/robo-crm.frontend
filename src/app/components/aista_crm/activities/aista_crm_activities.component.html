@@ -136,21 +136,15 @@
 
       <ng-container matColumnDef="due">
         <th mat-header-cell *matHeaderCellDef>
-          <mat-form-field appearance="outline" class="fill-width filter-textbox">
-            <mat-label>{{'Due' | translate}}</mat-label>
-            <input
-              matInput
-              type="text"
-              autocomplete="off"
-              [formControl]="due">
-            <mat-icon matSuffix>search</mat-icon>
-          </mat-form-field>
-          <button
-            class="sort-button"
-            (click)="sort('activities.due')"
-            mat-button>
-            <mat-icon matSuffix>{{getSortIcon('activities.due')}}</mat-icon>
-          </button>
+          <div class="flex-header">
+            <span>{{'Due' | translate}}</span>
+            <button
+              class="sort-button"
+              (click)="sort('activities.due')"
+              mat-button>
+              <mat-icon matSuffix>{{getSortIcon('activities.due')}}</mat-icon>
+            </button>
+          </div>
         </th>
         <td mat-cell *matCellDef="let el">{{el['due'] | since}}</td>
       </ng-container>

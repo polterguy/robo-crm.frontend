@@ -3,7 +3,7 @@
  */
 
 // Angular specific components
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GridComponent } from '@app/base/grid.component';
 import { MatPaginator } from '@angular/material/paginator';
@@ -40,6 +40,8 @@ import { AuthService } from 'src/app/services/auth-service';
   ]
 })
 export class Aista_crm_contactsComponent extends GridComponent implements OnInit {
+
+  @ViewChild("inputValue", { static: false }) inputValue: ElementRef;
 
   /**
    * Which columns we should display. Reorder to prioritize columns differently.
@@ -203,5 +205,31 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
         this.itemCreated(res);
       }
     });
+  }
+
+  /**
+   * Imports contacts by asking user for a CSV file.
+   */
+  importContacts() {
+    document.querySelector("input").click();
+  }
+
+  /**
+   * Invoked when value of file input changes.
+   */
+  uploadFiles(files: FileList) {
+    for (let idx = 0; idx < files.length; idx++) {
+      this.httpService.uploadFile('aista-crm/import-contacts', files[idx]).subscribe({
+        next: (result) => {
+          this.snackBar.open(`${result.imported} contacts was successfully imported, ${result.skipped} contacts was skipped`, 'ok', {
+            duration: 5000,
+          });
+          this.getData();
+        },
+        error: (error: any) => console.log(error)
+      });
+    }
+    let file: any = document.getElementById("inputValue");
+    file.value = "";
   }
 }

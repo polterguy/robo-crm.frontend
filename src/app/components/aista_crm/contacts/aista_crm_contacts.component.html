@@ -3,14 +3,31 @@
 
   <div class="mat-elevation-z4 relativized grid-wrapper">
 
-    <button
-      mat-raised-button
-      *ngIf="authService.me.canInvoke(entityBaseUrl(), 'post') && httpService['aista_crm_contacts']['create']"
-      class="create-button"
-      [matTooltip]="('New' | translate) + (' contact' | translate)"
-      (click)="createEntity()">
-      <mat-icon>add_circle</mat-icon>
-    </button>
+    <div class="toolbar-buttons">
+
+      <input
+        id="inputValue"
+        type="file"
+        style="display:none"
+        accept=".csv"
+        (change)="uploadFiles($event.target.files)">
+      <button
+        mat-raised-button
+        *ngIf="authService.me.canInvoke(entityBaseUrl(), 'post') && httpService['aista_crm_contacts']['create']"
+        [matTooltip]="('Import' | translate) + (' contacts' | translate)"
+        (click)="importContacts()">
+        <mat-icon>cloud_upload</mat-icon>
+      </button>
+
+      <button
+        mat-raised-button
+        *ngIf="authService.me.canInvoke(entityBaseUrl(), 'post') && httpService['aista_crm_contacts']['create']"
+        [matTooltip]="('New' | translate) + (' contact' | translate)"
+        (click)="createEntity()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+
+    </div>
 
     <table
       mat-table
