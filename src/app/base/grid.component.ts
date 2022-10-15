@@ -310,7 +310,6 @@ export abstract class GridComponent {
 
     if (srcEntity) {
       for (const idx in srcEntity) {
-        console.log(idx);
         if (Object.prototype.hasOwnProperty.call(srcEntity, idx)) {
           destEntity[idx] = srcEntity[idx];
         }

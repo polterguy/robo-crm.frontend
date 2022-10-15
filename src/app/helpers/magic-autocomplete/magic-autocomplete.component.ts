@@ -142,7 +142,8 @@ export class MagicAutocompleteComponent implements OnInit {
       this.getItems.read({
         [this.table + '.' + this.key + '.eq']: this.model[this.field],
         limit: 1,
-      }).subscribe((result: any[]) => {
+      }).subscribe({
+        next: (result: any[]) => {
 
         // Assigning model.
         this.items = result;
@@ -164,7 +165,8 @@ export class MagicAutocompleteComponent implements OnInit {
             this.fetch = true;
           });
           this.loading = false;
-        });
+        },
+        error: (error: any) => console.error(error)});
     } else {
 
       // Making sure we subscribe to changes to input field, such that we can retrieve items from backend.

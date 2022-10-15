@@ -1,4 +1,20 @@
 
 .blaster {
-  padding: 2.5rem 1rem 1rem 1rem;
+  padding: 1rem;
+
+  .templates {
+    width: 100%;
+  }
+  .title {
+    width: 100%;
+  }
+  .content {
+    width: 100%;
+  }
+  .right-aligned {
+    text-align: right;
+  }
+  .wide-button {
+    width: 150px;
+  }
 }
