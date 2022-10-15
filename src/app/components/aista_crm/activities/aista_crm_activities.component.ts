@@ -197,7 +197,9 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
     const dialogRef = this.dialog.open(EditAista_crm_activitiesComponent, {
       data: {
         isEdit: false,
-        entity: {},
+        entity: {
+          username: this.authService.me.username()
+        },
       }});
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res) {
