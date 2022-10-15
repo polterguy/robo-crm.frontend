@@ -208,12 +208,12 @@
 
                 <ng-container matColumnDef="edit">
                   <td mat-cell *matCellDef="let idx">
-                    <a
-                      href="#"
-                      role="button"
+                    <button
+                      mat-icon-button
+                      class="edit-contact-button"
                       (click)="editContact(el, idx)">
                       <mat-icon>edit</mat-icon>
-                    </a>
+                    </button>
                   </td>
                 </ng-container>
 
