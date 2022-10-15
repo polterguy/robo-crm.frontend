@@ -20,7 +20,7 @@
             </tr>
             <tr *ngFor="let row of idx.rows">
               <td *ngFor="let idxInner of idx.columns">
-                {{idxInner === 'created' ? (row[idxInner] | since) : row[idxInner]}}
+                {{idxInner === 'created' || idxInner === 'due' ? (row[idxInner] | since) : row[idxInner]}}
               </td>
             </tr>
           </table>

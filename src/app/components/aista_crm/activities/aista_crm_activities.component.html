@@ -247,7 +247,7 @@
         mat-row
         [ngClass]="expandedElement === row ? 'selected' : 'row'"
         class="expandable-row"
-        [class]="importance(row)"
+        [class]="activityUiService.getRowCssClass(row)"
         (click)="expandedElement = expandedElement === row ? null : row"
         *matRowDef="let row; columns: displayedColumns;"></tr>
 

@@ -341,7 +341,7 @@
               <label>{{'Source' | translate}}</label>
               <span>{{el['source']}}</span>
             </p>
-            <p class="details" *ngIf="el.description">
+            <p class="details" *ngIf="el.description && el.description.length > 0">
               <label>{{'Description' | translate}}</label>
               <span class="pre-formated">{{el['description']}}</span>
             </p>
@@ -378,7 +378,7 @@
 
                 <ng-container matColumnDef="misc">
                   <td mat-cell *matCellDef="let idx">
-                    {{idx.type}}, {{idx.username}}, {{idx.created | since}}
+                    {{idx.type}} for {{idx.username}}
                   </td>
                 </ng-container>
 
@@ -410,7 +410,7 @@
           
                 <tr
                   mat-row
-                  [class]="!row.done ? 'open' : 'closed'"
+                  [class]="activityUiService.getRowCssClass(row)"
                   *matRowDef="let row; columns: activitiesColumns;"></tr>
                 
               </table>

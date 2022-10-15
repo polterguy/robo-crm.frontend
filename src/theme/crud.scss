@@ -193,6 +193,26 @@
         }
       }
 
+      tr.silent {
+        td {
+          font-style: italic;
+          color: #999;
+        }
+      }
+
+      tr.important {
+        td {
+          font-weight: bold;
+        }
+      }
+
+      tr.very-important {
+        td {
+          font-weight: bold;
+          color: #a00;
+        }
+      }
+
       tr.mat-row {
         height: 0;
         td {

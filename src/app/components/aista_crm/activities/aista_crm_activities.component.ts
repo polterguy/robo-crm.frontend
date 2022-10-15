@@ -22,6 +22,7 @@ import {
 import { EditAista_crm_activitiesComponent } from './modals/edit.aista_crm_activities.component';
 import { HttpService } from 'src/app/services/http-service';
 import { AuthService } from 'src/app/services/auth-service';
+import { ActivityUiService } from '@app/services/activity-ui-service';
 
 /**
  * "Datagrid" component for displaying instance of Activities
@@ -83,13 +84,15 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
    * @param snackBar Needed to display errror and feedback
    * @param dialog Needed to show modal dialog as user edits or creates new entities
    * @param sanitizer Needed to be able to dynamically display iframes
+   * @param activityUiService Needed to correctly display activities
    */
    constructor(
     public httpService: HttpService,
     public authService: AuthService,
     protected snackBar: MatSnackBar,
     protected dialog: MatDialog,
-    protected sanitizer: DomSanitizer) {
+    protected sanitizer: DomSanitizer,
+    public activityUiService: ActivityUiService) {
       super(authService, snackBar, dialog, sanitizer);
       const valueMine = localStorage.getItem('my_activities');
       if (valueMine) {
@@ -223,27 +226,5 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
       delete this.filter['activities.done.eq'];
     }
     this.getData(true);
-  }
-
-  importance(el: any) {
-    if (el.due) {
-      if (el.closed) {
-        return 'closed';
-      }
-      let dueStr = el.due;
-      if (dueStr.indexOf && dueStr.indexOf('+') === -1 && !dueStr.endsWith('Z')) {
-        dueStr += '+00:00';
-      }
-      const now = new Date().getTime();
-      const due = new Date(dueStr + '+00:00').getTime();
-      let deltaSeconds = Math.round((due - now) / 1000);
-      if (deltaSeconds < 0) {
-        return 'warning';
-      }
-      if (deltaSeconds < 60 * 60) {
-        return 'important';
-      }
-    }
-    return '';
   }
 }

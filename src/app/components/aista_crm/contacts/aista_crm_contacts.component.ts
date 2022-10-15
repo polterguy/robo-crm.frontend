@@ -23,6 +23,7 @@ import { EditAista_crm_contactsComponent } from './modals/edit.aista_crm_contact
 import { HttpService } from 'src/app/services/http-service';
 import { AuthService } from 'src/app/services/auth-service';
 import { EditAista_crm_activitiesComponent } from '../activities/modals/edit.aista_crm_activities.component';
+import { ActivityUiService } from '@app/services/activity-ui-service';
 
 /**
  * "Datagrid" component for displaying instance of Contacts
@@ -95,13 +96,15 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
    * @param snackBar Needed to display errror and feedback
    * @param dialog Needed to show modal dialog as user edits or creates new entities
    * @param sanitizer Needed to be able to dynamically display iframes
+   * @param activityUiService Needed to correctly display activities
    */
    constructor(
     public httpService: HttpService,
     public authService: AuthService,
     protected snackBar: MatSnackBar,
     protected dialog: MatDialog,
-    protected sanitizer: DomSanitizer) {
+    protected sanitizer: DomSanitizer,
+    public activityUiService: ActivityUiService) {
       super(authService, snackBar, dialog, sanitizer);
       this.filter = {
         limit: 10,
@@ -318,7 +321,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
    * 
    * @param row Row to retrieve contacts for
    */
-   private getActivities(row: any) {
+  private getActivities(row: any) {
     this.httpService.aista_crm_activities.read({
       ['activities.contact_id.eq']: row.contact_id,
       order: 'activities.created',
