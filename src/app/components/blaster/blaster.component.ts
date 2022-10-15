@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '@app/services/http-service';
 
 @Component({
   selector: 'app-blaster',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlasterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private httpServices: HttpService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.httpServices.aista_crm_blaster_email_templates.read({limit: -1}).subscribe({
+      next: (result: any[]) => {
+        console.log(result);
+      },
+      error: (error: any) => console.error(error)
+    });
   }
-
 }

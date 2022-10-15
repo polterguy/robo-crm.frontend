@@ -377,6 +377,49 @@ export class HttpService {
     }
   }
 
+  /**
+   * HTTP CRUD service methods for your 'aista_crm_status' entities.
+   */
+   get aista_crm_blaster_email_templates() : ICrudEntity {
+    return {
+
+      delete: (filter: any) => {
+        return this.httpClient.delete<DeleteResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/email_templates' +
+          this.getQueryArgs(filter));
+      },
+
+      read: (filter: any) => {
+        return this.httpClient.get<any[]>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/email_templates' +
+          this.getQueryArgs(filter));
+      },
+
+      count: (filter: any) => {
+        return this.httpClient.get<CountResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/email_templates-count' +
+          this.getQueryArgs(filter));
+      },
+
+      create: (args: any) => {
+        return this.httpClient.post<CreateResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/email_templates',
+          args);
+      },
+
+      update: (args: any) => {
+        return this.httpClient.put<UpdateResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/email_templates',
+          args);
+      }
+    }
+  }
+
 
   /**
    * Uploads an image to your backend.

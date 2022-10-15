@@ -49,6 +49,8 @@ import { Aista_crm_contactsComponent } from './components/aista_crm/contacts/ais
 import { EditAista_crm_contactsComponent } from './components/aista_crm/contacts/modals/edit.aista_crm_contacts.component';
 import { Aista_crm_statusComponent } from './components/aista_crm/status/aista_crm_status.component';
 import { EditAista_crm_statusComponent } from './components/aista_crm/status/modals/edit.aista_crm_status.component';
+import { Aista_crm_blaster_email_templatesComponent } from './components/aista_crm/email_templates/aista_crm_blaster_email_templates.component';
+import { EditAista_crm_blaster_email_templatesComponent } from './components/aista_crm/email_templates/modals/edit.aista_crm_blaster_email_templates.component';
 import { BlasterComponent } from './components/blaster/blaster.component';
 
 
@@ -114,6 +116,8 @@ import { BlasterComponent } from './components/blaster/blaster.component';
     Aista_crm_statusComponent,
     EditAista_crm_statusComponent,
     BlasterComponent,
+    Aista_crm_blaster_email_templatesComponent,
+    EditAista_crm_blaster_email_templatesComponent,
   ],
 
   providers: [NgxImageCompressService],

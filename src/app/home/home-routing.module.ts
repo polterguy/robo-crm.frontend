@@ -16,6 +16,7 @@ import { Aista_crm_activity_typesComponent } from '../components/aista_crm/activ
 import { Aista_crm_contactsComponent } from '../components/aista_crm/contacts/aista_crm_contacts.component';
 import { Aista_crm_statusComponent } from '../components/aista_crm/status/aista_crm_status.component';
 import { BlasterComponent } from '@app/components/blaster/blaster.component';
+import { Aista_crm_blaster_email_templatesComponent } from '@app/components/aista_crm/email_templates/aista_crm_blaster_email_templates.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
     { path: 'crud/aista_crm/activity_types', component: Aista_crm_activity_typesComponent, data: { title: marker('Activity types') } },
     { path: 'crud/aista_crm/contacts', component: Aista_crm_contactsComponent, data: { title: marker('Contacts') } },
     { path: 'crud/aista_crm/status', component: Aista_crm_statusComponent, data: { title: marker('Status') } },
+    { path: 'crud/aista_crm/blaster/email_templates', component: Aista_crm_blaster_email_templatesComponent, data: { title: marker('Email templates') } },
     { path: 'blaster', component: BlasterComponent, data: { title: marker('Blaster') } },
 
   ]),
