@@ -58,6 +58,7 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
    * Columns to show for contacts inside of account card.
    */
   public contactColumns: string[] = [
+    'edit',
     'name',
     'email',
     'phone',
