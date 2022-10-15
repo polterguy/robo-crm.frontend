@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   getKpi() {
     this.httpService.kpi.subscribe({
       next: (data: any[]) => {
-        data = (data || []).filter(x => x.values && x.values.length > 0);
+        data = data || [];
         data.sort((lhs, rhs) => {
           if (lhs.type === 'pie' && rhs.type !== 'pie') {
             return -1;
@@ -38,23 +38,22 @@ export class HomeComponent implements OnInit {
             return 1;
           }
           return 0;
-        })
+        });
         for (const idx of data) {
-          if (idx.values && idx.values.length > 0) {
-            switch (idx.type) {
+          idx.values = idx.values || [];
+          switch (idx.type) {
 
-              case 'pie':
-                this.createPieChart(idx);
-                break;
+            case 'pie':
+              this.createPieChart(idx);
+              break;
 
-              case 'line':
-                this.createLineChart(idx);
-                break;
+            case 'line':
+              this.createLineChart(idx);
+              break;
 
-              case 'table':
-                this.createTable(idx);
-                break;
-            }
+            case 'table':
+              this.createTable(idx);
+              break;
           }
         }
       },

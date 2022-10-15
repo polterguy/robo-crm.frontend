@@ -36,6 +36,7 @@ export class EditAista_crm_contactsComponent extends DialogComponent {
       'linkedIn',
       'meta',
       'description',
+      'subscriber',
     ];
     this.updateColumns = [
       'name',
@@ -48,6 +49,7 @@ export class EditAista_crm_contactsComponent extends DialogComponent {
       'meta',
       'contact_id',
       'description',
+      'subscriber',
     ];
     const datesToFormat: string[] = [];
     for (let idx of datesToFormat) {

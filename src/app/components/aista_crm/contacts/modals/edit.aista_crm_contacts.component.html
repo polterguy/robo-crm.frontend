@@ -132,6 +132,12 @@
 
     <div class="right-aligned">
 
+      <mat-slide-toggle
+        *ngIf="canEditColumn('subscriber')"
+        name="subscriber"
+        (change)="changed('subscriber')"
+        [(ngModel)]="data.entity.subscriber">Subscriber</mat-slide-toggle>
+
       <button 
         mat-raised-button
         color="primary"
