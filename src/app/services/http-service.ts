@@ -343,35 +343,35 @@ export class HttpService {
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/status' +
+          'magic/modules/aista-crm/accounts/status' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/status' +
+          'magic/modules/aista-crm/accounts/status' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/status-count' +
+          'magic/modules/aista-crm/accounts/status-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/status',
+          'magic/modules/aista-crm/accounts/status',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/status',
+          'magic/modules/aista-crm/accounts/status',
           args);
       }
     }
