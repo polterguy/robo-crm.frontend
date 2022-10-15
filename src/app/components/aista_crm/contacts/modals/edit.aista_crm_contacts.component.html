@@ -136,6 +136,7 @@
         mat-raised-button
         color="primary"
         type="submit"
+        [disabled]="!canSave()"
         (click)="upsert()">{{'Save' | translate}}</button>
 
       <button

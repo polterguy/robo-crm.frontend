@@ -198,7 +198,8 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
       data: {
         isEdit: false,
         entity: {
-          username: this.authService.me.username()
+          username: this.authService.me.username(),
+          type: 'Misc',
         },
       }});
     dialogRef.afterClosed().subscribe((res: any) => {

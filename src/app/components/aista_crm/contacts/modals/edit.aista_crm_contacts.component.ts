@@ -95,4 +95,13 @@ export class EditAista_crm_contactsComponent extends DialogComponent {
       this.dialogRef.close();
     }
   }
+
+  /**
+   * Returns true if contact can be saved.
+   * 
+   * @returns True if contact can be saved
+   */
+  canSave() {
+    return this.data.entity.name && this.data.entity.name.length > 0;
+  }
 }
