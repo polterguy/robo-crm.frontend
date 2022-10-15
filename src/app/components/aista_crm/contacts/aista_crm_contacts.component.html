@@ -388,6 +388,26 @@
                   </td>
                 </ng-container>
 
+                <ng-container matColumnDef="due">
+                  <td mat-cell *matCellDef="let idx">
+                    {{(idx.due | since) ?? 'No due date'}}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="delete-instance">
+                  <td
+                    mat-cell
+                    *matCellDef="let activity"
+                    [ngClass]="authService.me.canInvoke('magic/modules/aista-crm/activities', 'delete') && httpService['aista_crm_activities']['delete'] ? 'delete-column' : 'hidden'">
+                    <button
+                      mat-button
+                      (click)="deleteActivity(activity, el)"
+                      [matTooltip]="'Delete activity' | translate">
+                      <mat-icon matSuffix>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+          
                 <tr
                   mat-row
                   [class]="!row.done ? 'open' : 'closed'"

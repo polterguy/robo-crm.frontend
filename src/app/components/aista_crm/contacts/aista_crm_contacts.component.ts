@@ -65,6 +65,8 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     'edit',
     'misc',
     'description',
+    'due',
+    'delete-instance',
   ];
 
 
@@ -292,6 +294,23 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
       }
     });
     return false;
+  }
+
+  /**
+   * Deletes the specified activity.
+   * 
+   * @param activity Actitity to delete
+   */
+  deleteActivity(activity: any, contact: any) {
+    this.httpService.aista_crm_activities.delete({activity_id: activity.activity_id}).subscribe({
+      next: () => {
+        this.snackBar.open('Activity successfully deleted', 'ok', {
+          duration: 5000,
+        });
+        this.getActivities(contact);
+      },
+      error: (error: any) => console.error(error)
+    });
   }
 
   /**
