@@ -182,7 +182,7 @@
               <label>{{'Website' | translate}}</label>
               <a [href]="ensureUrl(el['website'])" target="_blank">{{el['website']}}</a>
             </p>
-            <p class="details">
+            <p class="details" *ngIf="el.description">
               <label>{{'Description' | translate}}</label>
               <span class="pre-formated">{{el['description']}}</span>
             </p>

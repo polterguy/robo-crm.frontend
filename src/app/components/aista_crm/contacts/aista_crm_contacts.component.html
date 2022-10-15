@@ -341,6 +341,10 @@
               <label>{{'Source' | translate}}</label>
               <span>{{el['source']}}</span>
             </p>
+            <p class="details" *ngIf="el.description">
+              <label>{{'Description' | translate}}</label>
+              <span class="pre-formated">{{el['description']}}</span>
+            </p>
           </div>
         </td>
       </ng-container>

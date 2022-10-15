@@ -4,7 +4,7 @@
 
     <mat-form-field
       *ngIf="canEditColumn('name')"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       appearance="outline">
       <mat-label>{{'Name' | translate}}</mat-label>
       <input
@@ -16,36 +16,9 @@
         autocomplete="off">
     </mat-form-field>
 
-    <app-magic-autocomplete
-      *ngIf="canEditColumn('account_id')"
-      [model]="data.entity"
-      field="account_id"
-      key="account_id"
-      table="accounts"
-      value="name"
-      [placeholder]="'Account' | translate"
-      class="entity-edit-field"
-      (change)="changed('account_id')"
-      [getItems]="service.aista_crm_accounts">
-    </app-magic-autocomplete>
-
-    <mat-form-field
-      *ngIf="canEditColumn('phone')"
-      class="entity-edit-field"
-      appearance="outline">
-      <mat-label>{{'Phone' | translate}}</mat-label>
-      <input
-        matInput
-        type="text"
-        name="phone"
-        (change)="changed('phone')"
-        [(ngModel)]="data.entity.phone"
-        autocomplete="off">
-    </mat-form-field>
-
     <mat-form-field
       *ngIf="canEditColumn('email')"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       appearance="outline">
       <mat-label>{{'Email' | translate}}</mat-label>
       <input
@@ -58,8 +31,35 @@
     </mat-form-field>
 
     <mat-form-field
+      *ngIf="canEditColumn('phone')"
+      class="entity-edit-field-narrow"
+      appearance="outline">
+      <mat-label>{{'Phone' | translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        name="phone"
+        (change)="changed('phone')"
+        [(ngModel)]="data.entity.phone"
+        autocomplete="off">
+    </mat-form-field>
+
+    <app-magic-autocomplete
+      *ngIf="canEditColumn('account_id')"
+      [model]="data.entity"
+      field="account_id"
+      key="account_id"
+      table="accounts"
+      value="name"
+      [placeholder]="'Account' | translate"
+      class="entity-edit-field-narrow"
+      (change)="changed('account_id')"
+      [getItems]="service.aista_crm_accounts">
+    </app-magic-autocomplete>
+
+    <mat-form-field
       *ngIf="canEditColumn('country')"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       appearance="outline">
       <mat-label>{{'Country' | translate}}</mat-label>
       <input
@@ -73,7 +73,7 @@
 
     <mat-form-field
       *ngIf="canEditColumn('city')"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       appearance="outline">
       <mat-label>{{'City' | translate}}</mat-label>
       <input
@@ -111,6 +111,19 @@
         (change)="changed('meta')"
         [(ngModel)]="data.entity.meta"
         autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="canEditColumn('description')"
+      class="entity-edit-field-wide"
+      appearance="outline">
+      <mat-label>{{'Description' | translate}}</mat-label>
+      <textarea
+        matInput
+        rows="10"
+        name="description"
+        (change)="changed('description')"
+        [(ngModel)]="data.entity.description"></textarea>
     </mat-form-field>
 
 </div>
