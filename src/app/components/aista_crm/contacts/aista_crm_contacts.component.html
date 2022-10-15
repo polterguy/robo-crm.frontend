@@ -345,6 +345,58 @@
               <label>{{'Description' | translate}}</label>
               <span class="pre-formated">{{el['description']}}</span>
             </p>
+
+            <mat-card class="activities-card">
+
+              <button
+                mat-raised-button
+                *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'post') && httpService['aista_crm_activities']['create']"
+                class="create-button"
+                [matTooltip]="('Create activity' | translate)"
+                (click)="addActivity(el)">
+                <mat-icon>add_circle</mat-icon>
+              </button>
+
+              <h2>Activities</h2>
+        
+              <table
+                *ngIf="el.activities && el.activities.length > 0"
+                mat-table
+                class="activities-table"
+                [dataSource]="el.activities">
+
+                <ng-container matColumnDef="edit">
+                  <td mat-cell *matCellDef="let idx">
+                    <button
+                      mat-icon-button
+                      class="edit-activity-button"
+                      (click)="editActivity(el, idx)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="misc">
+                  <td mat-cell *matCellDef="let idx">
+                    {{idx.type}}, {{idx.username}}, {{idx.created | since}}
+                  </td>
+                </ng-container>
+
+                <ng-container matColumnDef="description">
+                  <td mat-cell *matCellDef="let idx">
+                    {{idx.description}}
+                  </td>
+                </ng-container>
+
+                <tr
+                  mat-row
+                  [class]="!row.done ? 'open' : 'closed'"
+                  *matRowDef="let row; columns: activitiesColumns;"></tr>
+                
+              </table>
+
+            </mat-card>
+
           </div>
         </td>
       </ng-container>
@@ -357,7 +409,7 @@
         mat-row
         [ngClass]="expandedElement === row ? 'selected' : 'row'"
         class="expandable-row"
-        (click)="expandedElement = expandedElement === row ? null : row"
+        (click)="expandedElement = expandedElement === row ? null : row; selectRow(row)"
         *matRowDef="let row; columns: displayedColumns;"></tr>
 
       <tr

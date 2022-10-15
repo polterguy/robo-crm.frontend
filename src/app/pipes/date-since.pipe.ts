@@ -20,6 +20,11 @@ export class DateSincePipe implements PipeTransform {
    */
   transform(value: any) {
 
+    // Sanity checking invocation.
+    if (!value) {
+      return value;
+    }
+
     /*
      * Some components might return date and time objects as strings, WITHOUT timezone information
      * at which point we'll have to make assumptions. The best assumption is UTC.

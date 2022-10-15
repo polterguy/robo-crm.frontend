@@ -25,6 +25,49 @@ app-magic-image-view {
   }
 }
 
+.component-wrapper .grid-wrapper {
+  mat-card.activities-card {
+    width: calc(100% + 2rem);
+    margin: .5rem -1rem 3rem -1rem;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    min-height: 10rem;
+    table.activities-table {
+      margin: 0;
+      position: relative;
+      padding: 0;
+      tr {
+        td {
+          padding: 0;
+          .edit-contact-button {
+            color: #9e9e9e;
+          }
+        }
+        td {
+          border-bottom: solid 1px rgba(0,0,0,.2);
+        }
+        td:nth-child(1) {
+          width: 50px;
+        }
+        td:nth-child(2) {
+          display: table-cell;
+        }
+      }
+      tr:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+      tr.closed {
+        font-style: italic;
+      }
+      tr.open {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
 .component-wrapper .grid-wrapper table tr td .details-sheet .details .pre-formated {
   white-space: pre;
   background-color: #f0f0f0;

@@ -22,6 +22,7 @@ import {
 import { EditAista_crm_contactsComponent } from './modals/edit.aista_crm_contacts.component';
 import { HttpService } from 'src/app/services/http-service';
 import { AuthService } from 'src/app/services/auth-service';
+import { EditAista_crm_activitiesComponent } from '../activities/modals/edit.aista_crm_activities.component';
 
 /**
  * "Datagrid" component for displaying instance of Contacts
@@ -58,6 +59,12 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     'linkedIn',
     'meta',
     'delete-instance'
+  ];
+
+  public activitiesColumns: string[] = [
+    'edit',
+    'misc',
+    'description',
   ];
 
 
@@ -231,5 +238,77 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
     }
     let file: any = document.getElementById("inputValue");
     file.value = "";
+  }
+
+  /**
+   * Invoked when a row is selected or expanded.
+   * 
+   * @param row Row that was selected
+   */
+   selectRow(row: any) {
+    if(this.expandedElement && !row.activities) {
+      this.getActivities(row);
+    }
+  }
+
+  /**
+   * Invoked when a contact is added to an account.
+   * 
+   * @param row Row to add contact to
+   */
+   addActivity(row: any) {
+
+    const dialogRef = this.dialog.open(EditAista_crm_activitiesComponent, {
+      data: {
+        isEdit: false,
+        entity: {
+          contact_id: row.contact_id,
+          username: this.authService.me.username(),
+          type: 'Misc',
+          done: true,
+        },
+      }});
+    dialogRef.afterClosed().subscribe((res: any) => {
+      if (res) {
+        this.getActivities(row);
+      }
+    });
+  }
+
+  /**
+   * Edits the specified contact.
+   * 
+   * @param contact Contact activity belongs to
+   * @param activity Activity to edit
+   * @returns 
+   */
+   editActivity(contact: any, activity: any) {
+    const dialogRef = this.dialog.open(EditAista_crm_activitiesComponent, {
+      data: this.getEditData(activity)
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.getActivities(contact);
+      }
+    });
+    return false;
+  }
+
+  /**
+   * Invoked when we need to fetch contacts for an account.
+   * 
+   * @param row Row to retrieve contacts for
+   */
+   private getActivities(row: any) {
+    this.httpService.aista_crm_activities.read({
+      ['activities.contact_id.eq']: row.contact_id,
+      order: 'activities.created',
+      direction: 'desc',
+    }).subscribe({
+      next: (result: any[]) => {
+        row.activities = result || [];
+      },
+      error: (error: any) => console.log(error)
+    });
   }
 }
