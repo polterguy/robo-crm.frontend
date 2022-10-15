@@ -49,6 +49,7 @@ import { Aista_crm_contactsComponent } from './components/aista_crm/contacts/ais
 import { EditAista_crm_contactsComponent } from './components/aista_crm/contacts/modals/edit.aista_crm_contacts.component';
 import { Aista_crm_statusComponent } from './components/aista_crm/status/aista_crm_status.component';
 import { EditAista_crm_statusComponent } from './components/aista_crm/status/modals/edit.aista_crm_status.component';
+import { BlasterComponent } from './components/blaster/blaster.component';
 
 
 @NgModule({
@@ -112,6 +113,7 @@ import { EditAista_crm_statusComponent } from './components/aista_crm/status/mod
     EditAista_crm_contactsComponent,
     Aista_crm_statusComponent,
     EditAista_crm_statusComponent,
+    BlasterComponent,
   ],
 
   providers: [NgxImageCompressService],

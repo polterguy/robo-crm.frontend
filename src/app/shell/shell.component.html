@@ -87,6 +87,15 @@
           <a
             *ngIf="authService.me.inRole(['root', 'admin'])"
             mat-list-item
+            routerLink="blaster"
+            routerLinkActive="active"
+            (click)="isMobile && sidenav.close()">
+            <span translate>Blaster</span>
+          </a>
+          <mat-divider *ngIf="authService.me.inRole(['root', 'admin'])"></mat-divider>
+          <a
+            *ngIf="authService.me.inRole(['root', 'admin'])"
+            mat-list-item
             routerLink="crud/aista_crm/status"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
