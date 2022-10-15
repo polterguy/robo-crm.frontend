@@ -4,7 +4,7 @@
 
     <mat-form-field
       *ngIf="canEditColumn('name')"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       appearance="outline">
       <mat-label>{{'name' | translate}}</mat-label>
       <input
@@ -16,9 +16,29 @@
         autocomplete="off">
     </mat-form-field>
 
+    <app-magic-selector
+      *ngIf="canEditColumn('status')"
+      [model]="data.entity"
+      field="status"
+      key="status"
+      value="status"
+      [placeholder]="'Status' | translate"
+      class="entity-edit-field-narrow"
+      (change)="changed('status')"
+      [getItems]="service.aista_crm_status.read({limit:-1})">
+    </app-magic-selector>
+
+    <app-magic-username-lookup
+      *ngIf="canEditColumn('account_manager')"
+      [model]="data.entity"
+      field="account_manager"
+      class="entity-edit-field-narrow"
+      (change)="changed('account_manager')">
+    </app-magic-username-lookup>
+
     <mat-form-field
       *ngIf="canEditColumn('website')"
-      class="entity-edit-field"
+      class="entity-edit-field-wide"
       appearance="outline">
       <mat-label>{{'website' | translate}}</mat-label>
       <input
@@ -30,39 +50,17 @@
         autocomplete="off">
     </mat-form-field>
 
-    <app-magic-selector
-      *ngIf="canEditColumn('status')"
-      [model]="data.entity"
-      field="status"
-      key="status"
-      value="status"
-      [placeholder]="'Status' | translate"
-      class="entity-edit-field"
-      (change)="changed('status')"
-      [getItems]="service.aista_crm_status.read({limit:-1})">
-    </app-magic-selector>
-
-    <app-magic-username-lookup
-      *ngIf="canEditColumn('account_manager')"
-      [model]="data.entity"
-      field="account_manager"
-      class="entity-edit-field"
-      (change)="changed('account_manager')">
-    </app-magic-username-lookup>
-
     <mat-form-field
-      *ngIf="canEditColumn('account_id')"
-      class="entity-edit-field"
+      *ngIf="canEditColumn('description')"
+      class="entity-edit-field-wide"
       appearance="outline">
-      <mat-label>{{'account_id' | translate}}</mat-label>
-      <input
+      <mat-label>{{'Description' | translate}}</mat-label>
+      <textarea
         matInput
-        type="number"
-        step="1"
-        name="account_id"
-        (change)="changed('account_id')"
-        [(ngModel)]="data.entity.account_id"
-        autocomplete="off">
+        rows="10"
+        name="description"
+        (change)="changed('description')"
+        [(ngModel)]="data.entity.description"></textarea>
     </mat-form-field>
 
 </div>

@@ -183,6 +183,10 @@
               <a [href]="ensureUrl(el['website'])" target="_blank">{{el['website']}}</a>
             </p>
             <p class="details">
+              <label>{{'Description' | translate}}</label>
+              <span class="pre-formated">{{el['description']}}</span>
+            </p>
+            <p class="details">
               <label>{{'Created' | translate}}</label>
               <span>{{el['created'] | formatDate}}</span>
             </p>

@@ -30,14 +30,16 @@ export class EditAista_crm_accountsComponent extends DialogComponent {
       'name',
       'website',
       'status',
-      'account_manager'
+      'account_manager',
+      'description',
     ];
     this.updateColumns = [
       'name',
       'website',
       'status',
       'account_manager',
-      'account_id'
+      'account_id',
+      'description',
     ];
     const datesToFormat: string[] = [];
     for (let idx of datesToFormat) {
@@ -86,7 +88,15 @@ export class EditAista_crm_accountsComponent extends DialogComponent {
     }
   }
 
+  /**
+   * Returns true if account can be saved
+   * 
+   * @returns True if account can be saved
+   */
   canSave() {
-    return this.data.entity.status && this.data.entity.account_manager;
+    return this.data.entity.status &&
+      this.data.entity.account_manager &&
+      this.data.entity.name &&
+      this.data.entity.name.length > 0;
   }
 }

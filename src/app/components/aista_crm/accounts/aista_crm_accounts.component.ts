@@ -201,7 +201,10 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
     const dialogRef = this.dialog.open(EditAista_crm_accountsComponent, {
       data: {
         isEdit: false,
-        entity: {},
+        entity: {
+          account_manager: this.authService.me.username(),
+          status: 'Lead',
+        },
       }});
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res) {
