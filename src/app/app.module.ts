@@ -47,8 +47,6 @@ import { Aista_crm_activity_typesComponent } from './components/aista_crm/activi
 import { EditAista_crm_activity_typesComponent } from './components/aista_crm/activity_types/modals/edit.aista_crm_activity_types.component';
 import { Aista_crm_contactsComponent } from './components/aista_crm/contacts/aista_crm_contacts.component';
 import { EditAista_crm_contactsComponent } from './components/aista_crm/contacts/modals/edit.aista_crm_contacts.component';
-import { Aista_crm_notificationsComponent } from './components/aista_crm/notifications/aista_crm_notifications.component';
-import { EditAista_crm_notificationsComponent } from './components/aista_crm/notifications/modals/edit.aista_crm_notifications.component';
 import { Aista_crm_statusComponent } from './components/aista_crm/status/aista_crm_status.component';
 import { EditAista_crm_statusComponent } from './components/aista_crm/status/modals/edit.aista_crm_status.component';
 
@@ -112,8 +110,6 @@ import { EditAista_crm_statusComponent } from './components/aista_crm/status/mod
     EditAista_crm_activity_typesComponent,
     Aista_crm_contactsComponent,
     EditAista_crm_contactsComponent,
-    Aista_crm_notificationsComponent,
-    EditAista_crm_notificationsComponent,
     Aista_crm_statusComponent,
     EditAista_crm_statusComponent,
   ],

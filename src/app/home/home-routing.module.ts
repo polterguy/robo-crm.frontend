@@ -14,7 +14,6 @@ import { Aista_crm_accountsComponent } from '../components/aista_crm/accounts/ai
 import { Aista_crm_activitiesComponent } from '../components/aista_crm/activities/aista_crm_activities.component';
 import { Aista_crm_activity_typesComponent } from '../components/aista_crm/activity_types/aista_crm_activity_types.component';
 import { Aista_crm_contactsComponent } from '../components/aista_crm/contacts/aista_crm_contacts.component';
-import { Aista_crm_notificationsComponent } from '../components/aista_crm/notifications/aista_crm_notifications.component';
 import { Aista_crm_statusComponent } from '../components/aista_crm/status/aista_crm_status.component';
 
 
@@ -28,7 +27,6 @@ const routes: Routes = [
     { path: 'crud/aista_crm/activities', component: Aista_crm_activitiesComponent, data: { title: marker('Activities') } },
     { path: 'crud/aista_crm/activity_types', component: Aista_crm_activity_typesComponent, data: { title: marker('Activity types') } },
     { path: 'crud/aista_crm/contacts', component: Aista_crm_contactsComponent, data: { title: marker('Contacts') } },
-    { path: 'crud/aista_crm/notifications', component: Aista_crm_notificationsComponent, data: { title: marker('Notifications') } },
     { path: 'crud/aista_crm/status', component: Aista_crm_statusComponent, data: { title: marker('Status') } },
 
   ]),
