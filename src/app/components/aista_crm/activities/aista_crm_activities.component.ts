@@ -114,7 +114,7 @@ export class Aista_crm_activitiesComponent extends GridComponent implements OnIn
    * for CRUD methods to base class.
    */
   public entityBaseUrl() {
-    return 'magic/modules/aista-crm/activities';
+    return 'magic/modules/aista-crm/activities/activities';
   }
 
   /**

@@ -89,7 +89,7 @@ export class Aista_crm_activity_typesComponent extends GridComponent implements 
    * for CRUD methods to base class.
    */
   public entityBaseUrl() {
-    return 'magic/modules/aista-crm/activity_types';
+    return 'magic/modules/aista-crm/activities/activity_types';
   }
 
   /**

@@ -114,35 +114,35 @@ export class HttpService {
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts' +
+          'magic/modules/aista-crm/accounts/accounts' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts' +
+          'magic/modules/aista-crm/accounts/accounts' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts-count' +
+          'magic/modules/aista-crm/accounts/accounts-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts',
+          'magic/modules/aista-crm/accounts/accounts',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts',
+          'magic/modules/aista-crm/accounts/accounts',
           args);
       }
     }
@@ -157,35 +157,35 @@ export class HttpService {
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities' +
+          'magic/modules/aista-crm/activities/activities' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities' +
+          'magic/modules/aista-crm/activities/activities' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities-count' +
+          'magic/modules/aista-crm/activities/activities-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities',
+          'magic/modules/aista-crm/activities/activities',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities',
+          'magic/modules/aista-crm/activities/activities',
           args);
       }
     }
@@ -214,35 +214,35 @@ export class HttpService {
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activity_types' +
+          'magic/modules/aista-crm/activities/activity_types' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activity_types' +
+          'magic/modules/aista-crm/activities/activity_types' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activity_types-count' +
+          'magic/modules/aista-crm/activities/activity_types-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activity_types',
+          'magic/modules/aista-crm/activities/activity_types',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activity_types',
+          'magic/modules/aista-crm/activities/activity_types',
           args);
       }
     }
@@ -257,35 +257,35 @@ export class HttpService {
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts' +
+          'magic/modules/aista-crm/contacts/contacts' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts' +
+          'magic/modules/aista-crm/contacts/contacts' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts-count' +
+          'magic/modules/aista-crm/contacts/contacts-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts',
+          'magic/modules/aista-crm/contacts/contacts',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts',
+          'magic/modules/aista-crm/contacts/contacts',
           args);
       }
     }

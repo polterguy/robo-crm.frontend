@@ -350,7 +350,7 @@
 
               <button
                 mat-raised-button
-                *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities', 'post') && httpService['aista_crm_activities']['create']"
+                *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities/activities', 'post') && httpService['aista_crm_activities']['create']"
                 class="create-button"
                 [matTooltip]="('Create activity' | translate)"
                 (click)="addActivity(el)">
@@ -398,7 +398,7 @@
                   <td
                     mat-cell
                     *matCellDef="let activity"
-                    [ngClass]="authService.me.canInvoke('magic/modules/aista-crm/activities', 'delete') && httpService['aista_crm_activities']['delete'] ? 'delete-column' : 'hidden'">
+                    [ngClass]="authService.me.canInvoke('magic/modules/aista-crm/activities/activities', 'delete') && httpService['aista_crm_activities']['delete'] ? 'delete-column' : 'hidden'">
                     <button
                       mat-button
                       (click)="deleteActivity(activity, el)"

@@ -195,7 +195,7 @@
 
               <button
                 mat-raised-button
-                *ngIf="authService.me.canInvoke('magic/modules/aista-crm/contacts', 'post') && httpService['aista_crm_contacts']['create']"
+                *ngIf="authService.me.canInvoke('magic/modules/aista-crm/contacts/contacts', 'post') && httpService['aista_crm_contacts']['create']"
                 class="create-button"
                 [matTooltip]="('Create contact' | translate)"
                 (click)="addContact(el)">

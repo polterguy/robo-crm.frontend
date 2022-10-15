@@ -51,8 +51,8 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
    */
   public displayedColumns: string[] = [
     'name',
-    'account_id.name',
     'email',
+    'account_id.name',
     'created',
     'phone',
     'country',
@@ -118,7 +118,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
    * for CRUD methods to base class.
    */
   public entityBaseUrl() {
-    return 'magic/modules/aista-crm/contacts';
+    return 'magic/modules/aista-crm/contacts/contacts';
   }
 
   /**
@@ -231,7 +231,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
    */
   uploadFiles(files: FileList) {
     for (let idx = 0; idx < files.length; idx++) {
-      this.httpService.uploadFile('aista-crm/import-contacts', files[idx]).subscribe({
+      this.httpService.uploadFile('aista-crm/contacts/import-contacts', files[idx]).subscribe({
         next: (result) => {
           this.snackBar.open(`${result.imported} contacts was successfully imported, ${result.skipped} contacts was skipped`, 'ok', {
             duration: 5000,

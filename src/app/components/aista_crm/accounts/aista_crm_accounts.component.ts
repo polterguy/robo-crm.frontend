@@ -116,7 +116,7 @@ export class Aista_crm_accountsComponent extends GridComponent implements OnInit
    * for CRUD methods to base class.
    */
   public entityBaseUrl() {
-    return 'magic/modules/aista-crm/accounts';
+    return 'magic/modules/aista-crm/accounts/accounts';
   }
 
   /**
