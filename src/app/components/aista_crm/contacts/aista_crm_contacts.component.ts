@@ -324,8 +324,7 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
   private getActivities(row: any) {
     this.httpService.aista_crm_activities.read({
       ['activities.contact_id.eq']: row.contact_id,
-      order: 'activities.created',
-      direction: 'desc',
+      order: 'activities.due',
     }).subscribe({
       next: (result: any[]) => {
         row.activities = result || [];
