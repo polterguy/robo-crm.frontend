@@ -40,7 +40,7 @@
     <div class="content" *ngIf="email.title !== null">
 
       <mat-form-field appearance="outline">
-        <mat-label>Content</mat-label>
+        <mat-label>Content markdown</mat-label>
         <textarea
           matInput
           [disabled]="email.title === null"
@@ -56,6 +56,7 @@
 
       <button
         mat-raised-button
+        matTooltip="Saves your email"
         [disabled]="email.title === null || !email.content || !email.email_template_id"
         (click)="save()">
         Save
@@ -63,6 +64,7 @@
 
       <button
         mat-raised-button
+        matTooltip="Creates a copy of your email"
         [disabled]="email.title === null || !email.content || !email.email_template_id || !email.email_id"
         (click)="saveCopy()">
         Copy
@@ -70,6 +72,15 @@
 
       <button
         mat-raised-button
+        matTooltip="Closes email editor"
+        [disabled]="email.title === null"
+        (click)="close()">
+        Close
+      </button>
+
+      <button
+        mat-raised-button
+        matTooltip="Permanently deletes email"
         [disabled]="email.title === null"
         (click)="delete()">
         Delete
@@ -77,6 +88,7 @@
 
       <button
         mat-raised-button
+        matTooltip="Sends email, showing a preview dialogue and allowing you to apply segmentation before"
         [disabled]="email.title === null || !email.content || !email.email_template_id || !email.email_id"
         (click)="send()">
         Send ...

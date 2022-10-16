@@ -54,6 +54,13 @@ export class BlasterComponent implements OnInit {
     };
   }
 
+  close() {
+    this.email = {
+      title: null,
+      content: '',
+    };
+  }
+
   delete() {
 
     // Asking user to confirm deletion of entity.
