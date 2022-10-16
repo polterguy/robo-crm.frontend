@@ -4,7 +4,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
@@ -52,6 +52,7 @@ import { EditAista_crm_statusComponent } from './components/aista_crm/status/mod
 import { Aista_crm_blaster_email_templatesComponent } from './components/aista_crm/email_templates/aista_crm_blaster_email_templates.component';
 import { EditAista_crm_blaster_email_templatesComponent } from './components/aista_crm/email_templates/modals/edit.aista_crm_blaster_email_templates.component';
 import { BlasterComponent } from './components/blaster/blaster.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { BlasterComponent } from './components/blaster/blaster.component';
     ShellModule,
     HomeModule,
     AuthModule,
+    MarkdownModule.forRoot({ loader: HttpClient }),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

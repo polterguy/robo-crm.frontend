@@ -18,13 +18,19 @@
         [(ngModel)]="title">
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="content">
-      <mat-label>Content</mat-label>
-      <textarea
-        matInput
-        [(ngModel)]="body"
-        rows="15"></textarea>
-    </mat-form-field>
+    <div class="content">
+
+      <mat-form-field appearance="outline">
+        <mat-label>Content</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="body"
+          rows="15"></textarea>
+      </mat-form-field>
+  
+      <markdown [data]="body"></markdown>
+  
+    </div>
 
     <div class="right-aligned">
       <button

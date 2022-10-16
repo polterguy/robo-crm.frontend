@@ -17,4 +17,20 @@
   .wide-button {
     width: 150px;
   }
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    mat-form-field {
+      margin-right: 1rem;
+      flex-direction: column;
+      flex: 0 0 calc(50% - 1rem);
+      width: calc(50% - 1rem);
+    }
+    markdown {
+      flex-direction: column;
+      flex: 0 0 50%;
+      width: 50%;
+    }
+  }
 }
