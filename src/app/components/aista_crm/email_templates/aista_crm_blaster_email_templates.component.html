@@ -74,10 +74,9 @@
               (click)="editEntity(el)">
               <mat-icon matSuffix>edit</mat-icon>
             </button>
-            <p class="details">
-              <label>{{'content' | translate}}</label>
-              <span>{{el['content']}}</span>
-            </p>
+            <div class="details-full-width">
+              <div [innerHTML]="el.content"></div>
+            </div>
           </div>
         </td>
       </ng-container>
