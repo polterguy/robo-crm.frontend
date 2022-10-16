@@ -92,6 +92,10 @@ export class EditAista_crm_activitiesComponent extends DialogComponent {
   }
 
   canSave() {
-    return !!this.data.entity.type && !!this.data.entity.description && this.data.entity.description.length > 0 && !!this.data.entity.username;
+    return !!this.data.entity.type &&
+      !!this.data.entity.description &&
+      this.data.entity.description.length > 0 &&
+      !!this.data.entity.username &&
+      this.data.entity.due;
   }
 }
