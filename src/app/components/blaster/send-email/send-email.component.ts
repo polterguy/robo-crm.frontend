@@ -13,7 +13,7 @@ export class SendEmailComponent implements OnInit {
   email: any = null;
   template: any = null;
   html: string = null;
-  sources: string[] = [];
+  sources: any[] = [];
   segmentation: string = null;
   total: number = 0;
 
@@ -53,5 +53,16 @@ export class SendEmailComponent implements OnInit {
       },
       error: (error: any) => console.error(error)
     });
+  }
+
+  getRecipients() {
+    if (this.sources && this.sources.length > 0) {
+      if (this.segmentation) {
+        return this.sources.filter(x => x.source === this.segmentation)[0].count;
+      } else {
+        return this.total;
+      }
+    }
+    return '';
   }
 }

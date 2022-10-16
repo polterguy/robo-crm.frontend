@@ -1,10 +1,10 @@
 
-<h1 mat-dialog-title>{{'Blast emails' | translate}}</h1>
+<h1 mat-dialog-title>{{'Blast emails' | translate}} to {{getRecipients()}} recipients</h1>
 
 <div mat-dialog-content>
 
   <div>
-    <strong>Subject</strong> {{email?.title}}
+    <strong>{{email?.title}}</strong>
   </div>
 
   <div class="content">
