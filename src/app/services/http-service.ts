@@ -378,7 +378,7 @@ export class HttpService {
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_status' entities.
+   * HTTP CRUD service methods for your 'aista_crm_blaster_email_templates' entities.
    */
    get aista_crm_blaster_email_templates() : ICrudEntity {
     return {
@@ -415,6 +415,49 @@ export class HttpService {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
           'magic/modules/aista-crm/blaster/email_templates',
+          args);
+      }
+    }
+  }
+
+  /**
+   * HTTP CRUD service methods for your 'aista_crm_blaster_email' entities.
+   */
+   get aista_crm_blaster_emails() : ICrudEntity {
+    return {
+
+      delete: (filter: any) => {
+        return this.httpClient.delete<any>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/emails' +
+          this.getQueryArgs(filter));
+      },
+
+      read: (filter: any) => {
+        return this.httpClient.get<any[]>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/emails' +
+          this.getQueryArgs(filter));
+      },
+
+      count: (filter: any) => {
+        return this.httpClient.get<CountResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/emails-count' +
+          this.getQueryArgs(filter));
+      },
+
+      create: (args: any) => {
+        return this.httpClient.post<CreateResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/emails',
+          args);
+      },
+
+      update: (args: any) => {
+        return this.httpClient.put<UpdateResponse>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/emails',
           args);
       }
     }

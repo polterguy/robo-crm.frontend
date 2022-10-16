@@ -2,8 +2,30 @@
 .blaster {
   padding: 1rem;
 
-  .templates {
-    width: 100%;
+  .top-bar {
+    mat-form-field {
+      width: 100%;
+      margin-top: 2rem;
+    }
+  }
+
+  @media screen and (min-width: 1080px) {
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      mat-form-field {
+        margin-right: 1rem;
+        flex-direction: column;
+        flex: 0 0 calc(50% - 1rem);
+        width: calc(50% - 1rem);
+      }
+      mat-form-field:nth-child(2) {
+        flex: 0 0 50%;
+        width: 50%;
+        margin-right: 0;
+      }
+    }
   }
   .title {
     width: 100%;
@@ -18,19 +40,28 @@
     width: 150px;
   }
   .content {
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
+    display: block;
     mat-form-field {
-      margin-right: 1rem;
-      flex-direction: column;
-      flex: 0 0 calc(50% - 1rem);
-      width: calc(50% - 1rem);
+      margin-bottom: 1rem;
+      width: 100%;
     }
-    markdown {
-      flex-direction: column;
-      flex: 0 0 50%;
-      width: 50%;
+  }
+  @media screen and (min-width: 1080px) {
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      mat-form-field {
+        margin-right: 1rem;
+        flex-direction: column;
+        flex: 0 0 calc(50% - 1rem);
+        width: calc(50% - 1rem);
+      }
+      markdown {
+        flex-direction: column;
+        flex: 0 0 50%;
+        width: 50%;
+      }
     }
   }
 }

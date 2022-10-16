@@ -3,43 +3,85 @@
 
   <div class="mat-elevation-z4 relativized blaster grid-wrapper">
 
-    <mat-form-field appearance="outline" class="templates">
-      <mat-label>Template</mat-label>
-      <mat-select [(ngModel)]="template">
-        <mat-option *ngFor="let idx of templates" [value]="idx">{{idx.name}}</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="top-bar">
 
-    <mat-form-field appearance="outline" class="title">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <mat-select [(ngModel)]="email">
+          <mat-option *ngFor="let idx of emails" [value]="idx">{{idx.title}} [{{idx.created | since}}]</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" *ngIf="email.title !== null">
+        <mat-label>Template</mat-label>
+        <mat-select [(ngModel)]="email.email_template_id">
+          <mat-option *ngFor="let idx of templates" [value]="idx.email_template_id">{{idx.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        matTooltip="Create new email"
+        (click)="newEmail()"
+        class="create-button">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    
+    </div>
+
+    <mat-form-field appearance="outline" class="title" *ngIf="email.title !== null">
       <mat-label>Title</mat-label>
       <input
         matInput
         type="text"
-        [(ngModel)]="title">
+        [(ngModel)]="email.title">
     </mat-form-field>
 
-    <div class="content">
+    <div class="content" *ngIf="email.title !== null">
 
       <mat-form-field appearance="outline">
         <mat-label>Content</mat-label>
         <textarea
           matInput
-          [(ngModel)]="body"
+          [disabled]="email.title === null"
+          [(ngModel)]="email.content"
           rows="15"></textarea>
       </mat-form-field>
   
-      <markdown [data]="body"></markdown>
+      <markdown [data]="email.content"></markdown>
   
     </div>
 
-    <div class="right-aligned">
+    <div class="right-aligned" *ngIf="email.title !== null">
+
       <button
         mat-raised-button
-        [disabled]="!body || !title || !template"
-        class="wide-button"
-        (click)="preview()">
-        Preview
+        [disabled]="email.title === null || !email.content || !email.email_template_id"
+        (click)="save()">
+        Save
       </button>
+
+      <button
+        mat-raised-button
+        [disabled]="email.title === null || !email.content || !email.email_template_id || !email.email_id"
+        (click)="saveCopy()">
+        Copy
+      </button>
+
+      <button
+        mat-raised-button
+        [disabled]="email.title === null"
+        (click)="delete()">
+        Delete
+      </button>
+
+      <button
+        mat-raised-button
+        [disabled]="email.title === null || !email.content || !email.email_template_id || !email.email_id"
+        (click)="send()">
+        Send ...
+      </button>
+
     </div>
 
   </div>
