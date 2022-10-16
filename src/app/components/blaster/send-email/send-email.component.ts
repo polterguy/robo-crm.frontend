@@ -65,4 +65,19 @@ export class SendEmailComponent implements OnInit {
     }
     return '';
   }
+
+  blast() {
+    const payload: any = {
+      title: this.email.title,
+      content: this.html,
+    };
+    if (this.segmentation) {
+      payload.segmentation = this.segmentation;
+    }
+    this.httpService.aista_crm_blaster_emails.blast(payload).subscribe({
+      next: (result: any) => {
+        console.log(result);
+      }
+    });
+  }
 }

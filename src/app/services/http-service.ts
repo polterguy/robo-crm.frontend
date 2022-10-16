@@ -293,7 +293,7 @@ export class HttpService {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
           'magic/modules/aista-crm/contacts/sources');
-      }
+      },
     }
   }
 
@@ -429,7 +429,7 @@ export class HttpService {
   /**
    * HTTP CRUD service methods for your 'aista_crm_blaster_email' entities.
    */
-   get aista_crm_blaster_emails() : ICrudEntity {
+   get aista_crm_blaster_emails() {
     return {
 
       delete: (filter: any) => {
@@ -465,6 +465,13 @@ export class HttpService {
           environment.apiUrl +
           'magic/modules/aista-crm/blaster/emails',
           args);
+      },
+
+      blast: (payload: any) => {
+        return this.httpClient.post<any>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/blaster/blast',
+          payload);
       }
     }
   }
