@@ -87,7 +87,7 @@
 
     <mat-form-field
       *ngIf="canEditColumn('linkedIn')"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       appearance="outline">
       <mat-label>{{'LinkedIn' | translate}}</mat-label>
       <input
@@ -101,7 +101,7 @@
 
     <mat-form-field
       *ngIf="canEditColumn('meta')"
-      class="entity-edit-field"
+      class="entity-edit-field-narrow"
       appearance="outline">
       <mat-label>{{'Meta' | translate}}</mat-label>
       <input
@@ -110,6 +110,20 @@
         name="meta"
         (change)="changed('meta')"
         [(ngModel)]="data.entity.meta"
+        autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field
+      *ngIf="canEditColumn('source')"
+      class="entity-edit-field-narrow"
+      appearance="outline">
+      <mat-label>{{'Source' | translate}}</mat-label>
+      <input
+        matInput
+        type="text"
+        name="source"
+        (change)="changed('source')"
+        [(ngModel)]="data.entity.source"
         autocomplete="off">
     </mat-form-field>
 

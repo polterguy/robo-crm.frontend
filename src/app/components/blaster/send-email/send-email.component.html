@@ -1,11 +1,31 @@
 
 <h1 mat-dialog-title>{{'Blast emails' | translate}}</h1>
+
 <div mat-dialog-content>
+
   <div>
     <strong>Subject</strong> {{email?.title}}
   </div>
-  <div [innerHTML]="html"></div>
+
+  <div class="content">
+    <div [innerHTML]="html"></div>
+  </div>
+
 </div>
-<div mat-dialog-actions>
+
+<div mat-dialog-actions class="right-aligned">
+
+  <mat-form-field appearance="outline" class="smaller">
+    <mat-label>Segmentation</mat-label>
+    <mat-select [(ngModel)]="segmentation">
+      <mat-option [value]="null">No segmentation [{{total}}] recipients</mat-option>
+      <mat-option *ngFor="let idx of sources" [value]="idx.source">{{idx.source}} [{{idx.count}} recipients]</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-raised-button>
+    Send
+  </button>
 
 </div>

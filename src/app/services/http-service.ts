@@ -251,7 +251,7 @@ export class HttpService {
   /**
    * HTTP CRUD service methods for your 'aista_crm_contacts' entities.
    */
-  get aista_crm_contacts() : ICrudEntity {
+  get aista_crm_contacts() {
     return {
 
       delete: (filter: any) => {
@@ -287,6 +287,12 @@ export class HttpService {
           environment.apiUrl +
           'magic/modules/aista-crm/contacts/contacts',
           args);
+      },
+
+      distinctSources: () => {
+        return this.httpClient.get<any[]>(
+          environment.apiUrl +
+          'magic/modules/aista-crm/contacts/sources');
       }
     }
   }
