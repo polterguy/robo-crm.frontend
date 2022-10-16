@@ -83,18 +83,18 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Activities</span>
           </a>
-          <mat-divider *ngIf="authService.me.inRole(['root', 'admin'])"></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/emails', 'get')"></mat-divider>
           <a
-            *ngIf="authService.me.inRole(['root', 'admin'])"
+            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/emails', 'get')"
             mat-list-item
             routerLink="blaster"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Blaster</span>
           </a>
-          <mat-divider *ngIf="authService.me.inRole(['root', 'admin'])"></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/email_templates', 'get')"></mat-divider>
           <a
-            *ngIf="authService.me.inRole(['root', 'admin'])"
+            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/email_templates', 'get')"
             mat-list-item
             routerLink="crud/aista_crm/blaster/email_templates"
             routerLinkActive="active"
