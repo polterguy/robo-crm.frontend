@@ -12,7 +12,7 @@ export class BlasterComponent implements OnInit {
   templates: any[] = [];
 
   // Selected template
-  selected: any = null;
+  template: any = null;
 
   // Content of email
   title: string = null;
@@ -29,13 +29,9 @@ export class BlasterComponent implements OnInit {
     });
   }
 
-  templateChanged() {
-    this.body = this.selected.content;
-  }
-
-  send() {
+  preview() {
     console.log({
-      selected: this.selected,
+      selected: this.template,
       title: this.title,
       body: this.body,
     });

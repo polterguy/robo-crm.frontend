@@ -5,7 +5,7 @@
 
     <mat-form-field appearance="outline" class="templates">
       <mat-label>Template</mat-label>
-      <mat-select [(ngModel)]="selected" [disabled]="body?.length > 0" (selectionChange)="templateChanged()">
+      <mat-select [(ngModel)]="template">
         <mat-option *ngFor="let idx of templates" [value]="idx">{{idx.name}}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -29,10 +29,10 @@
     <div class="right-aligned">
       <button
         mat-raised-button
-        [disabled]="!body || !title"
+        [disabled]="!body || !title || !template"
         class="wide-button"
-        (click)="send()">
-        Send
+        (click)="preview()">
+        Preview
       </button>
     </div>
 
