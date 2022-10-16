@@ -53,6 +53,7 @@ import { Aista_crm_blaster_email_templatesComponent } from './components/aista_c
 import { EditAista_crm_blaster_email_templatesComponent } from './components/aista_crm/email_templates/modals/edit.aista_crm_blaster_email_templates.component';
 import { BlasterComponent } from './components/blaster/blaster.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { SendEmailComponent } from './components/blaster/send-email/send-email.component';
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import { MarkdownModule } from 'ngx-markdown';
     EditUserDialogComponent,
     CreateUserDialogComponent,
     EditExtraFieldsComponent,
+    SendEmailComponent,
 
     // Generated CRUD components here.
     Aista_crm_accountsComponent,

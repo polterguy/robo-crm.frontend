@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent, ConfirmDialogData } from '@app/confirm-deletion-dialog/confirm-dialog.component';
 import { HttpService } from '@app/services/http-service';
+import { SendEmailComponent } from './send-email/send-email.component';
 
 @Component({
   selector: 'app-blaster',
@@ -168,6 +169,11 @@ export class BlasterComponent implements OnInit {
   }
 
   send() {
-    console.log(this.email);
+    const dialogRef = this.dialog.open(SendEmailComponent, {
+      width: '80%',
+      data: {
+        email_id: this.email.email_id,
+      }
+    });
   }
 }
