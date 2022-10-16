@@ -28,6 +28,7 @@ export class SendEmailComponent implements OnInit {
     // Retrieving segmentation options.
     this.httpService.aista_crm_contacts.distinctSources().subscribe({
       next: (sources: any[]) => {
+        sources = sources || [];
         this.sources = sources.filter(x => x.source !== null);
         this.total = 0;
         for (const idx of sources) {
