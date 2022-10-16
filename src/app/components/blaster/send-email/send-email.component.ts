@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpService } from '@app/services/http-service';
 import { marked } from 'marked';
 
@@ -19,6 +20,7 @@ export class SendEmailComponent implements OnInit {
 
   constructor(
     private httpService: HttpService,
+    private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
@@ -76,7 +78,9 @@ export class SendEmailComponent implements OnInit {
     }
     this.httpService.aista_crm_blaster_emails.blast(payload).subscribe({
       next: (result: any) => {
-        console.log(result);
+        this.snackBar.open('Emails are being sent, you can leave this page now', 'ok', {
+          duration: 5000,
+        });
       }
     });
   }
