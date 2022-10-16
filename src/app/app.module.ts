@@ -54,6 +54,7 @@ import { EditAista_crm_blaster_email_templatesComponent } from './components/ais
 import { BlasterComponent } from './components/blaster/blaster.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { SendEmailComponent } from './components/blaster/send-email/send-email.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -73,6 +74,11 @@ import { SendEmailComponent } from './components/blaster/send-email/send-email.c
     HomeModule,
     AuthModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
+    ToastrModule.forRoot({
+      timeOut: 150000, // 15 seconds
+      closeButton: true,
+      progressBar: true,
+    }),
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

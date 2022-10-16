@@ -6,11 +6,19 @@ import { Title } from '@angular/platform-browser';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MediaObserver } from '@angular/flex-layout';
+import { ToastrService } from 'ngx-toastr';
 
 import { AuthenticationService, CredentialsService } from '@app/auth';
 import { AuthService } from '@app/services/auth-service';
 import { MessageService } from '@app/services/message.service';
 import { Message } from '@app/services/models/message.model';
+
+import {
+  HttpTransportType,
+  HubConnection,
+  HubConnectionBuilder
+} from '@microsoft/signalr';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-shell',
@@ -21,6 +29,9 @@ export class ShellComponent implements OnInit, OnDestroy {
 
   // Needed to subscribe to relevant message from other components.
   private subscription: Subscription = null;
+
+  // SignalR connection.
+  private hubConnection: HubConnection;
 
   /**
    * If true, we should obscure UI to avoid user from interacting with it.
@@ -34,7 +45,8 @@ export class ShellComponent implements OnInit, OnDestroy {
     private authenticationService: AuthenticationService,
     private messageService: MessageService,
     private credentialsService: CredentialsService,
-    private media: MediaObserver) { }
+    private media: MediaObserver,
+    private toastrService: ToastrService) { }
 
   ngOnInit() {
 
@@ -50,7 +62,25 @@ export class ShellComponent implements OnInit, OnDestroy {
           this.showObscurer = false;
           break;
       }
-    })
+    });
+
+    // Initialising SignalR
+    let builder = new HubConnectionBuilder();
+    this.hubConnection = builder.withUrl(`${environment.apiUrl}sockets`, {
+      skipNegotiation: true,
+      transport: HttpTransportType.WebSockets,
+      accessTokenFactory: () => this.credentialsService.credentials.token,
+    }).build();
+
+    this.hubConnection.start();
+    this.hubConnection.on('aista-crm.system', (args) => {
+      const msg = JSON.parse(args);
+      if (msg.error) {
+        this.toastrService.error(msg.message);
+      } else {
+        this.toastrService.success(msg.message);
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -59,6 +89,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+    this.hubConnection.stop();
   }
 
   logout() {
