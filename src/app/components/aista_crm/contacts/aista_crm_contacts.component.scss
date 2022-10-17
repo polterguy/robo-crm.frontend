@@ -76,3 +76,11 @@ app-magic-image-view {
   margin: 0 0 0 -1rem;
 }
 
+.filter-checkboxes {
+  position: absolute;
+  top: .5rem;
+  left: .5rem;
+  mat-slide-toggle {
+    margin-right: 1rem;
+  }
+}

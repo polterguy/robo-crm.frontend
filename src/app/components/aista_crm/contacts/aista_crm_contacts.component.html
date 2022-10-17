@@ -29,6 +29,14 @@
 
     </div>
 
+    <div class="filter-checkboxes">
+
+      <mat-slide-toggle
+        (change)="filterChanged()"
+        [(ngModel)]="subscribers">Only subscribers</mat-slide-toggle>
+
+    </div>
+
     <table
       mat-table
       multiTemplateDataRows

@@ -58,15 +58,13 @@ export class SendEmailComponent implements OnInit {
     });
   }
 
-  getRecipients() {
+  getRecipients() : number {
     if (this.sources && this.sources.length > 0) {
       if (this.segmentation) {
         return this.sources.filter(x => x.source === this.segmentation)[0].count;
-      } else {
-        return this.total;
       }
     }
-    return '';
+    return this.total;
   }
 
   blast() {
@@ -78,7 +76,7 @@ export class SendEmailComponent implements OnInit {
       payload.segmentation = this.segmentation;
     }
     this.httpService.aista_crm_blaster_emails.blast(payload).subscribe({
-      next: (result: any) => {
+      next: () => {
         this.snackBar.open('Emails are being sent, you can leave this page now', 'ok', {
           duration: 5000,
         });

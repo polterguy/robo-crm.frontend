@@ -25,6 +25,7 @@
 
   <button
     mat-raised-button
+    [disabled]="getRecipients() === 0"
     (click)="blast()">
     Send
   </button>

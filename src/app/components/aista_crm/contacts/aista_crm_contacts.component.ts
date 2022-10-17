@@ -44,6 +44,7 @@ import { ActivityUiService } from '@app/services/activity-ui-service';
 export class Aista_crm_contactsComponent extends GridComponent implements OnInit {
 
   @ViewChild("inputValue", { static: false }) inputValue: ElementRef;
+  public subscribers: boolean = true;
 
   /**
    * Which columns we should display. Reorder to prioritize columns differently.
@@ -111,7 +112,14 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
         order: 'contacts.created',
         direction: 'desc'
       };
-  }
+      const valueSubscribers = localStorage.getItem('only_subscribers');
+      if (valueSubscribers) {
+        this.subscribers = valueSubscribers === 'yes';
+      } else {
+        this.filter['contacts.subscriber.eq'] = true;
+        this.subscribers = true;
+      }
+    }
 
   /**
    * Overridde abstract method necessary to return the URL endpoint
@@ -313,6 +321,16 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
       },
       error: (error: any) => console.error(error)
     });
+  }
+
+  filterChanged() {
+    localStorage.setItem('only_subscribers', this.subscribers ? 'yes' : 'no');
+    if (this.subscribers) {
+      this.filter['contacts.subscriber.eq'] = true;
+    } else {
+      delete this.filter['contacts.subscriber.eq'];
+    }
+    this.getData(true);
   }
 
   /**
