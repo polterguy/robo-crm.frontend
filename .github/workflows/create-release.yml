@@ -17,8 +17,8 @@ jobs:
     - name: Replace API URL
       uses: jacobtomlinson/gha-find-replace@v2
       with:
-        find: "https://dev-api.aista.com"
-        replace: "https://api.aista.com"
+        find: "dev-api.aista.com"
+        replace: "api.aista.com"
         regex: false
     - name: Build and push Docker CI images
       run: |
