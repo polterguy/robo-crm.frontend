@@ -270,7 +270,6 @@ export class Aista_crm_contactsComponent extends GridComponent implements OnInit
           contact_id: row.contact_id,
           username: this.authService.me.username(),
           type: 'Misc',
-          done: true,
         },
       }});
     dialogRef.afterClosed().subscribe((res: any) => {
