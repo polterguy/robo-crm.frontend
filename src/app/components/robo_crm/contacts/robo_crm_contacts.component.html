@@ -339,7 +339,7 @@
             </p>
             <p class="details">
               <label>{{'Meta' | translate}}</label>
-              <a [href]="ensureUrl(el['meta'])" target="_blank">{{el['meta']}}</a>
+              <span>{{el['meta']}}</span>
             </p>
             <p class="details">
               <label>{{'Created' | translate}}</label>
@@ -428,6 +428,18 @@
                 
               </table>
 
+            </mat-card>
+
+            <mat-card class="extra-card" *ngFor="let idxExtra of el.extra">
+              <h2>{{idxExtra.title}}</h2>
+              <table *ngIf="idxExtra.items && idxExtra.items.length > 0" class="extra-table">
+                <tr>
+                  <th *ngFor="let idxHeader of getNames(idxExtra.items[0])">{{idxHeader}}</th>
+                </tr>
+                <tr *ngFor="let idxCur of idxExtra.items">
+                  <td *ngFor="let idxName of getNames(idxCur)">{{idxCur[idxName]}}</td>
+                </tr>
+              </table>
             </mat-card>
 
           </div>

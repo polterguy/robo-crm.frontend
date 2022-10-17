@@ -294,6 +294,12 @@ export class HttpService {
           environment.apiUrl +
           'magic/modules/robo-crm/contacts/sources');
       },
+
+      extraInformation: (contact_id: number) => {
+        return this.httpClient.get<any[]>(
+          environment.apiUrl +
+          'magic/modules/robo-crm/contacts/contacts-extra?contact_id=' + contact_id);
+      }
     }
   }
 

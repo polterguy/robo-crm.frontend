@@ -258,9 +258,10 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
    * 
    * @param row Row that was selected
    */
-   selectRow(row: any) {
+  selectRow(row: any) {
     if(this.expandedElement && !row.activities) {
       this.getActivities(row);
+      this.getExtraInformation(row);
     }
   }
 
@@ -331,6 +332,24 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
       delete this.filter['contacts.subscriber.eq'];
     }
     this.getData(true);
+  }
+
+  getExtraInformation(row: any) {
+    this.httpService.robo_crm_contacts.extraInformation(row.contact_id).subscribe({
+      next: (result: any) => {
+        row.extra = result;
+      },
+    });
+  }
+
+  getNames(el: any) {
+    const result: string[] = [];
+    for (const idx in el) {
+      if (el.hasOwnProperty(idx)) {
+        result.push(idx);
+      }
+    }
+    return result;
   }
 
   /**
