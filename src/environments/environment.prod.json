@@ -1,6 +1,6 @@
 {
-  "apiUrl": "http://localhost:5000/",
-  "apiDomain": "localhost:5000",
+  "apiUrl": "https://api.aista.com/",
+  "apiDomain": "api.aista.com",
   "version": "1.0.0",
   "default_language": "en-US"
 }
