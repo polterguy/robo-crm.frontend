@@ -27,7 +27,7 @@ export class BlasterComponent implements OnInit {
     protected dialog: MatDialog) { }
 
   ngOnInit() {
-    this.httpServices.aista_crm_blaster_email_templates.read({limit: -1}).subscribe({
+    this.httpServices.robo_crm_blaster_email_templates.read({limit: -1}).subscribe({
       next: (result: any[]) => {
         this.templates = result || [];
       },
@@ -37,7 +37,7 @@ export class BlasterComponent implements OnInit {
   }
 
   getEmails(onAfter: () => void = null) {
-    this.httpServices.aista_crm_blaster_emails.read({limit: -1}).subscribe({
+    this.httpServices.robo_crm_blaster_emails.read({limit: -1}).subscribe({
       next: (result: any[]) => {
         this.emails = result || [];
         if (onAfter) {
@@ -86,7 +86,7 @@ export class BlasterComponent implements OnInit {
           };
           return;
         }
-        this.httpServices.aista_crm_blaster_emails.delete({email_id: this.email.email_id}).subscribe({
+        this.httpServices.robo_crm_blaster_emails.delete({email_id: this.email.email_id}).subscribe({
           next: () => {
             this.email = {
               title: null,
@@ -112,7 +112,7 @@ export class BlasterComponent implements OnInit {
         content: this.email.content,
         email_template_id: this.email.email_template_id,
       };
-      this.httpServices.aista_crm_blaster_emails.create(payload).subscribe({
+      this.httpServices.robo_crm_blaster_emails.create(payload).subscribe({
         next: (result: any) => {
           this.snackBar.open('Email saved', 'ok', {
             duration: 5000,
@@ -130,7 +130,7 @@ export class BlasterComponent implements OnInit {
     if (this.email.email_id) {
 
       // Updating existing email.
-      this.httpServices.aista_crm_blaster_emails.update({
+      this.httpServices.robo_crm_blaster_emails.update({
           title: this.email.title,
           content: this.email.content,
           email_id: this.email.email_id,
@@ -147,7 +147,7 @@ export class BlasterComponent implements OnInit {
     } else {
 
       // Creating new email.
-      this.httpServices.aista_crm_blaster_emails.create({
+      this.httpServices.robo_crm_blaster_emails.create({
         title: this.email.title,
         content: this.email.content,
         email_id: this.email.email_id,

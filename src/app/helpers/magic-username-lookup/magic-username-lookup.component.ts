@@ -68,7 +68,7 @@ export class MagicUsernameLookupComponent implements OnInit {
   public ngOnInit() {
 
     // Retrieving users from backend.
-    this.httpService.aista_crm_users.read('').subscribe({
+    this.httpService.robo_crm_users.read('').subscribe({
       next: (res: User[]) => {
         this.items = res || [];
       },

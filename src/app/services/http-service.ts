@@ -94,7 +94,7 @@ export class HttpService {
   get kpi() {
     return this.httpClient.get<any[]>(
       environment.apiUrl +
-      'magic/modules/aista-crm/execute-kpi');
+      'magic/modules/robo-crm/execute-kpi');
   }
 
   /*
@@ -106,371 +106,371 @@ export class HttpService {
    */
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_accounts' entities.
+   * HTTP CRUD service methods for your 'robo_crm_accounts' entities.
    */
-  get aista_crm_accounts() : ICrudEntity {
+  get robo_crm_accounts() : ICrudEntity {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/accounts' +
+          'magic/modules/robo-crm/accounts/accounts' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/accounts' +
+          'magic/modules/robo-crm/accounts/accounts' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/accounts-count' +
+          'magic/modules/robo-crm/accounts/accounts-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/accounts',
+          'magic/modules/robo-crm/accounts/accounts',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/accounts',
+          'magic/modules/robo-crm/accounts/accounts',
           args);
       }
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_activities' entities.
+   * HTTP CRUD service methods for your 'robo_crm_activities' entities.
    */
-  get aista_crm_activities() : ICrudEntity {
+  get robo_crm_activities() : ICrudEntity {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activities' +
+          'magic/modules/robo-crm/activities/activities' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activities' +
+          'magic/modules/robo-crm/activities/activities' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activities-count' +
+          'magic/modules/robo-crm/activities/activities-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activities',
+          'magic/modules/robo-crm/activities/activities',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activities',
+          'magic/modules/robo-crm/activities/activities',
           args);
       }
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_activities' entities.
+   * HTTP CRUD service methods for your 'robo_crm_activities' entities.
    */
-   get aista_crm_users() {
+   get robo_crm_users() {
     return {
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/users' +
+          'magic/modules/robo-crm/users' +
           this.getQueryArgs(filter));
       }
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_activity_types' entities.
+   * HTTP CRUD service methods for your 'robo_crm_activity_types' entities.
    */
-  get aista_crm_activity_types() : ICrudEntity {
+  get robo_crm_activity_types() : ICrudEntity {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activity_types' +
+          'magic/modules/robo-crm/activities/activity_types' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activity_types' +
+          'magic/modules/robo-crm/activities/activity_types' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activity_types-count' +
+          'magic/modules/robo-crm/activities/activity_types-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activity_types',
+          'magic/modules/robo-crm/activities/activity_types',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/activities/activity_types',
+          'magic/modules/robo-crm/activities/activity_types',
           args);
       }
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_contacts' entities.
+   * HTTP CRUD service methods for your 'robo_crm_contacts' entities.
    */
-  get aista_crm_contacts() {
+  get robo_crm_contacts() {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts/contacts' +
+          'magic/modules/robo-crm/contacts/contacts' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts/contacts' +
+          'magic/modules/robo-crm/contacts/contacts' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts/contacts-count' +
+          'magic/modules/robo-crm/contacts/contacts-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts/contacts',
+          'magic/modules/robo-crm/contacts/contacts',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts/contacts',
+          'magic/modules/robo-crm/contacts/contacts',
           args);
       },
 
       distinctSources: () => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/contacts/sources');
+          'magic/modules/robo-crm/contacts/sources');
       },
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_notifications' entities.
+   * HTTP CRUD service methods for your 'robo_crm_notifications' entities.
    */
-  get aista_crm_notifications() : ICrudEntity {
+  get robo_crm_notifications() : ICrudEntity {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/notifications' +
+          'magic/modules/robo-crm/notifications' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/notifications' +
+          'magic/modules/robo-crm/notifications' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/notifications-count' +
+          'magic/modules/robo-crm/notifications-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/notifications',
+          'magic/modules/robo-crm/notifications',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/notifications',
+          'magic/modules/robo-crm/notifications',
           args);
       }
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_status' entities.
+   * HTTP CRUD service methods for your 'robo_crm_status' entities.
    */
-  get aista_crm_status() : ICrudEntity {
+  get robo_crm_status() : ICrudEntity {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/status' +
+          'magic/modules/robo-crm/accounts/status' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/status' +
+          'magic/modules/robo-crm/accounts/status' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/status-count' +
+          'magic/modules/robo-crm/accounts/status-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/status',
+          'magic/modules/robo-crm/accounts/status',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/accounts/status',
+          'magic/modules/robo-crm/accounts/status',
           args);
       }
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_blaster_email_templates' entities.
+   * HTTP CRUD service methods for your 'robo_crm_blaster_email_templates' entities.
    */
-   get aista_crm_blaster_email_templates() : ICrudEntity {
+   get robo_crm_blaster_email_templates() : ICrudEntity {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<DeleteResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/email_templates' +
+          'magic/modules/robo-crm/blaster/email_templates' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/email_templates' +
+          'magic/modules/robo-crm/blaster/email_templates' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/email_templates-count' +
+          'magic/modules/robo-crm/blaster/email_templates-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/email_templates',
+          'magic/modules/robo-crm/blaster/email_templates',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/email_templates',
+          'magic/modules/robo-crm/blaster/email_templates',
           args);
       }
     }
   }
 
   /**
-   * HTTP CRUD service methods for your 'aista_crm_blaster_email' entities.
+   * HTTP CRUD service methods for your 'robo_crm_blaster_email' entities.
    */
-   get aista_crm_blaster_emails() {
+   get robo_crm_blaster_emails() {
     return {
 
       delete: (filter: any) => {
         return this.httpClient.delete<any>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/emails' +
+          'magic/modules/robo-crm/blaster/emails' +
           this.getQueryArgs(filter));
       },
 
       read: (filter: any) => {
         return this.httpClient.get<any[]>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/emails' +
+          'magic/modules/robo-crm/blaster/emails' +
           this.getQueryArgs(filter));
       },
 
       count: (filter: any) => {
         return this.httpClient.get<CountResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/emails-count' +
+          'magic/modules/robo-crm/blaster/emails-count' +
           this.getQueryArgs(filter));
       },
 
       create: (args: any) => {
         return this.httpClient.post<CreateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/emails',
+          'magic/modules/robo-crm/blaster/emails',
           args);
       },
 
       update: (args: any) => {
         return this.httpClient.put<UpdateResponse>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/emails',
+          'magic/modules/robo-crm/blaster/emails',
           args);
       },
 
       blast: (payload: any) => {
         return this.httpClient.post<any>(
           environment.apiUrl +
-          'magic/modules/aista-crm/blaster/blast',
+          'magic/modules/robo-crm/blaster/blast',
           payload);
       }
     }

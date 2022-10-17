@@ -39,18 +39,18 @@ import { CreateUserDialogComponent } from './common/user-management/create-user-
 import { EditExtraFieldsComponent } from './common/user-management/edit-extra-fields/edit-extra-fields.component';
 
 // Generated CRUD components here.
-import { Aista_crm_accountsComponent } from './components/aista_crm/accounts/aista_crm_accounts.component';
-import { EditAista_crm_accountsComponent } from './components/aista_crm/accounts/modals/edit.aista_crm_accounts.component';
-import { Aista_crm_activitiesComponent } from './components/aista_crm/activities/aista_crm_activities.component';
-import { EditAista_crm_activitiesComponent } from './components/aista_crm/activities/modals/edit.aista_crm_activities.component';
-import { Aista_crm_activity_typesComponent } from './components/aista_crm/activity_types/aista_crm_activity_types.component';
-import { EditAista_crm_activity_typesComponent } from './components/aista_crm/activity_types/modals/edit.aista_crm_activity_types.component';
-import { Aista_crm_contactsComponent } from './components/aista_crm/contacts/aista_crm_contacts.component';
-import { EditAista_crm_contactsComponent } from './components/aista_crm/contacts/modals/edit.aista_crm_contacts.component';
-import { Aista_crm_statusComponent } from './components/aista_crm/status/aista_crm_status.component';
-import { EditAista_crm_statusComponent } from './components/aista_crm/status/modals/edit.aista_crm_status.component';
-import { Aista_crm_blaster_email_templatesComponent } from './components/aista_crm/email_templates/aista_crm_blaster_email_templates.component';
-import { EditAista_crm_blaster_email_templatesComponent } from './components/aista_crm/email_templates/modals/edit.aista_crm_blaster_email_templates.component';
+import { Robo_crm_accountsComponent } from './components/robo_crm/accounts/robo_crm_accounts.component';
+import { EditRobo_crm_accountsComponent } from './components/robo_crm/accounts/modals/edit.robo_crm_accounts.component';
+import { Robo_crm_activitiesComponent } from './components/robo_crm/activities/robo_crm_activities.component';
+import { EditRobo_crm_activitiesComponent } from './components/robo_crm/activities/modals/edit.robo_crm_activities.component';
+import { Robo_crm_activity_typesComponent } from './components/robo_crm/activity_types/robo_crm_activity_types.component';
+import { EditRobo_crm_activity_typesComponent } from './components/robo_crm/activity_types/modals/edit.robo_crm_activity_types.component';
+import { Robo_crm_contactsComponent } from './components/robo_crm/contacts/robo_crm_contacts.component';
+import { EditRobo_crm_contactsComponent } from './components/robo_crm/contacts/modals/edit.robo_crm_contacts.component';
+import { Robo_crm_statusComponent } from './components/robo_crm/status/robo_crm_status.component';
+import { EditRobo_crm_statusComponent } from './components/robo_crm/status/modals/edit.robo_crm_status.component';
+import { Robo_crm_blaster_email_templatesComponent } from './components/robo_crm/email_templates/robo_crm_blaster_email_templates.component';
+import { EditRobo_crm_blaster_email_templatesComponent } from './components/robo_crm/email_templates/modals/edit.robo_crm_blaster_email_templates.component';
 import { BlasterComponent } from './components/blaster/blaster.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { SendEmailComponent } from './components/blaster/send-email/send-email.component';
@@ -115,19 +115,19 @@ import { ToastrModule } from 'ngx-toastr';
     SendEmailComponent,
 
     // Generated CRUD components here.
-    Aista_crm_accountsComponent,
-    EditAista_crm_accountsComponent,
-    Aista_crm_activitiesComponent,
-    EditAista_crm_activitiesComponent,
-    Aista_crm_activity_typesComponent,
-    EditAista_crm_activity_typesComponent,
-    Aista_crm_contactsComponent,
-    EditAista_crm_contactsComponent,
-    Aista_crm_statusComponent,
-    EditAista_crm_statusComponent,
+    Robo_crm_accountsComponent,
+    EditRobo_crm_accountsComponent,
+    Robo_crm_activitiesComponent,
+    EditRobo_crm_activitiesComponent,
+    Robo_crm_activity_typesComponent,
+    EditRobo_crm_activity_typesComponent,
+    Robo_crm_contactsComponent,
+    EditRobo_crm_contactsComponent,
+    Robo_crm_statusComponent,
+    EditRobo_crm_statusComponent,
     BlasterComponent,
-    Aista_crm_blaster_email_templatesComponent,
-    EditAista_crm_blaster_email_templatesComponent,
+    Robo_crm_blaster_email_templatesComponent,
+    EditRobo_crm_blaster_email_templatesComponent,
   ],
 
   providers: [NgxImageCompressService],

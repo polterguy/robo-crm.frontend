@@ -56,47 +56,47 @@
             (click)="isMobile && sidenav.close()">
             <span translate>Users</span>
           </a>
-          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/accounts/accounts', 'get')"></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/robo-crm/accounts/accounts', 'get')"></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/accounts/accounts', 'get')"
+            *ngIf="authService.me.canInvoke('magic/modules/robo-crm/accounts/accounts', 'get')"
             mat-list-item
-            routerLink="crud/aista_crm/accounts"
+            routerLink="crud/robo_crm/accounts"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Accounts</span>
           </a>
-          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/contacts/contacts', 'get')"></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/robo-crm/contacts/contacts', 'get')"></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/contacts/contacts', 'get')"
+            *ngIf="authService.me.canInvoke('magic/modules/robo-crm/contacts/contacts', 'get')"
             mat-list-item
-            routerLink="crud/aista_crm/contacts"
+            routerLink="crud/robo_crm/contacts"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Contacts</span>
           </a>
-          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities/activities', 'get')"></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/robo-crm/activities/activities', 'get')"></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/activities/activities', 'get')"
+            *ngIf="authService.me.canInvoke('magic/modules/robo-crm/activities/activities', 'get')"
             mat-list-item
-            routerLink="crud/aista_crm/activities"
+            routerLink="crud/robo_crm/activities"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Activities</span>
           </a>
-          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/emails', 'get')"></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/robo-crm/blaster/emails', 'get')"></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/emails', 'get')"
+            *ngIf="authService.me.canInvoke('magic/modules/robo-crm/blaster/emails', 'get')"
             mat-list-item
             routerLink="blaster"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate>Blaster</span>
           </a>
-          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/email_templates', 'get')"></mat-divider>
+          <mat-divider *ngIf="authService.me.canInvoke('magic/modules/robo-crm/blaster/email_templates', 'get')"></mat-divider>
           <a
-            *ngIf="authService.me.canInvoke('magic/modules/aista-crm/blaster/email_templates', 'get')"
+            *ngIf="authService.me.canInvoke('magic/modules/robo-crm/blaster/email_templates', 'get')"
             mat-list-item
-            routerLink="crud/aista_crm/blaster/email_templates"
+            routerLink="crud/robo_crm/blaster/email_templates"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate class="silent">Email templates</span>
@@ -105,7 +105,7 @@
           <a
             *ngIf="authService.me.inRole(['root', 'admin'])"
             mat-list-item
-            routerLink="crud/aista_crm/status"
+            routerLink="crud/robo_crm/status"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate class="silent">Status</span>
@@ -114,7 +114,7 @@
           <a
             *ngIf="authService.me.inRole(['root', 'admin'])"
             mat-list-item
-            routerLink="crud/aista_crm/activity_types"
+            routerLink="crud/robo_crm/activity_types"
             routerLinkActive="active"
             (click)="isMobile && sidenav.close()">
             <span translate class="silent">Activity types</span>

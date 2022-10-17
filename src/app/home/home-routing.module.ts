@@ -10,13 +10,13 @@ import { Shell } from '@app/shell/shell.service';
 import { UserManagementComponent } from '@app/common/user-management/user-management.component';
 
 // Then importing all CRUD components.
-import { Aista_crm_accountsComponent } from '../components/aista_crm/accounts/aista_crm_accounts.component';
-import { Aista_crm_activitiesComponent } from '../components/aista_crm/activities/aista_crm_activities.component';
-import { Aista_crm_activity_typesComponent } from '../components/aista_crm/activity_types/aista_crm_activity_types.component';
-import { Aista_crm_contactsComponent } from '../components/aista_crm/contacts/aista_crm_contacts.component';
-import { Aista_crm_statusComponent } from '../components/aista_crm/status/aista_crm_status.component';
+import { Robo_crm_accountsComponent } from '../components/robo_crm/accounts/robo_crm_accounts.component';
+import { Robo_crm_activitiesComponent } from '../components/robo_crm/activities/robo_crm_activities.component';
+import { Robo_crm_activity_typesComponent } from '../components/robo_crm/activity_types/robo_crm_activity_types.component';
+import { Robo_crm_contactsComponent } from '../components/robo_crm/contacts/robo_crm_contacts.component';
+import { Robo_crm_statusComponent } from '../components/robo_crm/status/robo_crm_status.component';
 import { BlasterComponent } from '@app/components/blaster/blaster.component';
-import { Aista_crm_blaster_email_templatesComponent } from '@app/components/aista_crm/email_templates/aista_crm_blaster_email_templates.component';
+import { Robo_crm_blaster_email_templatesComponent } from '@app/components/robo_crm/email_templates/robo_crm_blaster_email_templates.component';
 
 
 const routes: Routes = [
@@ -25,12 +25,12 @@ const routes: Routes = [
     { path: 'users', component: UserManagementComponent, data: { title: marker('Users') } },
 
     // Then routes for all CRUD components.
-    { path: 'crud/aista_crm/accounts', component: Aista_crm_accountsComponent, data: { title: marker('Accounts') } },
-    { path: 'crud/aista_crm/activities', component: Aista_crm_activitiesComponent, data: { title: marker('Activities') } },
-    { path: 'crud/aista_crm/activity_types', component: Aista_crm_activity_typesComponent, data: { title: marker('Activity types') } },
-    { path: 'crud/aista_crm/contacts', component: Aista_crm_contactsComponent, data: { title: marker('Contacts') } },
-    { path: 'crud/aista_crm/status', component: Aista_crm_statusComponent, data: { title: marker('Status') } },
-    { path: 'crud/aista_crm/blaster/email_templates', component: Aista_crm_blaster_email_templatesComponent, data: { title: marker('Email templates') } },
+    { path: 'crud/robo_crm/accounts', component: Robo_crm_accountsComponent, data: { title: marker('Accounts') } },
+    { path: 'crud/robo_crm/activities', component: Robo_crm_activitiesComponent, data: { title: marker('Activities') } },
+    { path: 'crud/robo_crm/activity_types', component: Robo_crm_activity_typesComponent, data: { title: marker('Activity types') } },
+    { path: 'crud/robo_crm/contacts', component: Robo_crm_contactsComponent, data: { title: marker('Contacts') } },
+    { path: 'crud/robo_crm/status', component: Robo_crm_statusComponent, data: { title: marker('Status') } },
+    { path: 'crud/robo_crm/blaster/email_templates', component: Robo_crm_blaster_email_templatesComponent, data: { title: marker('Email templates') } },
     { path: 'blaster', component: BlasterComponent, data: { title: marker('Blaster') } },
 
   ]),

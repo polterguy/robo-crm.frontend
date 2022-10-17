@@ -118,7 +118,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     });
 
     // Making sure we handle relevant messages from backend.
-    this.hubConnection.on('aista-crm.system', (args) => {
+    this.hubConnection.on('robo-crm.system', (args) => {
       const msg = JSON.parse(args);
       if (msg.error) {
         this.toastrService.error(msg.message);

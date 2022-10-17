@@ -26,7 +26,7 @@ export class SendEmailComponent implements OnInit {
   ngOnInit() {
 
     // Retrieving segmentation options.
-    this.httpService.aista_crm_contacts.distinctSources().subscribe({
+    this.httpService.robo_crm_contacts.distinctSources().subscribe({
       next: (sources: any[]) => {
         sources = sources || [];
         this.sources = sources.filter(x => x.source !== null);
@@ -38,12 +38,12 @@ export class SendEmailComponent implements OnInit {
     });
 
     // Retrieving email and braiding in with template.
-    this.httpService.aista_crm_blaster_emails.read({
+    this.httpService.robo_crm_blaster_emails.read({
       ['emails.email_id.eq']: this.data.email_id
     }).subscribe({
       next: (result: any[]) => {
         this.email = result[0];
-        this.httpService.aista_crm_blaster_email_templates.read({
+        this.httpService.robo_crm_blaster_email_templates.read({
           ['email_templates.email_template_id.eq']: this.email.email_template_id,
         }).subscribe({
           next: (result: any[]) => {
@@ -75,7 +75,7 @@ export class SendEmailComponent implements OnInit {
     if (this.segmentation) {
       payload.segmentation = this.segmentation;
     }
-    this.httpService.aista_crm_blaster_emails.blast(payload).subscribe({
+    this.httpService.robo_crm_blaster_emails.blast(payload).subscribe({
       next: () => {
         this.snackBar.open('Emails are being sent, you can leave this page now', 'ok', {
           duration: 5000,
