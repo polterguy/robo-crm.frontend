@@ -21,7 +21,7 @@ import { Robo_crm_blaster_email_templatesComponent } from '@app/components/robo_
 
 const routes: Routes = [
   Shell.childRoutes([
-    { path: '', component: HomeComponent, data: { title: marker('Home') } },
+    { path: '', component: HomeComponent, data: { title: marker('ROBO CRM') } },
     { path: 'users', component: UserManagementComponent, data: { title: marker('Users') } },
 
     // Then routes for all CRUD components.
