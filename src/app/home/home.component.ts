@@ -86,7 +86,7 @@ export class HomeComponent implements OnInit {
               name: x.name,
             }
           }),
-          color: ['#555', '#888', '#bbb'],
+          color: ['#444', '#555', '#666', '#777', '#888', '#999', '#aaa', '#bbb', '#ccc', '#ddd'],
           label: {
             color: 'black'
           },
