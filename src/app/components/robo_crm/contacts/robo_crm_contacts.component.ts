@@ -44,7 +44,7 @@ import { ActivityUiService } from '@app/services/activity-ui-service';
 export class Robo_crm_contactsComponent extends GridComponent implements OnInit {
 
   @ViewChild("inputValue", { static: false }) inputValue: ElementRef;
-  public subscribers: boolean = true;
+  public subscribers: boolean = false;
 
   /**
    * Which columns we should display. Reorder to prioritize columns differently.
@@ -116,8 +116,8 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
       if (valueSubscribers) {
         this.subscribers = valueSubscribers === 'yes';
       } else {
-        this.filter['contacts.subscriber.eq'] = true;
-        this.subscribers = true;
+        delete this.filter['contacts.subscriber.eq'];
+        this.subscribers = false;
       }
     }
 
