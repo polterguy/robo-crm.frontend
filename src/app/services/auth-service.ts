@@ -100,7 +100,7 @@ export class AuthService {
     if (this.jwtHelper.isTokenExpired(ticket.token)) {
       localStorage.removeItem('jwt_token');
     } else {
-      this.userRoles = this.jwtHelper.decodeToken(ticket.token).role.split(',');
+      this.userRoles = this.jwtHelper.decodeToken(ticket.token).role;
     }
 
     /*
