@@ -13,8 +13,8 @@ jobs:
     - name: Build and push Docker CI images
       run: |
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        docker build -t aistamagic/hub:latest-ci -f ./Dockerfile .
-        docker push aistamagic/hub:latest-ci
+        docker build -t aistamagic/robo-crm:latest-ci -f ./Dockerfile .
+        docker push aistamagic/robo-crm:latest-ci
 
     - name: Updating Docker images on DEV machine
       uses: appleboy/ssh-action@master
@@ -27,6 +27,6 @@ jobs:
         script: |
           cd magic.deploy
           docker-compose down
-          docker pull aistamagic/hub:latest-ci
-          docker pull aistamagic/hub:latest-ci
+          docker pull aistamagic/robo-crm:latest-ci
+          docker pull aistamagic/robo-crm:latest-ci
           docker-compose up -d
