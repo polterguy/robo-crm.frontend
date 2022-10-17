@@ -31,7 +31,7 @@ export class ShellComponent implements OnInit, OnDestroy {
   private subscription: Subscription = null;
 
   // SignalR connection.
-  private hubConnection: HubConnection;
+  public hubConnection: HubConnection;
 
   /**
    * If true, we should obscure UI to avoid user from interacting with it.

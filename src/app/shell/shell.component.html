@@ -127,6 +127,16 @@
 
     <mat-sidenav-content>
       <mat-toolbar color="primary" class="mat-elevation-z6">
+        <div class="socket_state">
+          <mat-icon
+            *ngIf="hubConnection?.state === 'Connected'"
+            class="connected"
+            matTooltip="You are connected to the backend">done</mat-icon>
+          <mat-icon
+            *ngIf="hubConnection?.state !== 'Connected'"
+            class="disconnected"
+            matTooltip="You are NOT connected to the backend">report_problem</mat-icon>
+        </div>
         <button class="menu-button" mat-icon-button (click)="sidenav.toggle()" fxHide.gt-sm>
           <mat-icon>menu</mat-icon>
         </button>

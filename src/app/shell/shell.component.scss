@@ -49,3 +49,15 @@
 .logo {
   width: 100px;
 }
+
+.socket_state {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  .connected {
+    color: lightgreen;
+  }
+  .disconnected {
+    color: red;
+  }
+}
