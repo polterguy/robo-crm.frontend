@@ -64,32 +64,14 @@ export class ShellComponent implements OnInit, OnDestroy {
       }
     });
 
-    // Initialising SignalR
-    let builder = new HubConnectionBuilder();
-    this.hubConnection = builder.withUrl(`${environment.apiUrl}sockets`, {
-      skipNegotiation: true,
-      transport: HttpTransportType.WebSockets,
-      accessTokenFactory: () => this.credentialsService.credentials.token,
-    }).build();
-
-    this.hubConnection.start();
-    this.hubConnection.on('aista-crm.system', (args) => {
-      const msg = JSON.parse(args);
-      if (msg.error) {
-        this.toastrService.error(msg.message);
-      } else {
-        this.toastrService.success(msg.message);
-      }
-    });
+    // Initialising SignalR.
+    this.initSignalR();
   }
 
   ngOnDestroy() {
-
-    // Cleaning up.
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-    this.hubConnection.stop();
+    this.subscription?.unsubscribe();
+    this.hubConnection?.stop();
+    this.hubConnection = null;
   }
 
   logout() {
@@ -107,5 +89,54 @@ export class ShellComponent implements OnInit, OnDestroy {
 
   get title(): string {
     return this.titleService.getTitle();
+  }
+
+  /*
+   * Private helper methods.
+   */
+
+  /*
+   * Initialising SignalR socket connection
+   */
+  private initSignalR() {
+    let builder = new HubConnectionBuilder();
+    this.hubConnection = builder.withUrl(`${environment.apiUrl}sockets`, {
+      skipNegotiation: true,
+      transport: HttpTransportType.WebSockets,
+      accessTokenFactory: () => this.credentialsService.credentials.token,
+    }).build();
+
+    this.hubConnection.start().catch(() => {
+      if (this.hubConnection === null) {
+        return;
+      }
+      console.error('Could not connect to SignalR socket connection');
+      setTimeout(() => {
+        console.info('Trying to reconnect to SignalR socket connection');
+        this.initSignalR();
+      }, 5000);
+    });
+
+    // Making sure we handle relevant messages from backend.
+    this.hubConnection.on('aista-crm.system', (args) => {
+      const msg = JSON.parse(args);
+      if (msg.error) {
+        this.toastrService.error(msg.message);
+      } else {
+        this.toastrService.success(msg.message);
+      }
+    });
+
+    // Making sure we reconnect if socket is closed.
+    this.hubConnection.onclose(() => {
+      if (this.hubConnection === null) {
+        return;
+      }
+      console.error('Disconnected from SignalR socket connection');
+      setTimeout(() => {
+        console.info('Trying to reconnect to SignalR socket connection');
+        this.initSignalR();
+      }, 5000);
+    });
   }
 }
