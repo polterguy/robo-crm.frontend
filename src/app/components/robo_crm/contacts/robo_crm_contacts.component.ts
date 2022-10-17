@@ -337,7 +337,7 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
   getExtraInformation(row: any) {
     this.httpService.robo_crm_contacts.extraInformation(row.contact_id).subscribe({
       next: (result: any) => {
-        row.extra = result;
+        row.extra = result.filter((x: any) => x.items && x.items.length > 0);
       },
     });
   }
