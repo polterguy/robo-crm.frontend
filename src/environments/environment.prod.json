@@ -1,6 +1,6 @@
 {
-  "apiUrl": "https://api.aista.com/",
-  "apiDomain": "api.aista.com",
+  "apiUrl": "https://dev-api.aista.com/",
+  "apiDomain": "dev-api.aista.com",
   "version": "1.0.0",
   "default_language": "en-US"
 }
