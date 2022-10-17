@@ -52,12 +52,14 @@
 
 .socket_state {
   position: absolute;
-  top: 1rem;
+  top: .75rem;
   right: 1rem;
   .connected {
     color: lightgreen;
+    font-size: 2rem;
   }
   .disconnected {
     color: red;
+    font-size: 2rem;
   }
 }
