@@ -437,7 +437,7 @@
                   <th *ngFor="let idxHeader of getNames(idxExtra.items[0])">{{idxHeader}}</th>
                 </tr>
                 <tr *ngFor="let idxCur of idxExtra.items">
-                  <td *ngFor="let idxName of getNames(idxCur)">{{idxCur[idxName]}}</td>
+                  <td *ngFor="let idxName of getNames(idxCur)">{{idxName === 'created' ? (idxCur[idxName] | since) : idxCur[idxName]}}</td>
                 </tr>
               </table>
             </mat-card>
