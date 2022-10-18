@@ -182,7 +182,7 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
   public ngOnInit() {
 
     // Retrieves data from our backend, unfiltered, and binds our mat-table accordingly.
-    this.getData();
+    this.filterChanged();
 
     /*
      * Creating our filtering FormControl instances, which gives us "live filtering"
@@ -406,10 +406,7 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
   
         // Checking if user confirmed that he wants to execute action.
         if (result && result.confirmed) {
-  
-          // Invoking action
           this.executeActionImpl(action, contact);
-          
         }
       });
     } else {
