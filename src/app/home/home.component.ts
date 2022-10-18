@@ -30,15 +30,6 @@ export class HomeComponent implements OnInit {
     this.httpService.kpi.subscribe({
       next: (data: any[]) => {
         data = data || [];
-        data.sort((lhs, rhs) => {
-          if (lhs.type === 'pie' && rhs.type !== 'pie') {
-            return -1;
-          }
-          if (rhs.type === 'pie' && lhs.type !== 'pie') {
-            return 1;
-          }
-          return 0;
-        });
         for (const idx of data) {
           idx.values = idx.values || [];
           switch (idx.type) {
