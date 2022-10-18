@@ -43,11 +43,13 @@ export class HttpService {
           'magic/system/logging/log', {
             type: 'debug',
             content
-        }).subscribe((res: StatusResponse) => {
-          console.log('Info item successfully logged');
-        }, (error: any) => {
-          console.error(error.error.message);
-        });
+        }).subscribe({
+          next: (res: StatusResponse) => {
+            console.log('Info item successfully logged');
+          },
+          error: (error: any) => {
+            console.error(error.error.message);
+          }});
       },
 
       info: (content: string) => {
@@ -56,11 +58,13 @@ export class HttpService {
           'magic/system/logging/log', {
             type: 'info',
             content
-        }).subscribe((res: StatusResponse) => {
-          console.log('Info item successfully logged');
-        }, (error: any) => {
-          console.error(error.error.message);
-        });
+        }).subscribe({
+          next: (res: StatusResponse) => {
+            console.log('Info item successfully logged');
+          },
+          error: (error: any) => {
+            console.error(error.error.message);
+          }});
       },
 
       error: (content: string) => {
@@ -69,11 +73,13 @@ export class HttpService {
           'magic/system/logging/log', {
             type: 'error',
             content
-        }).subscribe((res: StatusResponse) => {
-          console.log('Info item successfully logged');
-        }, (error: any) => {
-          console.error(error.error.message);
-        });
+        }).subscribe({
+          next: (res: StatusResponse) => {
+            console.log('Info item successfully logged');
+          },
+          error: (error: any) => {
+            console.error(error.error.message);
+          }});
       },
 
       fatal: (content: string) => {
@@ -82,11 +88,13 @@ export class HttpService {
           'magic/system/logging/log', {
             type: 'fatal',
             content
-        }).subscribe((res: StatusResponse) => {
+        }).subscribe({
+          next: (res: StatusResponse) => {
           console.log('Info item successfully logged');
-        }, (error: any) => {
-          console.error(error.error.message);
-        });
+          },
+          error: (error: any) => {
+            console.error(error.error.message);
+          }});
       }
     }
   }

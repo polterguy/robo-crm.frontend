@@ -25,6 +25,8 @@ import { AuthService } from 'src/app/services/auth-service';
 import { EditRobo_crm_activitiesComponent } from '../activities/modals/edit.robo_crm_activities.component';
 import { ActivityUiService } from '@app/services/activity-ui-service';
 import { ConfirmDialogComponent, ConfirmDialogData } from '@app/confirm-deletion-dialog/confirm-dialog.component';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '@env/environment';
 
 /**
  * "Datagrid" component for displaying instance of Contacts
@@ -108,7 +110,8 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
     protected snackBar: MatSnackBar,
     protected dialog: MatDialog,
     protected sanitizer: DomSanitizer,
-    public activityUiService: ActivityUiService) {
+    public activityUiService: ActivityUiService,
+    private httpClient: HttpClient) {
       super(authService, snackBar, dialog, sanitizer);
       this.filter = {
         limit: 10,
@@ -381,11 +384,50 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
   getNames(el: any) {
     const result: string[] = [];
     for (const idx in el) {
-      if (el.hasOwnProperty(idx)) {
+      if (el.hasOwnProperty(idx) && typeof el[idx] !== 'object') {
         result.push(idx);
       }
     }
     return result;
+  }
+
+  executeAction(action: any, contact: any) {
+    if (action.warning) {
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        width: '550px',
+        data: {
+          title: 'Confirm action',
+          text: action.warning,
+        }
+      });
+  
+      // Subscribing to close such that we can invoke action if it's confirmed.
+      dialogRef.afterClosed().subscribe((result: ConfirmDialogData) => {
+  
+        // Checking if user confirmed that he wants to execute action.
+        if (result && result.confirmed) {
+  
+          // Invoking action
+          this.executeActionImpl(action, contact);
+          
+        }
+      });
+    } else {
+      this.executeActionImpl(action, contact);
+    }
+  }
+
+  private executeActionImpl(action: any, contact: any) {
+    switch (action.verb) {
+      case 'delete':
+        this.httpClient.delete<any>(environment.apiUrl + action.url).subscribe({
+          next: (result: any) => {
+            this.getExtraInformation(contact);
+          },
+          error: (error) => console.error(error)
+        });
+        break;
+    }
   }
 
   /**

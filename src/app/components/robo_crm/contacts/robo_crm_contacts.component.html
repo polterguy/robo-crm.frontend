@@ -444,9 +444,19 @@
               <table *ngIf="idxExtra.items && idxExtra.items.length > 0" class="extra-table">
                 <tr>
                   <th *ngFor="let idxHeader of getNames(idxExtra.items[0])">{{idxHeader}}</th>
+                  <th class="actions" *ngIf="idxExtra.items[0].actions && idxExtra.items[0].actions.length > 0">Actions</th>
                 </tr>
                 <tr *ngFor="let idxCur of idxExtra.items">
                   <td *ngFor="let idxName of getNames(idxCur)">{{idxName === 'created' ? (idxCur[idxName] | since) : idxCur[idxName]}}</td>
+                  <td class="actions" *ngIf="idxCur.actions && idxCur.actions.length > 0">
+                    <button
+                      *ngFor="let idxAction of idxCur.actions"
+                      [matTooltip]="idxAction.tooltip"
+                      mat-button
+                      (click)="executeAction(idxAction, el)">
+                      <mat-icon>{{idxAction.icon}}</mat-icon>
+                    </button>
+                  </td>
                 </tr>
               </table>
             </mat-card>
