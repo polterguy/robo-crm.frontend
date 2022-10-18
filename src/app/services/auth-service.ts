@@ -67,7 +67,7 @@ export class AuthService {
       },
 
       inRole: (roles: string[]) => {
-        return this.userRoles.filter((x) => roles.indexOf(x) !== -1).length > 0;
+        return this.userRoles.filter((x) => roles.includes(x)).length > 0;
       },
 
       isLoggedIn: () => {
@@ -100,7 +100,12 @@ export class AuthService {
     if (this.jwtHelper.isTokenExpired(ticket.token)) {
       localStorage.removeItem('jwt_token');
     } else {
-      this.userRoles = this.jwtHelper.decodeToken(ticket.token).role;
+      const roles = this.jwtHelper.decodeToken(ticket.token).role;
+      if (roles.filter) {
+        this.userRoles = roles;
+      } else {
+        this.userRoles = [roles];
+      }
     }
 
     /*
