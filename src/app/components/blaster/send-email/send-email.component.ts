@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '@app/services/auth-service';
 import { HttpService } from '@app/services/http-service';
 import { marked } from 'marked';
 
@@ -21,6 +22,7 @@ export class SendEmailComponent implements OnInit {
   constructor(
     private httpService: HttpService,
     private snackBar: MatSnackBar,
+    public authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
