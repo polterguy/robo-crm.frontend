@@ -35,6 +35,10 @@
         (change)="filterChanged()"
         [(ngModel)]="subscribers">Only subscribers</mat-slide-toggle>
 
+      <mat-slide-toggle
+        (change)="filterChanged()"
+        [(ngModel)]="confirmed">Only confirmed</mat-slide-toggle>
+
     </div>
 
     <table
@@ -357,6 +361,11 @@
               <label>{{'Subscriber' | translate}}</label>
               <mat-icon *ngIf="el['subscriber'] === true" matSuffix>check_box</mat-icon>
               <mat-icon *ngIf="el['subscriber'] === false" matSuffix>check_box_outline_blank</mat-icon>
+            </p>
+            <p class="details">
+              <label>{{'Confirmed' | translate}}</label>
+              <mat-icon *ngIf="el['confirmed'] === true" matSuffix>check_box</mat-icon>
+              <mat-icon *ngIf="el['confirmed'] === false" matSuffix>check_box_outline_blank</mat-icon>
             </p>
 
             <mat-card class="activities-card">

@@ -24,6 +24,7 @@ import { HttpService } from 'src/app/services/http-service';
 import { AuthService } from 'src/app/services/auth-service';
 import { EditRobo_crm_activitiesComponent } from '../activities/modals/edit.robo_crm_activities.component';
 import { ActivityUiService } from '@app/services/activity-ui-service';
+import { ConfirmDialogComponent, ConfirmDialogData } from '@app/confirm-deletion-dialog/confirm-dialog.component';
 
 /**
  * "Datagrid" component for displaying instance of Contacts
@@ -44,7 +45,9 @@ import { ActivityUiService } from '@app/services/activity-ui-service';
 export class Robo_crm_contactsComponent extends GridComponent implements OnInit {
 
   @ViewChild("inputValue", { static: false }) inputValue: ElementRef;
+
   public subscribers: boolean = false;
+  public confirmed: boolean = false;
 
   /**
    * Which columns we should display. Reorder to prioritize columns differently.
@@ -118,6 +121,13 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
       } else {
         delete this.filter['contacts.subscriber.eq'];
         this.subscribers = false;
+      }
+      const valueConfirmed = localStorage.getItem('only_confirmed');
+      if (valueConfirmed) {
+        this.confirmed = valueConfirmed === 'yes';
+      } else {
+        delete this.filter['contacts.confirmed.eq'];
+        this.confirmed = false;
       }
     }
 
@@ -313,23 +323,49 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
    * @param activity Actitity to delete
    */
   deleteActivity(activity: any, contact: any) {
-    this.httpService.robo_crm_activities.delete({activity_id: activity.activity_id}).subscribe({
-      next: () => {
-        this.snackBar.open('Activity successfully deleted', 'ok', {
-          duration: 5000,
+
+    // Asking user to confirm deletion of entity.
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      width: '550px',
+      data: {
+        title: 'Confirm action',
+        text: 'Please confirm deletion of activity. Notice, this action cannot be undone. Deletion is permanent',
+      }
+    });
+
+    // Subscribing to close such that we can delete schedule if it's confirmed.
+    dialogRef.afterClosed().subscribe((result: ConfirmDialogData) => {
+
+      // Checking if user confirmed that he wants to delete the schedule.
+      if (result && result.confirmed) {
+
+        // Deleting activity
+        this.httpService.robo_crm_activities.delete({activity_id: activity.activity_id}).subscribe({
+          next: () => {
+            this.snackBar.open('Activity successfully deleted', 'ok', {
+              duration: 5000,
+            });
+            this.getActivities(contact);
+          },
+          error: (error: any) => console.error(error)
         });
-        this.getActivities(contact);
-      },
-      error: (error: any) => console.error(error)
+        
+      }
     });
   }
 
   filterChanged() {
     localStorage.setItem('only_subscribers', this.subscribers ? 'yes' : 'no');
+    localStorage.setItem('only_confirmed', this.confirmed ? 'yes' : 'no');
     if (this.subscribers) {
       this.filter['contacts.subscriber.eq'] = true;
     } else {
       delete this.filter['contacts.subscriber.eq'];
+    }
+    if (this.confirmed) {
+      this.filter['contacts.confirmed.eq'] = true;
+    } else {
+      delete this.filter['contacts.confirmed.eq'];
     }
     this.getData(true);
   }

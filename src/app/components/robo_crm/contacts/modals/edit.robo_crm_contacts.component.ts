@@ -37,6 +37,7 @@ export class EditRobo_crm_contactsComponent extends DialogComponent {
       'meta',
       'description',
       'subscriber',
+      'confirmed',
       'source',
     ];
     this.updateColumns = [
@@ -51,6 +52,7 @@ export class EditRobo_crm_contactsComponent extends DialogComponent {
       'contact_id',
       'description',
       'subscriber',
+      'confirmed',
       'source',
     ];
     const datesToFormat: string[] = [];

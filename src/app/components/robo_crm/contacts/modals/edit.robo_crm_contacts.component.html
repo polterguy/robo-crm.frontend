@@ -152,6 +152,12 @@
         (change)="changed('subscriber')"
         [(ngModel)]="data.entity.subscriber">Subscriber</mat-slide-toggle>
 
+      <mat-slide-toggle
+        *ngIf="canEditColumn('confirmed')"
+        name="confirmed"
+        (change)="changed('confirmed')"
+        [(ngModel)]="data.entity.confirmed">Confirmed</mat-slide-toggle>
+
       <button 
         mat-raised-button
         color="primary"
