@@ -453,6 +453,8 @@
                       *ngFor="let idxAction of idxCur.actions"
                       [matTooltip]="idxAction.tooltip"
                       mat-button
+                      [class.disabled]="idxAction.disabled"
+                      [disabled]="idxAction.disabled"
                       (click)="executeAction(idxAction, el)">
                       <mat-icon>{{idxAction.icon}}</mat-icon>
                     </button>

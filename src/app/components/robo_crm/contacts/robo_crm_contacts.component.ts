@@ -424,6 +424,14 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
           error: (error) => console.error(error)
         });
         break;
+      case 'put':
+        this.httpClient.put<any>(environment.apiUrl + action.url, action.payload).subscribe({
+          next: (result: any) => {
+            this.getExtraInformation(contact);
+          },
+          error: (error) => console.error(error)
+        });
+        break;
     }
   }
 

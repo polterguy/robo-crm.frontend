@@ -50,6 +50,9 @@ app-magic-image-view {
           button {
             color: #795548;
           }
+          button.disabled {
+            color: #c0c0c0;
+          }
         }
         td {
           padding: .5rem 0;
