@@ -149,14 +149,16 @@
       <mat-slide-toggle
         *ngIf="canEditColumn('subscriber')"
         name="subscriber"
+        matTooltip="Subscriber"
         (change)="changed('subscriber')"
-        [(ngModel)]="data.entity.subscriber">Subscriber</mat-slide-toggle>
+        [(ngModel)]="data.entity.subscriber">Sub</mat-slide-toggle>
 
       <mat-slide-toggle
         *ngIf="canEditColumn('confirmed')"
         name="confirmed"
         (change)="changed('confirmed')"
-        [(ngModel)]="data.entity.confirmed">Confirmed</mat-slide-toggle>
+        matTooltip="Is confirmed"
+        [(ngModel)]="data.entity.confirmed">Conf</mat-slide-toggle>
 
       <button 
         mat-raised-button
