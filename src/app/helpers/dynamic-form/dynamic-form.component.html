@@ -1,0 +1,26 @@
+<form>
+  <h1 mat-dialog-title>Provide arguments</h1>
+  <div mat-dialog-content>
+
+    foo
+
+</div>
+
+  <div mat-dialog-actions>
+
+    <div class="right-aligned">
+
+      <button 
+        mat-raised-button
+        color="primary"
+        type="submit"
+        (click)="save()">{{'Save' | translate}}</button>
+
+      <button
+        mat-button
+        (click)="close()">{{'Cancel' | translate}}</button>
+
+    </div>
+
+  </div>
+</form>

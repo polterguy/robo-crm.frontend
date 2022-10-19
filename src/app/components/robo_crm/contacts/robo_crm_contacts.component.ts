@@ -27,6 +27,7 @@ import { ActivityUiService } from '@app/services/activity-ui-service';
 import { ConfirmDialogComponent, ConfirmDialogData } from '@app/confirm-deletion-dialog/confirm-dialog.component';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
+import { DynamicFormComponent } from '@app/helpers/dynamic-form/dynamic-form.component';
 
 /**
  * "Datagrid" component for displaying instance of Contacts
@@ -415,6 +416,21 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
   }
 
   private executeActionImpl(action: any, contact: any) {
+    if (action.payload_args) {
+      const dialogRef = this.dialog.open(DynamicFormComponent, {
+        data: action.payload_args
+      });
+      dialogRef.afterClosed().subscribe(res => {
+        if (res) {
+          console.log(res);
+        }
+      });
+    } else {
+      this.executeActionAfter(action, contact);
+    }
+  }
+
+  private executeActionAfter(action: any, contact: any) {
     switch (action.verb) {
 
       case 'get':

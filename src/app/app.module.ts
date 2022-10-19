@@ -55,6 +55,7 @@ import { BlasterComponent } from './components/blaster/blaster.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { SendEmailComponent } from './components/blaster/send-email/send-email.component';
 import { ToastrModule } from 'ngx-toastr';
+import { DynamicFormComponent } from './helpers/dynamic-form/dynamic-form.component';
 
 
 @NgModule({
@@ -113,6 +114,7 @@ import { ToastrModule } from 'ngx-toastr';
     CreateUserDialogComponent,
     EditExtraFieldsComponent,
     SendEmailComponent,
+    DynamicFormComponent,
 
     // Generated CRUD components here.
     Robo_crm_accountsComponent,
