@@ -43,19 +43,23 @@ app-magic-image-view {
         th {
           text-align: left;
           text-transform: capitalize;
+          padding: .5rem .5rem;
         }
         th.actions, td.actions {
           display: table-cell;
           text-align: right;
           button {
             color: #795548;
+            mat-icon {
+              font-size: 22px;
+            }
           }
           button.disabled {
             color: #c0c0c0;
           }
         }
         td {
-          padding: .5rem 0;
+          padding: 0 .5rem;
         }
         td {
           border-bottom: solid 1px rgba(0,0,0,.2);
@@ -69,6 +73,19 @@ app-magic-image-view {
         td {
           border-bottom: none;
         }
+      }
+      tr.clickable {
+        cursor: pointer;
+      }
+      tr td {
+        background-color: rgba(0,0,0,0);
+        transition: background-color .2s ease-in-out;
+      }
+      tr:hover td {
+        background-color: rgba(0,0,0,.2);
+      }
+      tr:hover th {
+        background-color: rgba(0,0,0,0);
       }
     }
     table.activities-table {

@@ -392,7 +392,7 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
     return result;
   }
 
-  executeAction(action: any, contact: any) {
+  executeAction(action: any, contact: any, event: Event) {
     if (action.warning) {
       const dialogRef = this.dialog.open(ConfirmDialogComponent, {
         width: '550px',
@@ -413,6 +413,19 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
     } else {
       this.executeActionImpl(action, contact);
     }
+    event.stopPropagation();
+  }
+
+  extraRowClicked(item: any) {
+    if (!item.click) {
+      return;
+    }
+    this.httpClient.get<any[]>(item.click.url).subscribe({
+      next: (result: any[]) => {
+        console.log(result);
+      },
+      error: (error: any) => console.log(error)
+    });
   }
 
   private executeActionImpl(action: any, contact: any) {

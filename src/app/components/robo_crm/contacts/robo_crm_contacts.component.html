@@ -424,7 +424,8 @@
                     <button
                       mat-button
                       (click)="deleteActivity(activity, el)"
-                      [matTooltip]="'Delete activity' | translate">
+                      [matTooltip]="'Delete activity' | translate"
+                      matTooltipPosition="left">
                       <mat-icon matSuffix>delete</mat-icon>
                     </button>
                   </td>
@@ -446,16 +447,17 @@
                   <th *ngFor="let idxHeader of getNames(idxExtra.items[0])">{{idxHeader}}</th>
                   <th class="actions" *ngIf="idxExtra.items[0].actions && idxExtra.items[0].actions.length > 0">Actions</th>
                 </tr>
-                <tr *ngFor="let idxCur of idxExtra.items">
+                <tr *ngFor="let idxCur of idxExtra.items" [class.clickable]="idxCur.click" (click)="extraRowClicked(idxCur)">
                   <td *ngFor="let idxName of getNames(idxCur)">{{idxName === 'created' ? (idxCur[idxName] | since) : idxCur[idxName]}}</td>
                   <td class="actions" *ngIf="idxCur.actions && idxCur.actions.length > 0">
                     <button
                       *ngFor="let idxAction of idxCur.actions"
                       [matTooltip]="idxAction.tooltip"
+                      matTooltipPosition="left"
                       mat-button
                       [class.disabled]="idxAction.disabled"
                       [disabled]="idxAction.disabled"
-                      (click)="executeAction(idxAction, el)">
+                      (click)="executeAction(idxAction, el, $event)">
                       <mat-icon>{{idxAction.icon}}</mat-icon>
                     </button>
                   </td>
