@@ -58,6 +58,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { SendEmailComponent } from './components/blaster/send-email/send-email.component';
 import { ToastrModule } from 'ngx-toastr';
 import { DynamicFormComponent } from './helpers/dynamic-form/dynamic-form.component';
+import { DynamicGridComponent } from './helpers/dynamic-grid/dynamic-grid.component';
 
 
 @NgModule({
@@ -119,6 +120,7 @@ import { DynamicFormComponent } from './helpers/dynamic-form/dynamic-form.compon
     EditExtraFieldsComponent,
     SendEmailComponent,
     DynamicFormComponent,
+    DynamicGridComponent,
 
     // Generated CRUD components here.
     Robo_crm_accountsComponent,

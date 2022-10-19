@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+
+  <mat-card *ngFor="let item of data.items">
+    <div *ngFor="let key of getHeaders()" class="row">
+      <strong>{{key}}</strong>
+      <div>
+        {{key === 'created' ? (item[key] | since) : item[key]}}
+      </div>
+    </div>
+  </mat-card>
+
+</div>
+
+<div mat-dialog-actions>
+
+  <div class="right-aligned">
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="close()">{{'Close' | translate}}</button>
+
+  </div>
+
+</div>

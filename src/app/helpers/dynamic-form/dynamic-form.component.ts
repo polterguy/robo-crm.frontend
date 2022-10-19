@@ -8,7 +8,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss']
 })
-export class DynamicFormComponent implements OnInit {
+export class DynamicFormComponent {
 
   form = new FormGroup({});
   model = {};
@@ -17,9 +17,6 @@ export class DynamicFormComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DynamicFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-  }
-
-  ngOnInit() {
   }
 
   save(model: any) {

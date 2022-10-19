@@ -28,6 +28,7 @@ import { ConfirmDialogComponent, ConfirmDialogData } from '@app/confirm-deletion
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { DynamicFormComponent } from '@app/helpers/dynamic-form/dynamic-form.component';
+import { DynamicGridComponent } from '@app/helpers/dynamic-grid/dynamic-grid.component';
 
 /**
  * "Datagrid" component for displaying instance of Contacts
@@ -422,7 +423,13 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
     }
     this.httpClient.get<any[]>(item.click.url).subscribe({
       next: (result: any[]) => {
-        console.log(result);
+        this.dialog.open(DynamicGridComponent, {
+          data: {
+            title: item.click.title,
+            items: result,
+          },
+          minWidth: '80%',
+        });
       },
       error: (error: any) => console.log(error)
     });
