@@ -11,19 +11,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DynamicFormComponent {
 
   form = new FormGroup({});
-  model = {};
+  model: any = {};
   fields: FormlyFieldConfig[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<DynamicFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-  }
-
-  save(model: any) {
-    this.dialogRef.close(model);
-  }
-
-  close() {
-    this.dialogRef.close();
   }
 }

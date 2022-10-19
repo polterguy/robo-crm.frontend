@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="save(model)">
+<form [formGroup]="form">
   <h1 mat-dialog-title>{{data.title}}</h1>
   <div mat-dialog-content>
 
@@ -13,11 +13,12 @@
       <button 
         mat-raised-button
         color="primary"
+        [mat-dialog-close]="model"
         type="submit">{{'Save' | translate}}</button>
 
       <button
         mat-button
-        (click)="close()">{{'Cancel' | translate}}</button>
+        [mat-dialog-close]="null">{{'Cancel' | translate}}</button>
 
     </div>
 

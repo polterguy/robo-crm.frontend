@@ -443,8 +443,9 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
           fields: action.fields,
         }
       });
-      dialogRef.afterClosed().subscribe(res => {
+      dialogRef.afterClosed().subscribe((res: any) => {
         if (res) {
+          console.log(res);
           for (const idx in action.payload) {
             res[idx] = action.payload[idx];
           }
