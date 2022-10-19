@@ -33,11 +33,13 @@
 
       <mat-slide-toggle
         (change)="filterChanged()"
-        [(ngModel)]="subscribers">Only subscribers</mat-slide-toggle>
+        matTooltip="Only subscribers"
+        [(ngModel)]="subscribers">Subs</mat-slide-toggle>
 
       <mat-slide-toggle
         (change)="filterChanged()"
-        [(ngModel)]="confirmed">Only confirmed</mat-slide-toggle>
+        matTooltip="Confirmed only"
+        [(ngModel)]="confirmed">Conf</mat-slide-toggle>
 
     </div>
 
