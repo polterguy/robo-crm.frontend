@@ -1,8 +1,8 @@
-<form>
-  <h1 mat-dialog-title>Provide arguments</h1>
+<form [formGroup]="form" (ngSubmit)="save(model)">
+  <h1 mat-dialog-title>{{data.title}}</h1>
   <div mat-dialog-content>
 
-    foo
+    <formly-form [form]="form" [fields]="data.fields" [model]="model"></formly-form>
 
 </div>
 
@@ -13,8 +13,7 @@
       <button 
         mat-raised-button
         color="primary"
-        type="submit"
-        (click)="save()">{{'Save' | translate}}</button>
+        type="submit">{{'Save' | translate}}</button>
 
       <button
         mat-button

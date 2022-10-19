@@ -416,13 +416,20 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
   }
 
   private executeActionImpl(action: any, contact: any) {
-    if (action.payload_args) {
+    if (action.fields) {
       const dialogRef = this.dialog.open(DynamicFormComponent, {
-        data: action.payload_args
+        data: {
+          title: action.tooltip,
+          fields: action.fields,
+        }
       });
       dialogRef.afterClosed().subscribe(res => {
         if (res) {
-          console.log(res);
+          for (const idx in action.payload) {
+            res[idx] = action.payload[idx];
+          }
+          action.payload = res;
+          this.executeActionAfter(action, contact);
         }
       });
     } else {
@@ -462,6 +469,15 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
 
       case 'post':
         this.httpClient.post<any>(environment.apiUrl + action.url, action.payload).subscribe({
+          next: () => {
+            this.getExtraInformation(contact);
+          },
+          error: (error) => console.error(error)
+        });
+        break;
+
+      case 'patch':
+        this.httpClient.patch<any>(environment.apiUrl + action.url, action.payload).subscribe({
           next: () => {
             this.getExtraInformation(contact);
           },

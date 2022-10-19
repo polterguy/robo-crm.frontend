@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { A11yModule } from '@angular/cdk/a11y';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 
 import { CoreModule } from '@core';
 import { SharedModule } from '@shared';
@@ -65,6 +67,8 @@ import { DynamicFormComponent } from './helpers/dynamic-form/dynamic-form.compon
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    FormlyMaterialModule,
+    FormlyModule.forRoot(),
     HttpClientModule,
     TranslateModule.forRoot(),
     BrowserAnimationsModule,
