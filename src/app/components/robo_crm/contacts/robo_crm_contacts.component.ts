@@ -416,23 +416,43 @@ export class Robo_crm_contactsComponent extends GridComponent implements OnInit 
 
   private executeActionImpl(action: any, contact: any) {
     switch (action.verb) {
+
+      case 'get':
+        this.httpClient.get<any>(environment.apiUrl + action.url).subscribe({
+          next: () => {
+            this.getExtraInformation(contact);
+          },
+          error: (error) => console.error(error)
+        });
+        break;
+
       case 'delete':
         this.httpClient.delete<any>(environment.apiUrl + action.url).subscribe({
-          next: (result: any) => {
+          next: () => {
             this.getExtraInformation(contact);
           },
           error: (error) => console.error(error)
         });
         break;
+
       case 'put':
         this.httpClient.put<any>(environment.apiUrl + action.url, action.payload).subscribe({
-          next: (result: any) => {
+          next: () => {
             this.getExtraInformation(contact);
           },
           error: (error) => console.error(error)
         });
         break;
-    }
+
+      case 'post':
+        this.httpClient.post<any>(environment.apiUrl + action.url, action.payload).subscribe({
+          next: () => {
+            this.getExtraInformation(contact);
+          },
+          error: (error) => console.error(error)
+        });
+        break;
+      }
   }
 
   /**
