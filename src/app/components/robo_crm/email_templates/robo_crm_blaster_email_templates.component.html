@@ -74,8 +74,7 @@
               (click)="editEntity(el)">
               <mat-icon matSuffix>edit</mat-icon>
             </button>
-            <div class="details-full-width">
-              <div [innerHTML]="el.content"></div>
+            <div class="details-full-width" [innerHTML]="el.content | safeHtml">
             </div>
           </div>
         </td>

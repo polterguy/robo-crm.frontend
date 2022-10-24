@@ -7,8 +7,7 @@
     <strong>{{email?.title}}</strong>
   </div>
 
-  <div class="content">
-    <div [innerHTML]="html"></div>
+  <div class="content" [innerHTML]="html | safeHtml">
   </div>
 
 </div>
