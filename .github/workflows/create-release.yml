@@ -14,14 +14,8 @@ jobs:
     - name: Get tag version number
       id: get_version
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
-    - name: Replace API URL
-      uses: jacobtomlinson/gha-find-replace@v2
-      with:
-        find: "dev-api.aista.com"
-        replace: "api.aista.com"
-        regex: false
     - name: Build and push Docker CI images
       run: |
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        docker build -t aistamagic/robo-crm:${{ steps.get_version.outputs.VERSION }} -f ./Dockerfile .
-        docker push aistamagic/robo-crm:${{ steps.get_version.outputs.VERSION }}
+        docker build -t servergardens/robo-crm:${{ steps.get_version.outputs.VERSION }} -f ./Dockerfile .
+        docker push servergardens/robo-crm:${{ steps.get_version.outputs.VERSION }}
