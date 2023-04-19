@@ -1,6 +1,6 @@
 {
-  "apiUrl": "https://dev-api.aista.com/",
-  "apiDomain": "dev-api.aista.com",
+  "apiUrl": "https://ainiro.io/",
+  "apiDomain": "ainiro.io",
   "version": "1.0.0",
   "default_language": "en-US"
 }
